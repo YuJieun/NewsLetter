@@ -112,5 +112,5 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 #custom
-*/ConstGroup.swift
+**/ConstGroup.swift
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods
