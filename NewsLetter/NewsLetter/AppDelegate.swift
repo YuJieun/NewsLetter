@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         let nvc = UINavigationController(rootViewController: vc)
 //        nvc.isNavigationBarHidden = true
-        nvc.interactivePopGestureRecognizer?.isEnabled = true //얠 추가하면 스와이프로 뒤로가기 가능아닙니까..?
+//        nvc.interactivePopGestureRecognizer?.isEnabled = false //얠 추가하면 스와이프로 뒤로가기 막을수있음
         
         self.window?.rootViewController = nvc
         window?.makeKeyAndVisible()
@@ -40,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = storyboard.instantiateViewController(withIdentifier: "MainCenterViewController")
         let nvc = UINavigationController(rootViewController: vc)
 //        nvc.isNavigationBarHidden = true
-        nvc.interactivePopGestureRecognizer?.isEnabled = true
         
         self.window?.rootViewController = nvc
         window?.makeKeyAndVisible()

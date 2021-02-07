@@ -22,19 +22,21 @@ class SplashViewController: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         print("check auto login")
-        let isAutoLogin = self.autoLoginProcess()
-        
-        if isAutoLogin {
-            appDelegate.switchHome()
+        DataRequest.getWeatherApI(){(isAutoLogin, data) in
+            if isAutoLogin {
+                appDelegate.switchHome()
+            }
+            else {
+                appDelegate.switchLogin()
+            }
+        } failure: { errstr in
+            //그럼 얘는 스플래시에서 아예 안넘어가는거 알쥬?
+            print(errstr)
         }
-        else {
-            appDelegate.switchLogin()
-        }
-        
     }
     
     //자동 로그인 체크. 자동 로그인 되면 true 아니면 false리턴
-    func autoLoginProcess() -> Bool {
+//    func autoLoginProcess() -> Bool {
 //        let loginManager = LoginManager.shared
 //        if loginManager.memberInfo.isAutoLoginAction() {
 //            loginManager.ssgLoginAction(){ status in
@@ -49,7 +51,6 @@ class SplashViewController: UIViewController {
 //        else {
 //            //로그인.회원가입 화면으로 전환
 //        }
-        return false
+//        return false
     }
-}
-
+//}

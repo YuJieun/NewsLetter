@@ -18,4 +18,10 @@ public class ConstGroup {
     public static let KEYCHAIN_MEMBER_AUTOLOGIN_OPTION     = "KEYCHAIN_MEMBER_AUTOLOGIN_OPTION"
     public static let KEYCHAIN_MEMBER_PASSWORD             = "KEYCHAIN_MEMBER_PASSWORD"
     public static let KEYCHAIN_MEMBER_ID                   = "KEYCHAIN_MEMBER_ID"
+    
+    
+    //url
+    public static let WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=782aedbfe88ac08f3d018b654179e903"
+    
+    
 }
