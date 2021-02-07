@@ -1,3 +1,4 @@
+ConstGroup.swift
 #
 # Created by https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift,xcode,cocoapods
@@ -111,6 +112,4 @@ iOSInjectionProject/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-#custom
-**/ConstGroup.swift
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods
