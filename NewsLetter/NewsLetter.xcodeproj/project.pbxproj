@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -91,7 +91,6 @@
 				F600D2C01707A2B8D3553D9F /* Pods-NewsLetter.debug.xcconfig */,
 				E65595458D4F8616A4031FF6 /* Pods-NewsLetter.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -143,6 +142,8 @@
 		91064C2125CAD0F00086E2EF /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				91D3860F25D1035700235438 /* DIR */,
+				91D3860E25D1034300235438 /* DI */,
 				91064C2225CAD1090086E2EF /* LoginManager.swift */,
 				91064C2625CAD74E0086E2EF /* KeyChainService.swift */,
 				917EDC3725CD126800AF600A /* Login.storyboard */,
@@ -204,6 +205,20 @@
 				BAC74B461B8C189D3F4631EB /* Pods_NewsLetter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		91D3860E25D1034300235438 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		91D3860F25D1035700235438 /* DIR */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DIR;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

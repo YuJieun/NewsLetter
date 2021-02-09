@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 extension String {
     public func toDictionary() -> [String: Any]? {
@@ -34,4 +34,14 @@ extension String {
         let str: String = self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         return str
     }
+}
+
+extension UIAlertController {
+    public func show() {
+        DispatchQueue.main.async {
+            UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: nil)
+        }
+    }
+    
+    
 }

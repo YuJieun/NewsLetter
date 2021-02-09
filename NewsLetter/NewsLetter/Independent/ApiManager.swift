@@ -10,11 +10,10 @@ import Alamofire
 import Network
 import Reachability
 
-enum ContentResult<T> {
-    case success(T)
-    case failure(Error)
+enum FailureResult {
+    case alert
+    case custom
 }
-
 
 class ApiManager {
     static let shared = ApiManager()
@@ -23,8 +22,8 @@ class ApiManager {
     //헤더는 이후 필요하면 추가하기!
     //validate는 status code가 200대인지와 header와 일치하는 content type인지를 검사한다.
 
-    func getApi<T: Decodable>(_ url: String, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (String) -> Void) {
-        guard checkNetworkAvailable() == true else { failure("네트워크 에러입니다."); return }
+    func getApi<T: Decodable>(_ url: String, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
+        guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
         AF.request(url).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
@@ -34,16 +33,16 @@ class ApiManager {
                     success(json)
                 }
                 catch(let err) {
-                    failure("\(err.localizedDescription) _ get catch부분")
+                    failure(.custom, err)
                 }
             case .failure(let err):
-                failure("\(err.localizedDescription) _ get failure부분")
+                failure(.custom, err)
             }
         }
     }
     
-    func postApi<T: Decodable>(_ url: String, _ param: [String:String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (String) -> Void) {
-        guard checkNetworkAvailable() == true else { failure("네트워크 에러입니다."); return }
+    func postApi<T: Decodable>(_ url: String, _ param: [String:String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
+        guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
         AF.request(url, method: .post, parameters: param).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
@@ -53,16 +52,16 @@ class ApiManager {
                     success(json)
                 }
                 catch(let err) {
-                    failure("\(err.localizedDescription) _ post catch부분")
+                    failure(.custom, err)
                 }
             case .failure(let err):
-                failure("\(err.localizedDescription) _ post failure부분")
+                failure(.custom, err)
             }
         }
     }
     
-    func deleteApi<T: Decodable>(_ url: String, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (String) -> Void) {
-        guard checkNetworkAvailable() == true else { failure("네트워크 에러입니다."); return }
+    func deleteApi<T: Decodable>(_ url: String, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
+        guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
         AF.request(url, method: .delete).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
@@ -72,17 +71,17 @@ class ApiManager {
                     success(json)
                 }
                 catch(let err) {
-                    failure("\(err.localizedDescription) _ delete catch부분")
+                    failure(.custom, err)
                 }
             case .failure(let err):
-                failure("\(err.localizedDescription) _ delete failure부분")
+                failure(.custom, err)
             }
         }
     }
     
     
-    func patchApi<T: Decodable>(_ url: String, _ param: [String:String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (String) -> Void) {
-        guard checkNetworkAvailable() == true else { failure("네트워크 에러입니다."); return }
+    func patchApi<T: Decodable>(_ url: String, _ param: [String:String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
+        guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
         AF.request(url, method: .patch, parameters: param).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
@@ -92,10 +91,10 @@ class ApiManager {
                     success(json)
                 }
                 catch(let err) {
-                    failure("\(err.localizedDescription) _ patch catch부분")
+                    failure(.custom, err)
                 }
             case .failure(let err):
-                failure("\(err.localizedDescription) _ patch failure부분")
+                failure(.custom, err)
             }
         }
     }

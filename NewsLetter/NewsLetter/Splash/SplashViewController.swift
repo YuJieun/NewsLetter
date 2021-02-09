@@ -29,9 +29,10 @@ class SplashViewController: UIViewController {
             else {
                 appDelegate.switchLogin()
             }
-        } failure: { errstr in
+        } failure: { error in
             //그럼 얘는 스플래시에서 아예 안넘어가는거 알쥬?
-            print(errstr)
+            //실패시 뭐할건지 처리..!
+            print(error?.localizedDescription ?? "")
         }
     }
     
