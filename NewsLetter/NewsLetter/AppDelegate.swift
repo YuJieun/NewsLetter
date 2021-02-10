@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func switchLogin() {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "AccountViewController")
         let nvc = UINavigationController(rootViewController: vc)
 //        nvc.isNavigationBarHidden = true
 //        nvc.interactivePopGestureRecognizer?.isEnabled = false //얠 추가하면 스와이프로 뒤로가기 막을수있음
