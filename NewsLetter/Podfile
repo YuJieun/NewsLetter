@@ -6,6 +6,7 @@ target 'NewsLetter' do
   use_frameworks!
 pod 'ReachabilitySwift'
 pod 'Alamofire', '~> 5.2'
+pod 'FSCalendar'
   # Pods for NewsLetter
 
 end

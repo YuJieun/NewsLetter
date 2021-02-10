@@ -29,6 +29,13 @@
 		917EDC6525CD391900AF600A /* Mypage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917EDC6425CD391900AF600A /* Mypage.storyboard */; };
 		917EDC6825CD393500AF600A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917EDC6725CD393500AF600A /* SettingViewController.swift */; };
 		91994F2B25CE81DD005D611C /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91994F2A25CE81DD005D611C /* DataRequest.swift */; };
+		91D3862225D241BB00235438 /* HomeTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3862025D241BB00235438 /* HomeTitleCell.swift */; };
+		91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D3862125D241BB00235438 /* HomeTitleCell.xib */; };
+		91D3862E25D2531B00235438 /* CommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */; };
+		91D3863025D2701D00235438 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D3862F25D2701D00235438 /* Home.storyboard */; };
+		91D3863525D2703600235438 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3863425D2703600235438 /* FilterViewController.swift */; };
+		91D3864125D295F500235438 /* FilterCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3863F25D295F500235438 /* FilterCalendarCell.swift */; };
+		91D3864225D295F500235438 /* FilterCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D3864025D295F500235438 /* FilterCalendarCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +75,13 @@
 		917EDC6425CD391900AF600A /* Mypage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mypage.storyboard; sourceTree = "<group>"; };
 		917EDC6725CD393500AF600A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		91994F2A25CE81DD005D611C /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		91D3862025D241BB00235438 /* HomeTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleCell.swift; sourceTree = "<group>"; };
+		91D3862125D241BB00235438 /* HomeTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTitleCell.xib; sourceTree = "<group>"; };
+		91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCollectionViewCell.swift; sourceTree = "<group>"; };
+		91D3862F25D2701D00235438 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		91D3863425D2703600235438 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		91D3863F25D295F500235438 /* FilterCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCalendarCell.swift; sourceTree = "<group>"; };
+		91D3864025D295F500235438 /* FilterCalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCalendarCell.xib; sourceTree = "<group>"; };
 		BAC74B461B8C189D3F4631EB /* Pods_NewsLetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsLetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E65595458D4F8616A4031FF6 /* Pods-NewsLetter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsLetter.release.xcconfig"; path = "Target Support Files/Pods-NewsLetter/Pods-NewsLetter.release.xcconfig"; sourceTree = "<group>"; };
 		F600D2C01707A2B8D3553D9F /* Pods-NewsLetter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsLetter.debug.xcconfig"; path = "Target Support Files/Pods-NewsLetter/Pods-NewsLetter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +174,7 @@
 				91064C2F25CADA380086E2EF /* ConstGroup.swift */,
 				91994F2A25CE81DD005D611C /* DataRequest.swift */,
 				91418FFD25CFE0AD0097248D /* ApiManager.swift */,
+				91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */,
 			);
 			path = Independent;
 			sourceTree = "<group>";
@@ -167,7 +182,10 @@
 		917EDC4425CD18F200AF600A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				91D3861F25D2419F00235438 /* cell */,
 				917EDC4825CD192D00AF600A /* HomeViewController.swift */,
+				91D3862F25D2701D00235438 /* Home.storyboard */,
+				91D3863425D2703600235438 /* FilterViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -219,6 +237,17 @@
 			children = (
 			);
 			path = DIR;
+			sourceTree = "<group>";
+		};
+		91D3861F25D2419F00235438 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				91D3862025D241BB00235438 /* HomeTitleCell.swift */,
+				91D3862125D241BB00235438 /* HomeTitleCell.xib */,
+				91D3863F25D295F500235438 /* FilterCalendarCell.swift */,
+				91D3864025D295F500235438 /* FilterCalendarCell.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,12 +310,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91D3864225D295F500235438 /* FilterCalendarCell.xib in Resources */,
+				91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */,
 				917EDC3825CD126800AF600A /* Login.storyboard in Resources */,
 				917EDC6525CD391900AF600A /* Mypage.storyboard in Resources */,
 				917EDC4625CD190F00AF600A /* MainCenter.storyboard in Resources */,
 				91064C1325CAC6DD0086E2EF /* LaunchScreen.storyboard in Resources */,
 				91064C1025CAC6DD0086E2EF /* Assets.xcassets in Resources */,
 				91064C0E25CAC6DC0086E2EF /* Main.storyboard in Resources */,
+				91D3863025D2701D00235438 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,8 +379,12 @@
 				917EDC4225CD160E00AF600A /* SignupViewController.swift in Sources */,
 				91064C3025CADA380086E2EF /* ConstGroup.swift in Sources */,
 				91418FFE25CFE0AD0097248D /* ApiManager.swift in Sources */,
+				91D3864125D295F500235438 /* FilterCalendarCell.swift in Sources */,
 				91994F2B25CE81DD005D611C /* DataRequest.swift in Sources */,
+				91D3862225D241BB00235438 /* HomeTitleCell.swift in Sources */,
 				91064C2725CAD74E0086E2EF /* KeyChainService.swift in Sources */,
+				91D3862E25D2531B00235438 /* CommonCollectionViewCell.swift in Sources */,
+				91D3863525D2703600235438 /* FilterViewController.swift in Sources */,
 				917EDC4925CD192D00AF600A /* HomeViewController.swift in Sources */,
 				91064C0725CAC6DC0086E2EF /* AppDelegate.swift in Sources */,
 				91064C2B25CAD9D60086E2EF /* Extensions.swift in Sources */,
