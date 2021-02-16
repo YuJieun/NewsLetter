@@ -11,29 +11,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HomeTitleCell" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HomeTitleCell" id="gTV-IL-0wX" customClass="HomeTitleCell" customModule="NewsLetter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gf1-OB-dKW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ai-Jw-yEl">
-                                <rect key="frame" x="156" y="8" width="63" height="34"/>
-                                <state key="normal" title="필터버튼">
-                                    <color key="titleColor" systemColor="systemOrangeColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="onButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="tKA-oe-Gei"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유지은님, 2월 첫째주에 도착한 레터에요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrv-Dt-whP">
+                                <rect key="frame" x="85.5" y="14.5" width="204.5" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2ai-Jw-yEl" firstAttribute="centerX" secondItem="gf1-OB-dKW" secondAttribute="centerX" id="RyH-5b-YaZ"/>
-                            <constraint firstItem="2ai-Jw-yEl" firstAttribute="centerY" secondItem="gf1-OB-dKW" secondAttribute="centerY" id="WW4-bz-3AR"/>
+                            <constraint firstItem="Nrv-Dt-whP" firstAttribute="centerX" secondItem="gf1-OB-dKW" secondAttribute="centerX" id="Ui3-Lb-RZv"/>
+                            <constraint firstItem="Nrv-Dt-whP" firstAttribute="centerY" secondItem="gf1-OB-dKW" secondAttribute="centerY" id="n4h-Td-IgU"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -44,15 +41,12 @@
                 <constraint firstItem="gf1-OB-dKW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aUB-r2-uuM"/>
                 <constraint firstItem="gf1-OB-dKW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hhz-Tg-48G"/>
             </constraints>
-            <connections>
-                <outlet property="button" destination="2ai-Jw-yEl" id="GjG-1N-0uW"/>
-            </connections>
             <point key="canvasLocation" x="139" y="107"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
