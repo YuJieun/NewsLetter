@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		5AF16DA934B04E151E75225F /* Pods_NewsLetter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC74B461B8C189D3F4631EB /* Pods_NewsLetter.framework */; };
+		806EA7FC25DCB0B3005D8688 /* FilterBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA7FA25DCB0B3005D8688 /* FilterBrandCell.swift */; };
+		806EA7FD25DCB0B3005D8688 /* FilterBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806EA7FB25DCB0B3005D8688 /* FilterBrandCell.xib */; };
+		806EA80025DCB613005D8688 /* FilterBrandItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA7FE25DCB613005D8688 /* FilterBrandItemCell.swift */; };
+		806EA80125DCB613005D8688 /* FilterBrandItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806EA7FF25DCB613005D8688 /* FilterBrandItemCell.xib */; };
+		806EA80325DCCA7F005D8688 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA80225DCCA7F005D8688 /* StringExtension.swift */; };
+		806EA80525DCCFFD005D8688 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA80425DCCFFD005D8688 /* UIViewExtension.swift */; };
+		806EA80825DCD107005D8688 /* FilterDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA80625DCD107005D8688 /* FilterDateCell.swift */; };
+		806EA80925DCD107005D8688 /* FilterDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806EA80725DCD107005D8688 /* FilterDateCell.xib */; };
+		806EA80C25DCE131005D8688 /* FilterTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA80A25DCE131005D8688 /* FilterTitleCell.swift */; };
+		806EA80D25DCE131005D8688 /* FilterTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806EA80B25DCE131005D8688 /* FilterTitleCell.xib */; };
 		91064C0725CAC6DC0086E2EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91064C0625CAC6DC0086E2EF /* AppDelegate.swift */; };
 		91064C0B25CAC6DC0086E2EF /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91064C0A25CAC6DC0086E2EF /* SplashViewController.swift */; };
 		91064C0E25CAC6DC0086E2EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91064C0C25CAC6DC0086E2EF /* Main.storyboard */; };
@@ -66,6 +76,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		806EA7FA25DCB0B3005D8688 /* FilterBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBrandCell.swift; sourceTree = "<group>"; };
+		806EA7FB25DCB0B3005D8688 /* FilterBrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterBrandCell.xib; sourceTree = "<group>"; };
+		806EA7FE25DCB613005D8688 /* FilterBrandItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBrandItemCell.swift; sourceTree = "<group>"; };
+		806EA7FF25DCB613005D8688 /* FilterBrandItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterBrandItemCell.xib; sourceTree = "<group>"; };
+		806EA80225DCCA7F005D8688 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		806EA80425DCCFFD005D8688 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		806EA80625DCD107005D8688 /* FilterDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDateCell.swift; sourceTree = "<group>"; };
+		806EA80725DCD107005D8688 /* FilterDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterDateCell.xib; sourceTree = "<group>"; };
+		806EA80A25DCE131005D8688 /* FilterTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTitleCell.swift; sourceTree = "<group>"; };
+		806EA80B25DCE131005D8688 /* FilterTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTitleCell.xib; sourceTree = "<group>"; };
 		91064C0325CAC6DC0086E2EF /* NewsLetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsLetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91064C0625CAC6DC0086E2EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91064C0A25CAC6DC0086E2EF /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				91064C2A25CAD9D60086E2EF /* Extensions.swift */,
+				806EA80225DCCA7F005D8688 /* StringExtension.swift */,
+				806EA80425DCCFFD005D8688 /* UIViewExtension.swift */,
 				91064C2F25CADA380086E2EF /* ConstGroup.swift */,
 				91994F2A25CE81DD005D611C /* DataRequest.swift */,
 				91418FFD25CFE0AD0097248D /* ApiManager.swift */,
@@ -271,6 +293,14 @@
 			children = (
 				91D3863F25D295F500235438 /* FilterCalendarCell.swift */,
 				91D3864025D295F500235438 /* FilterCalendarCell.xib */,
+				806EA7FA25DCB0B3005D8688 /* FilterBrandCell.swift */,
+				806EA7FB25DCB0B3005D8688 /* FilterBrandCell.xib */,
+				806EA7FE25DCB613005D8688 /* FilterBrandItemCell.swift */,
+				806EA7FF25DCB613005D8688 /* FilterBrandItemCell.xib */,
+				806EA80625DCD107005D8688 /* FilterDateCell.swift */,
+				806EA80725DCD107005D8688 /* FilterDateCell.xib */,
+				806EA80A25DCE131005D8688 /* FilterTitleCell.swift */,
+				806EA80B25DCE131005D8688 /* FilterTitleCell.xib */,
 			);
 			path = filterCell;
 			sourceTree = "<group>";
@@ -371,10 +401,14 @@
 				91ABDD6925DB526F00CD7C37 /* BigLetterBannerCell.xib in Resources */,
 				91D3864225D295F500235438 /* FilterCalendarCell.xib in Resources */,
 				91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */,
+				806EA80D25DCE131005D8688 /* FilterTitleCell.xib in Resources */,
 				917EDC3825CD126800AF600A /* Login.storyboard in Resources */,
 				910A760525D3B64D00F16E3F /* HomeNewLettersCell.xib in Resources */,
 				917EDC6525CD391900AF600A /* Mypage.storyboard in Resources */,
+				806EA80125DCB613005D8688 /* FilterBrandItemCell.xib in Resources */,
+				806EA80925DCD107005D8688 /* FilterDateCell.xib in Resources */,
 				91ABDD6E25DB580900CD7C37 /* HomeFilterBarCell.xib in Resources */,
+				806EA7FD25DCB0B3005D8688 /* FilterBrandCell.xib in Resources */,
 				917EDC4625CD190F00AF600A /* MainCenter.storyboard in Resources */,
 				91064C1325CAC6DD0086E2EF /* LaunchScreen.storyboard in Resources */,
 				91064C1025CAC6DD0086E2EF /* Assets.xcassets in Resources */,
@@ -434,8 +468,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				917EDC3B25CD129000AF600A /* AccountViewController.swift in Sources */,
+				806EA80025DCB613005D8688 /* FilterBrandItemCell.swift in Sources */,
 				910A75F125D378DD00F16E3F /* CommonFunction.swift in Sources */,
 				917EDC5F25CD37F700AF600A /* SearchViewController.swift in Sources */,
+				806EA80325DCCA7F005D8688 /* StringExtension.swift in Sources */,
+				806EA7FC25DCB0B3005D8688 /* FilterBrandCell.swift in Sources */,
 				910A75FD25D3A91300F16E3F /* SignupPasswordViewController.swift in Sources */,
 				91064C0B25CAC6DC0086E2EF /* SplashViewController.swift in Sources */,
 				917EDC6825CD393500AF600A /* SettingViewController.swift in Sources */,
@@ -454,12 +491,15 @@
 				91ABDD7525DB5AE000CD7C37 /* SmallLetterBannerCell.swift in Sources */,
 				91ABDD6D25DB580900CD7C37 /* HomeFilterBarCell.swift in Sources */,
 				91D3863525D2703600235438 /* FilterViewController.swift in Sources */,
+				806EA80525DCCFFD005D8688 /* UIViewExtension.swift in Sources */,
 				917EDC4925CD192D00AF600A /* HomeViewController.swift in Sources */,
 				91064C0725CAC6DC0086E2EF /* AppDelegate.swift in Sources */,
 				91ABDD6825DB526F00CD7C37 /* BigLetterBannerCell.swift in Sources */,
+				806EA80C25DCE131005D8688 /* FilterTitleCell.swift in Sources */,
 				91064C2B25CAD9D60086E2EF /* Extensions.swift in Sources */,
 				910A75F525D3A56600F16E3F /* DI_UserInfo.swift in Sources */,
 				910A760425D3B64D00F16E3F /* HomeNewLettersCell.swift in Sources */,
+				806EA80825DCD107005D8688 /* FilterDateCell.swift in Sources */,
 				917EDC5925CD330700AF600A /* MainCenterViewController.swift in Sources */,
 				91064C2325CAD1090086E2EF /* LoginManager.swift in Sources */,
 			);

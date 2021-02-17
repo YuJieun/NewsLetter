@@ -14,14 +14,15 @@ class HomeFilterBarCell: CommonCollectionViewCell {
         // Initialization code
     }
     
-    @IBAction func onFilterButton(_ sender: UIButton) {
-    }
-    
     func configure(data: Any? = nil) {
     }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
         return CGSize(width: UISCREEN_WIDTH, height: 40)
+    }
+
+    @IBAction func onFilterButton(_ sender: UIButton) {
+        cellClosure?("",nil)
     }
     
 }

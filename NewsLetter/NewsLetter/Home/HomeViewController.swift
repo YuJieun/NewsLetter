@@ -68,15 +68,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch indexPath.section {
         case HomeSection.mainTitle.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeTitleCell.self, "HomeTitleCell", for: indexPath)
-//            cell.configure(data: "냥냥펀치")
-//            cell.cellClosure = {[weak self] _,_ in
-//                guard let `self` = self else { return }
-//                self.definesPresentationContext = true
-//                let storyboard = UIStoryboard(name: "Home", bundle: nil)
-//                let vc = storyboard.instantiateViewController(withIdentifier:  "FilterViewController")
-//                vc.modalPresentationStyle = .overCurrentContext
-//               self.present(vc, animated: true)
-//            }
             return cell
             
         case HomeSection.newLetters.rawValue:
@@ -85,6 +76,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         case HomeSection.filterBar.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeFilterBarCell.self, "HomeFilterBarCell", for: indexPath)
+            cell.cellClosure = { [weak self] _,_ in
+                guard let `self` = self else { return }
+                self.definesPresentationContext = true
+                let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier:  "FilterViewController")
+                vc.modalPresentationStyle = .overCurrentContext
+               self.present(vc, animated: true)
+            }
             return cell
         case HomeSection.oldLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)

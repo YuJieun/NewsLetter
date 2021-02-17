@@ -25,14 +25,14 @@ class FilterViewController: UIViewController {
     func setup() {
         view.backgroundColor = UIColor.clear
         view.isOpaque = false
-        self.collectionView.registerNibCell("FilterCalendarCell", Classs: FilterCalendarCell.self)
+        self.collectionView.registerNibCell("FilterTitleCell", Classs: FilterCalendarCell.self)
+        self.collectionView.registerNibCell("FilterBrandCell", Classs: FilterCalendarCell.self)
+        self.collectionView.registerNibCell("FilterDateCell", Classs: FilterCalendarCell.self)
     }
     
     @IBAction func onTopView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-
 }
 
 extension FilterViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -44,7 +44,7 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case FilterSection.title.rawValue:
-            return 0
+            return 1
         case FilterSection.brand.rawValue:
             return 1
         case FilterSection.date.rawValue:
@@ -57,13 +57,17 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case FilterSection.title.rawValue:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(FilterTitleCell.self, "FilterTitleCell", for: indexPath)
+            cell.cellClosure = { [weak self] _,_ in
+                guard let `self` = self else { return }
+                self.dismiss(animated: true, completion: nil)
+            }
             return cell
         case FilterSection.brand.rawValue:
-            let cell = collectionView.dequeueReusableCell(FilterCalendarCell.self, "FilterCalendarCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(FilterBrandCell.self, "FilterBrandCell", for: indexPath)
             return cell
         case FilterSection.date.rawValue:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(FilterDateCell.self, "FilterDateCell", for: indexPath)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
@@ -74,12 +78,14 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case FilterSection.title.rawValue:
-            return .zero
+            let size = FilterTitleCell.getSize(nil)
+            return size
         case FilterSection.brand.rawValue:
-            let size = FilterCalendarCell.getSize(nil)
+            let size = FilterBrandCell.getSize(nil)
             return size
         case FilterSection.date.rawValue:
-            return .zero
+            let size = FilterDateCell.getSize(nil)
+            return size
         default:
             return .zero
         }
