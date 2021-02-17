@@ -18,6 +18,10 @@
 		806EA80925DCD107005D8688 /* FilterDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806EA80725DCD107005D8688 /* FilterDateCell.xib */; };
 		806EA80C25DCE131005D8688 /* FilterTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA80A25DCE131005D8688 /* FilterTitleCell.swift */; };
 		806EA80D25DCE131005D8688 /* FilterTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806EA80B25DCE131005D8688 /* FilterTitleCell.xib */; };
+		806EA81125DCEBA2005D8688 /* SearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA80F25DCEBA2005D8688 /* SearchBarCell.swift */; };
+		806EA81225DCEBA2005D8688 /* SearchBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806EA81025DCEBA2005D8688 /* SearchBarCell.xib */; };
+		806EA81525DCED64005D8688 /* SearchTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA81325DCED64005D8688 /* SearchTitleCell.swift */; };
+		806EA81625DCED64005D8688 /* SearchTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806EA81425DCED64005D8688 /* SearchTitleCell.xib */; };
 		91064C0725CAC6DC0086E2EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91064C0625CAC6DC0086E2EF /* AppDelegate.swift */; };
 		91064C0B25CAC6DC0086E2EF /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91064C0A25CAC6DC0086E2EF /* SplashViewController.swift */; };
 		91064C0E25CAC6DC0086E2EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91064C0C25CAC6DC0086E2EF /* Main.storyboard */; };
@@ -86,6 +90,10 @@
 		806EA80725DCD107005D8688 /* FilterDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterDateCell.xib; sourceTree = "<group>"; };
 		806EA80A25DCE131005D8688 /* FilterTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTitleCell.swift; sourceTree = "<group>"; };
 		806EA80B25DCE131005D8688 /* FilterTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTitleCell.xib; sourceTree = "<group>"; };
+		806EA80F25DCEBA2005D8688 /* SearchBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarCell.swift; sourceTree = "<group>"; };
+		806EA81025DCEBA2005D8688 /* SearchBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarCell.xib; sourceTree = "<group>"; };
+		806EA81325DCED64005D8688 /* SearchTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTitleCell.swift; sourceTree = "<group>"; };
+		806EA81425DCED64005D8688 /* SearchTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTitleCell.xib; sourceTree = "<group>"; };
 		91064C0325CAC6DC0086E2EF /* NewsLetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsLetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91064C0625CAC6DC0086E2EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91064C0A25CAC6DC0086E2EF /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +162,17 @@
 				E65595458D4F8616A4031FF6 /* Pods-NewsLetter.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		806EA80E25DCEA0D005D8688 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				806EA80F25DCEBA2005D8688 /* SearchBarCell.swift */,
+				806EA81025DCEBA2005D8688 /* SearchBarCell.xib */,
+				806EA81325DCED64005D8688 /* SearchTitleCell.swift */,
+				806EA81425DCED64005D8688 /* SearchTitleCell.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		91064BFA25CAC6DC0086E2EF = {
@@ -275,6 +294,7 @@
 		917EDC5D25CD373900AF600A /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				806EA80E25DCEA0D005D8688 /* cell */,
 				917EDC5E25CD37F700AF600A /* SearchViewController.swift */,
 			);
 			path = Search;
@@ -402,7 +422,9 @@
 				91D3864225D295F500235438 /* FilterCalendarCell.xib in Resources */,
 				91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */,
 				806EA80D25DCE131005D8688 /* FilterTitleCell.xib in Resources */,
+				806EA81625DCED64005D8688 /* SearchTitleCell.xib in Resources */,
 				917EDC3825CD126800AF600A /* Login.storyboard in Resources */,
+				806EA81225DCEBA2005D8688 /* SearchBarCell.xib in Resources */,
 				910A760525D3B64D00F16E3F /* HomeNewLettersCell.xib in Resources */,
 				917EDC6525CD391900AF600A /* Mypage.storyboard in Resources */,
 				806EA80125DCB613005D8688 /* FilterBrandItemCell.xib in Resources */,
@@ -483,6 +505,7 @@
 				91418FFE25CFE0AD0097248D /* ApiManager.swift in Sources */,
 				910A75EF25D376FA00F16E3F /* LoginViewController.swift in Sources */,
 				91D3864125D295F500235438 /* FilterCalendarCell.swift in Sources */,
+				806EA81525DCED64005D8688 /* SearchTitleCell.swift in Sources */,
 				91994F2B25CE81DD005D611C /* DataRequest.swift in Sources */,
 				91D3862225D241BB00235438 /* HomeTitleCell.swift in Sources */,
 				910A75F325D39A3300F16E3F /* SignupEmailViewController.swift in Sources */,
@@ -492,6 +515,7 @@
 				91ABDD6D25DB580900CD7C37 /* HomeFilterBarCell.swift in Sources */,
 				91D3863525D2703600235438 /* FilterViewController.swift in Sources */,
 				806EA80525DCCFFD005D8688 /* UIViewExtension.swift in Sources */,
+				806EA81125DCEBA2005D8688 /* SearchBarCell.swift in Sources */,
 				917EDC4925CD192D00AF600A /* HomeViewController.swift in Sources */,
 				91064C0725CAC6DC0086E2EF /* AppDelegate.swift in Sources */,
 				91ABDD6825DB526F00CD7C37 /* BigLetterBannerCell.swift in Sources */,

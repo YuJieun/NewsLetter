@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -74,14 +74,46 @@
                                     <constraint firstAttribute="trailing" secondItem="gPU-S7-sWB" secondAttribute="trailing" constant="20" id="nVf-ip-ETe"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pM5-qx-Iq4">
+                                <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="10q-NM-eTl">
+                                        <rect key="frame" x="147.5" y="30.5" width="40" height="38.5"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Oec-oe-pz6"/>
+                                            <constraint firstAttribute="width" constant="40" id="bW4-7f-hi1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmj-KI-VLU">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
+                                        <connections>
+                                            <action selector="onLockButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="vBT-jh-XDF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.70890410958904104" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hmj-KI-VLU" firstAttribute="top" secondItem="pM5-qx-Iq4" secondAttribute="top" id="4bx-6i-Ahy"/>
+                                    <constraint firstAttribute="trailing" secondItem="hmj-KI-VLU" secondAttribute="trailing" id="5wE-ZD-NcD"/>
+                                    <constraint firstItem="10q-NM-eTl" firstAttribute="centerX" secondItem="pM5-qx-Iq4" secondAttribute="centerX" id="Hla-H6-DQz"/>
+                                    <constraint firstItem="10q-NM-eTl" firstAttribute="centerY" secondItem="pM5-qx-Iq4" secondAttribute="centerY" id="ahk-OS-5jd"/>
+                                    <constraint firstAttribute="bottom" secondItem="hmj-KI-VLU" secondAttribute="bottom" id="boh-Fq-HvG"/>
+                                    <constraint firstItem="hmj-KI-VLU" firstAttribute="leading" secondItem="pM5-qx-Iq4" secondAttribute="leading" id="nhE-Ib-dTf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="szk-6h-Who" secondAttribute="trailing" id="6Nr-Bs-Vnz"/>
+                            <constraint firstItem="pM5-qx-Iq4" firstAttribute="leading" secondItem="7cF-cb-FSC" secondAttribute="leading" id="HEj-pf-14z"/>
                             <constraint firstAttribute="bottom" secondItem="szk-6h-Who" secondAttribute="bottom" id="IsJ-LZ-xuE"/>
                             <constraint firstItem="szk-6h-Who" firstAttribute="top" secondItem="7cF-cb-FSC" secondAttribute="top" id="MFD-vG-azG"/>
+                            <constraint firstAttribute="trailing" secondItem="pM5-qx-Iq4" secondAttribute="trailing" id="PU5-7W-lhr"/>
+                            <constraint firstAttribute="bottom" secondItem="pM5-qx-Iq4" secondAttribute="bottom" id="aoA-uD-QHK"/>
                             <constraint firstItem="qAi-hn-ohd" firstAttribute="top" secondItem="7cF-cb-FSC" secondAttribute="top" id="cav-UZ-F5W"/>
                             <constraint firstItem="szk-6h-Who" firstAttribute="leading" secondItem="qAi-hn-ohd" secondAttribute="trailing" id="pdE-lM-JXd"/>
+                            <constraint firstItem="pM5-qx-Iq4" firstAttribute="top" secondItem="7cF-cb-FSC" secondAttribute="top" id="s1x-5E-5PE"/>
                             <constraint firstItem="qAi-hn-ohd" firstAttribute="leading" secondItem="7cF-cb-FSC" secondAttribute="leading" id="u5I-Uf-jAm"/>
                             <constraint firstAttribute="bottom" secondItem="qAi-hn-ohd" secondAttribute="bottom" id="xhW-Vz-ndQ"/>
                         </constraints>
@@ -99,6 +131,7 @@
                 <outlet property="bannerInfoLabel" destination="ZXK-7E-Hkw" id="TzI-L1-1oz"/>
                 <outlet property="bannerLogoImageView" destination="dge-sD-FOg" id="v9B-3g-dF1"/>
                 <outlet property="bannerTitleLabel" destination="0I8-8n-Umf" id="ybz-9u-f2t"/>
+                <outlet property="lockView" destination="pM5-qx-Iq4" id="BVK-Le-8sJ"/>
             </connections>
             <point key="canvasLocation" x="38.405797101449281" y="104.46428571428571"/>
         </collectionViewCell>
@@ -106,7 +139,11 @@
     <resources>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="icloud" catalog="system" width="128" height="88"/>
+        <image name="lock" catalog="system" width="128" height="128"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

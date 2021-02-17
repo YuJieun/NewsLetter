@@ -25,9 +25,9 @@ class FilterViewController: UIViewController {
     func setup() {
         view.backgroundColor = UIColor.clear
         view.isOpaque = false
-        self.collectionView.registerNibCell("FilterTitleCell", Classs: FilterCalendarCell.self)
-        self.collectionView.registerNibCell("FilterBrandCell", Classs: FilterCalendarCell.self)
-        self.collectionView.registerNibCell("FilterDateCell", Classs: FilterCalendarCell.self)
+        self.collectionView.registerNibCell("FilterTitleCell", Classs: FilterTitleCell.self)
+        self.collectionView.registerNibCell("FilterBrandCell", Classs: FilterBrandCell.self)
+        self.collectionView.registerNibCell("FilterDateCell", Classs: FilterDateCell.self)
     }
     
     @IBAction func onTopView(_ sender: UIButton) {

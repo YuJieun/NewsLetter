@@ -22,9 +22,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         print("홈메뉴")
         self.collectionView.registerNibCell("HomeTitleCell", Classs: HomeTitleCell.self)
-        self.collectionView.registerNibCell("HomeNewLettersCell", Classs: HomeTitleCell.self)
-        self.collectionView.registerNibCell("HomeFilterBarCell", Classs: HomeTitleCell.self)
-        self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: HomeTitleCell.self)
+        self.collectionView.registerNibCell("HomeNewLettersCell", Classs: HomeNewLettersCell.self)
+        self.collectionView.registerNibCell("HomeFilterBarCell", Classs: HomeFilterBarCell.self)
+        self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
         setup()
     }
     
