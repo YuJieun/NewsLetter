@@ -53,6 +53,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         switch indexPath.section {
         case SearchSection.searchBar.rawValue:
             let cell = collectionView.dequeueReusableCell(SearchBarCell.self, "SearchBarCell", for: indexPath)
+            cell.configure(data: "궁금한 뉴스레터를 검색하세요")
             return cell
         case SearchSection.title.rawValue:
             let cell = collectionView.dequeueReusableCell(SearchTitleCell.self, "SearchTitleCell", for: indexPath)

@@ -15,6 +15,8 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     @IBOutlet weak var bannerInfoLabel: UILabel!
     @IBOutlet weak var lockView: UIView!
     
+    var isLock: Bool = true
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +24,6 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     
     func configure(data: Any? = nil) {
         guard let _ = data else { return }
-        let isLock = false
         if isLock {
             self.lockView.isHidden = false
         }
@@ -40,7 +41,15 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     }
 
     @IBAction func onLockButton(_ sender: UIButton) {
-        //lock 버튼눌렀을때 팝업
+        //https://stackoverflow.com/questions/44719277/alertcontroller-with-white-borders
+        guard isLock == true else { return }
+        let alert: UIAlertController = UIAlertController(title: "알림", message: "해당 레터를 보려면 구독이 필요해요!\n지은을 구독하시겠습니까?", preferredStyle: .alert)
+        let cancleAction = UIAlertAction(title: "취소", style: .destructive) { (action) in }
+        let okAction = UIAlertAction(title: "확인", style: .cancel) { (action) in }
+        alert.addAction(cancleAction)
+        alert.addAction(okAction)
+        alert.show()
+    
     }
     
 }

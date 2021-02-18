@@ -52,13 +52,13 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Pjx-dg-FJR"/>
+                        <viewLayoutGuide key="safeArea" id="pP2-Ao-sjq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HFW-ZK-FQJ" firstAttribute="top" secondItem="Pjx-dg-FJR" secondAttribute="top" id="6Gh-hZ-tlz"/>
-                            <constraint firstItem="Pjx-dg-FJR" firstAttribute="bottom" secondItem="HFW-ZK-FQJ" secondAttribute="bottom" id="uUA-cd-yDl"/>
-                            <constraint firstItem="Pjx-dg-FJR" firstAttribute="trailing" secondItem="HFW-ZK-FQJ" secondAttribute="trailing" id="vV6-Om-NHv"/>
-                            <constraint firstItem="HFW-ZK-FQJ" firstAttribute="leading" secondItem="Pjx-dg-FJR" secondAttribute="leading" id="zbo-06-3IU"/>
+                            <constraint firstItem="HFW-ZK-FQJ" firstAttribute="top" secondItem="pP2-Ao-sjq" secondAttribute="top" id="6Gh-hZ-tlz"/>
+                            <constraint firstItem="pP2-Ao-sjq" firstAttribute="bottom" secondItem="HFW-ZK-FQJ" secondAttribute="bottom" id="uUA-cd-yDl"/>
+                            <constraint firstItem="pP2-Ao-sjq" firstAttribute="trailing" secondItem="HFW-ZK-FQJ" secondAttribute="trailing" id="vV6-Om-NHv"/>
+                            <constraint firstItem="HFW-ZK-FQJ" firstAttribute="leading" secondItem="pP2-Ao-sjq" secondAttribute="leading" id="zbo-06-3IU"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="KyG-ul-qzI"/>
@@ -78,30 +78,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마이페이지이지롱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpS-v9-0gh">
-                                <rect key="frame" x="148" y="418" width="118" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7B-mV-ef5">
-                                <rect key="frame" x="156" y="488" width="30" height="30"/>
-                                <state key="normal" title="설정"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K9K-FU-yal">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JRn-cM-e6J">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
                                 <connections>
-                                    <action selector="onSettingButton:" destination="GDb-OD-ki4" eventType="touchUpInside" id="mNN-7l-NIm"/>
+                                    <outlet property="dataSource" destination="GDb-OD-ki4" id="9UY-F6-lGy"/>
+                                    <outlet property="delegate" destination="GDb-OD-ki4" id="TRQ-rt-4V7"/>
                                 </connections>
-                            </button>
+                            </collectionView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="hZf-op-2Af"/>
+                        <viewLayoutGuide key="safeArea" id="keq-gD-qXT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="IpS-v9-0gh" firstAttribute="leading" secondItem="y7B-mV-ef5" secondAttribute="trailing" constant="-38" id="F5j-4J-Luh"/>
-                            <constraint firstItem="IpS-v9-0gh" firstAttribute="centerX" secondItem="hZf-op-2Af" secondAttribute="centerX" id="evC-gc-9CO"/>
-                            <constraint firstItem="IpS-v9-0gh" firstAttribute="centerY" secondItem="hZf-op-2Af" secondAttribute="centerY" id="sSY-5b-iRU"/>
-                            <constraint firstItem="y7B-mV-ef5" firstAttribute="top" secondItem="IpS-v9-0gh" secondAttribute="bottom" constant="49" id="vJx-86-zIl"/>
+                            <constraint firstItem="keq-gD-qXT" firstAttribute="bottom" secondItem="K9K-FU-yal" secondAttribute="bottom" id="AnE-29-7Qe"/>
+                            <constraint firstItem="K9K-FU-yal" firstAttribute="top" secondItem="keq-gD-qXT" secondAttribute="top" id="Q1C-xr-twV"/>
+                            <constraint firstItem="K9K-FU-yal" firstAttribute="leading" secondItem="keq-gD-qXT" secondAttribute="leading" id="Roy-SV-PUe"/>
+                            <constraint firstItem="keq-gD-qXT" firstAttribute="trailing" secondItem="K9K-FU-yal" secondAttribute="trailing" id="Ss7-5p-KV6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="TV7-Mn-J0g"/>
+                    <connections>
+                        <outlet property="collectionView" destination="K9K-FU-yal" id="FDX-fw-h1G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pO6-Nr-Sko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,13 +136,13 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="W2Z-Rh-FSq"/>
+                        <viewLayoutGuide key="safeArea" id="PMX-jP-SGi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="W2Z-Rh-FSq" firstAttribute="bottom" secondItem="ydX-im-CLh" secondAttribute="bottom" id="8rw-he-3fl"/>
-                            <constraint firstItem="ydX-im-CLh" firstAttribute="leading" secondItem="W2Z-Rh-FSq" secondAttribute="leading" id="VWu-kg-4SM"/>
-                            <constraint firstItem="ydX-im-CLh" firstAttribute="top" secondItem="W2Z-Rh-FSq" secondAttribute="top" id="WO0-6i-7Ec"/>
-                            <constraint firstItem="W2Z-Rh-FSq" firstAttribute="trailing" secondItem="ydX-im-CLh" secondAttribute="trailing" id="zmz-LJ-AzB"/>
+                            <constraint firstItem="PMX-jP-SGi" firstAttribute="bottom" secondItem="ydX-im-CLh" secondAttribute="bottom" id="8rw-he-3fl"/>
+                            <constraint firstItem="ydX-im-CLh" firstAttribute="leading" secondItem="PMX-jP-SGi" secondAttribute="leading" id="VWu-kg-4SM"/>
+                            <constraint firstItem="ydX-im-CLh" firstAttribute="top" secondItem="PMX-jP-SGi" secondAttribute="top" id="WO0-6i-7Ec"/>
+                            <constraint firstItem="PMX-jP-SGi" firstAttribute="trailing" secondItem="ydX-im-CLh" secondAttribute="trailing" id="zmz-LJ-AzB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostRecent" id="PQO-rW-8XK"/>

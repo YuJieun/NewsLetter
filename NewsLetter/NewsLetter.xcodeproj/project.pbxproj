@@ -58,6 +58,18 @@
 		91ABDD7525DB5AE000CD7C37 /* SmallLetterBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ABDD7325DB5AE000CD7C37 /* SmallLetterBannerCell.swift */; };
 		91ABDD7625DB5AE000CD7C37 /* SmallLetterBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABDD7425DB5AE000CD7C37 /* SmallLetterBannerCell.xib */; };
 		91B9EC8525DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9EC8425DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift */; };
+		91B9EC9925DE4625006B3E68 /* MypageTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9EC9725DE4625006B3E68 /* MypageTitleCell.swift */; };
+		91B9EC9A25DE4625006B3E68 /* MypageTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B9EC9825DE4625006B3E68 /* MypageTitleCell.xib */; };
+		91B9ECA325DE46D1006B3E68 /* MypageProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECA125DE46D1006B3E68 /* MypageProfileCell.swift */; };
+		91B9ECA425DE46D1006B3E68 /* MypageProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B9ECA225DE46D1006B3E68 /* MypageProfileCell.xib */; };
+		91B9ECAC25DE4BF5006B3E68 /* SettingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECAA25DE4BF5006B3E68 /* SettingTitleCell.swift */; };
+		91B9ECAD25DE4BF5006B3E68 /* SettingTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B9ECAB25DE4BF5006B3E68 /* SettingTitleCell.xib */; };
+		91B9ECB025DE4C85006B3E68 /* SettingMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECAE25DE4C85006B3E68 /* SettingMenuCell.swift */; };
+		91B9ECB125DE4C85006B3E68 /* SettingMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B9ECAF25DE4C85006B3E68 /* SettingMenuCell.xib */; };
+		91B9ECB725DE5157006B3E68 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECB625DE5157006B3E68 /* ProfileEditViewController.swift */; };
+		91B9ECB925DE55CE006B3E68 /* LettersEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECB825DE55CE006B3E68 /* LettersEditViewController.swift */; };
+		91B9ECBC25DE56AD006B3E68 /* SubscribeLetterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECBA25DE56AD006B3E68 /* SubscribeLetterCell.swift */; };
+		91B9ECBD25DE56AD006B3E68 /* SubscribeLetterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B9ECBB25DE56AD006B3E68 /* SubscribeLetterCell.xib */; };
 		91D3862225D241BB00235438 /* HomeTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3862025D241BB00235438 /* HomeTitleCell.swift */; };
 		91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D3862125D241BB00235438 /* HomeTitleCell.xib */; };
 		91D3862E25D2531B00235438 /* CommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */; };
@@ -131,6 +143,18 @@
 		91ABDD7325DB5AE000CD7C37 /* SmallLetterBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLetterBannerCell.swift; sourceTree = "<group>"; };
 		91ABDD7425DB5AE000CD7C37 /* SmallLetterBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallLetterBannerCell.xib; sourceTree = "<group>"; };
 		91B9EC8425DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		91B9EC9725DE4625006B3E68 /* MypageTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTitleCell.swift; sourceTree = "<group>"; };
+		91B9EC9825DE4625006B3E68 /* MypageTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MypageTitleCell.xib; sourceTree = "<group>"; };
+		91B9ECA125DE46D1006B3E68 /* MypageProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageProfileCell.swift; sourceTree = "<group>"; };
+		91B9ECA225DE46D1006B3E68 /* MypageProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MypageProfileCell.xib; sourceTree = "<group>"; };
+		91B9ECAA25DE4BF5006B3E68 /* SettingTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitleCell.swift; sourceTree = "<group>"; };
+		91B9ECAB25DE4BF5006B3E68 /* SettingTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTitleCell.xib; sourceTree = "<group>"; };
+		91B9ECAE25DE4C85006B3E68 /* SettingMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuCell.swift; sourceTree = "<group>"; };
+		91B9ECAF25DE4C85006B3E68 /* SettingMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingMenuCell.xib; sourceTree = "<group>"; };
+		91B9ECB625DE5157006B3E68 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		91B9ECB825DE55CE006B3E68 /* LettersEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersEditViewController.swift; sourceTree = "<group>"; };
+		91B9ECBA25DE56AD006B3E68 /* SubscribeLetterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeLetterCell.swift; sourceTree = "<group>"; };
+		91B9ECBB25DE56AD006B3E68 /* SubscribeLetterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscribeLetterCell.xib; sourceTree = "<group>"; };
 		91D3862025D241BB00235438 /* HomeTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleCell.swift; sourceTree = "<group>"; };
 		91D3862125D241BB00235438 /* HomeTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTitleCell.xib; sourceTree = "<group>"; };
 		91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -283,9 +307,13 @@
 		917EDC5C25CD372A00AF600A /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				917EDC6125CD381E00AF600A /* MypageViewController.swift */,
+				91B9ECA925DE4BDD006B3E68 /* settingCell */,
+				91B9EC9625DE4603006B3E68 /* cell */,
 				917EDC6425CD391900AF600A /* Mypage.storyboard */,
+				917EDC6125CD381E00AF600A /* MypageViewController.swift */,
 				917EDC6725CD393500AF600A /* SettingViewController.swift */,
+				91B9ECB625DE5157006B3E68 /* ProfileEditViewController.swift */,
+				91B9ECB825DE55CE006B3E68 /* LettersEditViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -320,6 +348,30 @@
 				806EA80B25DCE131005D8688 /* FilterTitleCell.xib */,
 			);
 			path = filterCell;
+			sourceTree = "<group>";
+		};
+		91B9EC9625DE4603006B3E68 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				91B9EC9725DE4625006B3E68 /* MypageTitleCell.swift */,
+				91B9EC9825DE4625006B3E68 /* MypageTitleCell.xib */,
+				91B9ECA125DE46D1006B3E68 /* MypageProfileCell.swift */,
+				91B9ECA225DE46D1006B3E68 /* MypageProfileCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		91B9ECA925DE4BDD006B3E68 /* settingCell */ = {
+			isa = PBXGroup;
+			children = (
+				91B9ECAA25DE4BF5006B3E68 /* SettingTitleCell.swift */,
+				91B9ECAB25DE4BF5006B3E68 /* SettingTitleCell.xib */,
+				91B9ECAE25DE4C85006B3E68 /* SettingMenuCell.swift */,
+				91B9ECAF25DE4C85006B3E68 /* SettingMenuCell.xib */,
+				91B9ECBA25DE56AD006B3E68 /* SubscribeLetterCell.swift */,
+				91B9ECBB25DE56AD006B3E68 /* SubscribeLetterCell.xib */,
+			);
+			path = settingCell;
 			sourceTree = "<group>";
 		};
 		91D3860E25D1034300235438 /* DI */ = {
@@ -417,12 +469,16 @@
 			files = (
 				91ABDD6925DB526F00CD7C37 /* BigLetterBannerCell.xib in Resources */,
 				91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */,
+				91B9ECA425DE46D1006B3E68 /* MypageProfileCell.xib in Resources */,
 				806EA80D25DCE131005D8688 /* FilterTitleCell.xib in Resources */,
 				806EA81625DCED64005D8688 /* SearchTitleCell.xib in Resources */,
+				91B9ECB125DE4C85006B3E68 /* SettingMenuCell.xib in Resources */,
 				917EDC3825CD126800AF600A /* Login.storyboard in Resources */,
 				806EA81225DCEBA2005D8688 /* SearchBarCell.xib in Resources */,
+				91B9EC9A25DE4625006B3E68 /* MypageTitleCell.xib in Resources */,
 				910A760525D3B64D00F16E3F /* HomeNewLettersCell.xib in Resources */,
 				917EDC6525CD391900AF600A /* Mypage.storyboard in Resources */,
+				91B9ECBD25DE56AD006B3E68 /* SubscribeLetterCell.xib in Resources */,
 				806EA80125DCB613005D8688 /* FilterBrandItemCell.xib in Resources */,
 				806EA80925DCD107005D8688 /* FilterDateCell.xib in Resources */,
 				91ABDD6E25DB580900CD7C37 /* HomeFilterBarCell.xib in Resources */,
@@ -432,6 +488,7 @@
 				91064C1025CAC6DD0086E2EF /* Assets.xcassets in Resources */,
 				91064C0E25CAC6DC0086E2EF /* Main.storyboard in Resources */,
 				91D3863025D2701D00235438 /* Home.storyboard in Resources */,
+				91B9ECAD25DE4BF5006B3E68 /* SettingTitleCell.xib in Resources */,
 				91ABDD7625DB5AE000CD7C37 /* SmallLetterBannerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +551,7 @@
 				806EA7FC25DCB0B3005D8688 /* FilterBrandCell.swift in Sources */,
 				910A75FD25D3A91300F16E3F /* SignupPasswordViewController.swift in Sources */,
 				91064C0B25CAC6DC0086E2EF /* SplashViewController.swift in Sources */,
+				91B9ECAC25DE4BF5006B3E68 /* SettingTitleCell.swift in Sources */,
 				917EDC6825CD393500AF600A /* SettingViewController.swift in Sources */,
 				917EDC6225CD381E00AF600A /* MypageViewController.swift in Sources */,
 				910A75FB25D3A63700F16E3F /* DIR_User.swift in Sources */,
@@ -502,16 +560,22 @@
 				91418FFE25CFE0AD0097248D /* ApiManager.swift in Sources */,
 				910A75EF25D376FA00F16E3F /* LoginViewController.swift in Sources */,
 				806EA81525DCED64005D8688 /* SearchTitleCell.swift in Sources */,
+				91B9ECBC25DE56AD006B3E68 /* SubscribeLetterCell.swift in Sources */,
 				91994F2B25CE81DD005D611C /* DataRequest.swift in Sources */,
 				91D3862225D241BB00235438 /* HomeTitleCell.swift in Sources */,
 				910A75F325D39A3300F16E3F /* SignupEmailViewController.swift in Sources */,
 				91064C2725CAD74E0086E2EF /* KeyChainService.swift in Sources */,
+				91B9ECB725DE5157006B3E68 /* ProfileEditViewController.swift in Sources */,
+				91B9EC9925DE4625006B3E68 /* MypageTitleCell.swift in Sources */,
 				91D3862E25D2531B00235438 /* CommonCollectionViewCell.swift in Sources */,
 				91ABDD7525DB5AE000CD7C37 /* SmallLetterBannerCell.swift in Sources */,
+				91B9ECB025DE4C85006B3E68 /* SettingMenuCell.swift in Sources */,
+				91B9ECA325DE46D1006B3E68 /* MypageProfileCell.swift in Sources */,
 				91ABDD6D25DB580900CD7C37 /* HomeFilterBarCell.swift in Sources */,
 				91D3863525D2703600235438 /* FilterViewController.swift in Sources */,
 				806EA80525DCCFFD005D8688 /* UIViewExtension.swift in Sources */,
 				806EA81125DCEBA2005D8688 /* SearchBarCell.swift in Sources */,
+				91B9ECB925DE55CE006B3E68 /* LettersEditViewController.swift in Sources */,
 				917EDC4925CD192D00AF600A /* HomeViewController.swift in Sources */,
 				91064C0725CAC6DC0086E2EF /* AppDelegate.swift in Sources */,
 				91ABDD6825DB526F00CD7C37 /* BigLetterBannerCell.swift in Sources */,

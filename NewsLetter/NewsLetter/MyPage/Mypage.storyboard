@@ -16,18 +16,145 @@
                     <view key="view" contentMode="scaleToFill" id="lSt-XP-nt0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Px6-yx-dez">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0F0-Xg-NlS">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dcM-yK-QaH" id="zK7-a5-suS"/>
+                                    <outlet property="delegate" destination="dcM-yK-QaH" id="wcg-kp-kgy"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="abR-WG-Lde"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Px6-yx-dez" firstAttribute="leading" secondItem="abR-WG-Lde" secondAttribute="leading" id="1f0-hQ-4N9"/>
+                            <constraint firstItem="abR-WG-Lde" firstAttribute="trailing" secondItem="Px6-yx-dez" secondAttribute="trailing" id="6lL-wg-MJ1"/>
+                            <constraint firstItem="abR-WG-Lde" firstAttribute="bottom" secondItem="Px6-yx-dez" secondAttribute="bottom" id="QtI-hg-pf2"/>
+                            <constraint firstItem="Px6-yx-dez" firstAttribute="top" secondItem="abR-WG-Lde" secondAttribute="top" id="sIw-yk-TiV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Px6-yx-dez" id="GjE-m5-aWL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TO9-ma-d7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="88" y="28"/>
         </scene>
+        <!--Profile Edit View Controller-->
+        <scene sceneID="158-hE-bkR">
+            <objects>
+                <viewController storyboardIdentifier="ProfileEditViewController" id="QPA-2o-6o4" customClass="ProfileEditViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FJf-j8-hfd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-ev-63c">
+                                <rect key="frame" x="39" y="88" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-rX-5IW">
+                                <rect key="frame" x="39" y="129" width="277" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1id-70-mNn">
+                                <rect key="frame" x="331" y="119" width="32" height="34"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="WEo-Ae-5bc"/>
+                                </constraints>
+                                <state key="normal" title="변경">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="onButton:" destination="QPA-2o-6o4" eventType="touchUpInside" id="Sht-KI-Siq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7rU-lU-nhE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7rU-lU-nhE" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lcU-ev-63c" secondAttribute="trailing" constant="30" id="3Cr-SR-Fv4"/>
+                            <constraint firstItem="1id-70-mNn" firstAttribute="leading" secondItem="Pql-rX-5IW" secondAttribute="trailing" constant="15" id="J73-fI-nMR"/>
+                            <constraint firstItem="lcU-ev-63c" firstAttribute="top" secondItem="7rU-lU-nhE" secondAttribute="top" constant="44" id="O6c-0r-47b"/>
+                            <constraint firstItem="7rU-lU-nhE" firstAttribute="trailing" secondItem="1id-70-mNn" secondAttribute="trailing" constant="51" id="PHl-jx-yNh"/>
+                            <constraint firstItem="1id-70-mNn" firstAttribute="top" secondItem="7rU-lU-nhE" secondAttribute="top" constant="75" id="QqQ-bg-iq1"/>
+                            <constraint firstItem="Pql-rX-5IW" firstAttribute="top" secondItem="lcU-ev-63c" secondAttribute="bottom" constant="20" id="ZW6-3G-mA4"/>
+                            <constraint firstItem="Pql-rX-5IW" firstAttribute="leading" secondItem="7rU-lU-nhE" secondAttribute="leading" constant="39" id="jaL-5E-ODL"/>
+                            <constraint firstItem="lcU-ev-63c" firstAttribute="leading" secondItem="7rU-lU-nhE" secondAttribute="leading" constant="39" id="kPv-Sh-b1x"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="Pql-rX-5IW" id="enE-lM-Bfq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BRd-h5-W4x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066.6666666666667" y="8.7053571428571423"/>
+        </scene>
+        <!--Letters Edit View Controller-->
+        <scene sceneID="80B-FB-z6a">
+            <objects>
+                <viewController storyboardIdentifier="LettersEditViewController" id="7CB-Af-DdX" customClass="LettersEditViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M86-Wy-Zjc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fhF-2r-eUj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LZF-G3-sx2">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7CB-Af-DdX" id="1Nv-qb-Ide"/>
+                                    <outlet property="delegate" destination="7CB-Af-DdX" id="q7Z-ih-x4C"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Nd-99-rgV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7Nd-99-rgV" firstAttribute="bottom" secondItem="fhF-2r-eUj" secondAttribute="bottom" id="Oba-Oh-jTG"/>
+                            <constraint firstItem="fhF-2r-eUj" firstAttribute="top" secondItem="7Nd-99-rgV" secondAttribute="top" id="cS5-Fd-Hem"/>
+                            <constraint firstItem="fhF-2r-eUj" firstAttribute="leading" secondItem="7Nd-99-rgV" secondAttribute="leading" id="mnh-S0-nQJ"/>
+                            <constraint firstItem="7Nd-99-rgV" firstAttribute="trailing" secondItem="fhF-2r-eUj" secondAttribute="trailing" id="qzt-jj-NyO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="fhF-2r-eUj" id="C7U-ix-bjh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HcT-kM-sHz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1989" y="6"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -14,6 +14,11 @@ enum FilterSection: Int, CaseIterable {
     case date
 }
 
+//할 것
+/*
+ 일단 다른 탭바 누르면 얘가 dismiss되어야함
+ */
+
 class FilterViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topView: UIView!

@@ -18,7 +18,8 @@ class SearchBarCell: CommonCollectionViewCell {
     //https://devmjun.github.io/archive/SearchController
     
     func configure(data: Any? = nil) {
-//        guard let data = data as? String else { return }
+        guard let data = data as? String else { return }
+        searchBar.placeholder = data
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
