@@ -30,18 +30,27 @@ class FilterBrandCell: CommonCollectionViewCell {
     }
 }
 
-extension FilterBrandCell: UICollectionViewDelegate, UICollevtionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FilterBrandCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return 5
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(BigLetterBannerCell.self, "BigLetterBannerCell", for: indexPath)
+        let arr = ["디독", "뉴미디어", "유지은", "레인보우레인보우아이렇게길면어떻게나오나", "엥"]
+        let cell = collectionView.dequeueReusableCell(FilterBrandItemCell.self, "FilterBrandItemCell", for: indexPath)
+        cell.configure(data: arr[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let arr = ["디독", "뉴미디어", "유지은", "레인보우레인보우아이렇게길면어떻게나오나", "엥"]
+        let size = FilterBrandItemCell.getSize(arr[indexPath.row])
+        return size
+    }
+    
 }

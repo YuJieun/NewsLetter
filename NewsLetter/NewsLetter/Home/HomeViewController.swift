@@ -87,6 +87,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         case HomeSection.oldLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
+            cell.configure(data: nil)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

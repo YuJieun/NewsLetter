@@ -9,17 +9,22 @@ import UIKit
 
 class FilterBrandItemCell: CommonCollectionViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     func configure(data: Any? = nil) {
-        guard let _ = data else { return }
+        guard let data = data as? String else { return }
+        self.titleLabel.text = data
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
-        //스트링 가변 길이 + 왼쪽 오른쪽 패딩
-        return CGSize(width: 50, height: 25)
+        guard let data = data as? String else { return .zero }
+        let cell = Self.fromNib(className: "FilterBrandItemCell", as: self)
+        let width = data.width(withConstrainedHeight: 25, font: cell.titleLabel.font)
+        
+        return CGSize(width: width + 24, height: 25)
     }
 
 

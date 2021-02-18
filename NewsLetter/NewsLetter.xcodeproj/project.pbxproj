@@ -57,13 +57,12 @@
 		91ABDD6E25DB580900CD7C37 /* HomeFilterBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABDD6C25DB580900CD7C37 /* HomeFilterBarCell.xib */; };
 		91ABDD7525DB5AE000CD7C37 /* SmallLetterBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ABDD7325DB5AE000CD7C37 /* SmallLetterBannerCell.swift */; };
 		91ABDD7625DB5AE000CD7C37 /* SmallLetterBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABDD7425DB5AE000CD7C37 /* SmallLetterBannerCell.xib */; };
+		91B9EC8525DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9EC8425DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		91D3862225D241BB00235438 /* HomeTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3862025D241BB00235438 /* HomeTitleCell.swift */; };
 		91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D3862125D241BB00235438 /* HomeTitleCell.xib */; };
 		91D3862E25D2531B00235438 /* CommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */; };
 		91D3863025D2701D00235438 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D3862F25D2701D00235438 /* Home.storyboard */; };
 		91D3863525D2703600235438 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3863425D2703600235438 /* FilterViewController.swift */; };
-		91D3864125D295F500235438 /* FilterCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3863F25D295F500235438 /* FilterCalendarCell.swift */; };
-		91D3864225D295F500235438 /* FilterCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D3864025D295F500235438 /* FilterCalendarCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -131,13 +130,12 @@
 		91ABDD6C25DB580900CD7C37 /* HomeFilterBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFilterBarCell.xib; sourceTree = "<group>"; };
 		91ABDD7325DB5AE000CD7C37 /* SmallLetterBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLetterBannerCell.swift; sourceTree = "<group>"; };
 		91ABDD7425DB5AE000CD7C37 /* SmallLetterBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallLetterBannerCell.xib; sourceTree = "<group>"; };
+		91B9EC8425DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		91D3862025D241BB00235438 /* HomeTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleCell.swift; sourceTree = "<group>"; };
 		91D3862125D241BB00235438 /* HomeTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTitleCell.xib; sourceTree = "<group>"; };
 		91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCollectionViewCell.swift; sourceTree = "<group>"; };
 		91D3862F25D2701D00235438 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		91D3863425D2703600235438 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
-		91D3863F25D295F500235438 /* FilterCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCalendarCell.swift; sourceTree = "<group>"; };
-		91D3864025D295F500235438 /* FilterCalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCalendarCell.xib; sourceTree = "<group>"; };
 		BAC74B461B8C189D3F4631EB /* Pods_NewsLetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsLetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E65595458D4F8616A4031FF6 /* Pods-NewsLetter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsLetter.release.xcconfig"; path = "Target Support Files/Pods-NewsLetter/Pods-NewsLetter.release.xcconfig"; sourceTree = "<group>"; };
 		F600D2C01707A2B8D3553D9F /* Pods-NewsLetter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsLetter.debug.xcconfig"; path = "Target Support Files/Pods-NewsLetter/Pods-NewsLetter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -244,6 +242,7 @@
 				91418FFD25CFE0AD0097248D /* ApiManager.swift */,
 				91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */,
 				910A75F025D378DD00F16E3F /* CommonFunction.swift */,
+				91B9EC8425DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Independent;
 			sourceTree = "<group>";
@@ -311,8 +310,6 @@
 		91ABDD6A25DB57DD00CD7C37 /* filterCell */ = {
 			isa = PBXGroup;
 			children = (
-				91D3863F25D295F500235438 /* FilterCalendarCell.swift */,
-				91D3864025D295F500235438 /* FilterCalendarCell.xib */,
 				806EA7FA25DCB0B3005D8688 /* FilterBrandCell.swift */,
 				806EA7FB25DCB0B3005D8688 /* FilterBrandCell.xib */,
 				806EA7FE25DCB613005D8688 /* FilterBrandItemCell.swift */,
@@ -419,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				91ABDD6925DB526F00CD7C37 /* BigLetterBannerCell.xib in Resources */,
-				91D3864225D295F500235438 /* FilterCalendarCell.xib in Resources */,
 				91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */,
 				806EA80D25DCE131005D8688 /* FilterTitleCell.xib in Resources */,
 				806EA81625DCED64005D8688 /* SearchTitleCell.xib in Resources */,
@@ -493,6 +489,7 @@
 				806EA80025DCB613005D8688 /* FilterBrandItemCell.swift in Sources */,
 				910A75F125D378DD00F16E3F /* CommonFunction.swift in Sources */,
 				917EDC5F25CD37F700AF600A /* SearchViewController.swift in Sources */,
+				91B9EC8525DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				806EA80325DCCA7F005D8688 /* StringExtension.swift in Sources */,
 				806EA7FC25DCB0B3005D8688 /* FilterBrandCell.swift in Sources */,
 				910A75FD25D3A91300F16E3F /* SignupPasswordViewController.swift in Sources */,
@@ -504,7 +501,6 @@
 				91064C3025CADA380086E2EF /* ConstGroup.swift in Sources */,
 				91418FFE25CFE0AD0097248D /* ApiManager.swift in Sources */,
 				910A75EF25D376FA00F16E3F /* LoginViewController.swift in Sources */,
-				91D3864125D295F500235438 /* FilterCalendarCell.swift in Sources */,
 				806EA81525DCED64005D8688 /* SearchTitleCell.swift in Sources */,
 				91994F2B25CE81DD005D611C /* DataRequest.swift in Sources */,
 				91D3862225D241BB00235438 /* HomeTitleCell.swift in Sources */,

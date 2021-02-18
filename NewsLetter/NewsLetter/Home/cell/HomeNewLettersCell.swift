@@ -10,26 +10,40 @@ import UIKit
 class HomeNewLettersCell: CommonCollectionViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var currentIndex: CGFloat = 0 // 현재 보여지고 있는 페이지의 인덱스
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.registerNibCell("BigLetterBannerCell", Classs: BigLetterBannerCell.self)
+        setCollectionView()
+    }
+    
+    func setCollectionView() {
+        //셀 사이즈가 고정이어야할지, 아니면 좌우여백이 고정이어야할지는 고민해봐야할 문제..!(디자이너분과)
+        
+        //셀
+        let cellWidth:CGFloat = 325
+        
+        // 좌우
+        let insetX = (UISCREEN_WIDTH - cellWidth) / 2.0
+        
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumLineSpacing = 10
+        layout.scrollDirection = .horizontal
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
     }
     
     func configure(data: Any? = nil) {
 //        guard let data = data as? String else { return }
-        self.collectionView.reloadData()
     }
 
- 
-    
     class func getSize(_ data: Any? = nil) -> CGSize {
         return CGSize(width: UISCREEN_WIDTH, height: 300)
     }
 
 }
 
-extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -44,5 +58,41 @@ extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UISCREEN_WIDTH - 50, height: 300)
+//        let size = BigLetterBannerCell.getSize(nil)
+//        return size
+    }
     
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        
+//        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+//        
+//        var offset = targetContentOffset.pointee
+//        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+//        var roundedIndex = round(index)
+//
+//        if scrollView.contentOffset.x > targetContentOffset.pointee.x { roundedIndex = floor(index) }
+//        else if scrollView.contentOffset.x < targetContentOffset.pointee.x {
+//            roundedIndex = ceil(index)
+//        } else {
+//            roundedIndex = round(index)
+//        }
+//        
+//        if currentIndex > roundedIndex {
+//            currentIndex -= 1
+//            roundedIndex = currentIndex
+//        } else if currentIndex < roundedIndex {
+//            currentIndex += 1
+//            roundedIndex = currentIndex
+//            
+//        }
+//
+//        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
+//        targetContentOffset.pointee = offset
+//
+//    }
+
 }
+

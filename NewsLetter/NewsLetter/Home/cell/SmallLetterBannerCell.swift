@@ -21,13 +21,13 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     }
     
     func configure(data: Any? = nil) {
-        guard let data = data else { return }
-        var isLock = false
+        guard let _ = data else { return }
+        let isLock = false
         if isLock {
-            self.lockView.isHidden = true
+            self.lockView.isHidden = false
         }
         else {
-            self.lockView.isHidden = false
+            self.lockView.isHidden = true
         }
     }
     

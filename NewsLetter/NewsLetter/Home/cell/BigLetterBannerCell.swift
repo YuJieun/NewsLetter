@@ -24,7 +24,7 @@ class BigLetterBannerCell: CommonCollectionViewCell {
     }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: 320, height: 300)
+        return CGSize(width: 325, height: 300)
     }
     
 
