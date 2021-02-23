@@ -9,7 +9,6 @@ import Foundation
 import Security
 
 // Constant Identifiers
-let userAccount = "AuthenticatedUser"
 let accessGroup = "SecuritySerivice"
 
 let kSecClassValue = String(kSecClass)
@@ -28,13 +27,20 @@ public class KeychainService {
     public static let shared = KeychainService()
     private init() {}
 
-    /**
-     * Internal methods for querying the keychain.
-     */
-    public func save(_ key: String, _ value: String, _ group: String? = nil) {
-        var keychainQuery = self.getKeychainQuery(key, group)
+    public class func saveToken(token: NSString) {
+        let key = "LOGIN_TOKEN" //이후에 const group으로 빼기
+        self.save(key, token)
+    }
 
-        self.delete(key, group)
+    public class func loadToken() -> NSString? {
+        var token = self.load()
+        return token
+    }
+
+    public func save(_ key: String, _ value: String) {
+        var keychainQuery = self.getKeychainQuery(key)
+
+        self.delete(key)
 
         keychainQuery[kSecValueDataValue] = NSKeyedArchiver.archivedData(withRootObject: value)
 
@@ -44,15 +50,15 @@ public class KeychainService {
             print("write failed: \(status)")
         }
         else {
-//            print("KeychainManager: Successfully write data")
+            print("write success")
         }
     }
 
-    public func load(_ key: String, _ group: String? = nil) -> String? {
-        var keychainQuery = self.getKeychainQuery(key, group)
+    public func load(_ key: String) -> String? {
+        var keychainQuery = self.getKeychainQuery(key)
 
-        keychainQuery[kSecReturnDataValue] = kCFBooleanTrue
-        keychainQuery[kSecMatchLimitValue] = kSecMatchLimitOne
+        keychainQuery[kSecReturnDataValue] = kCFBooleanTrue //CFData의 형태로 리턴해라
+        keychainQuery[kSecMatchLimitValue] = kSecMatchLimitOne //중복인 경우 하나의 값만 가져와라
 
         var result: AnyObject?
         let status: OSStatus = SecItemCopyMatching(keychainQuery as CFDictionary, &result)
@@ -61,97 +67,31 @@ public class KeychainService {
         guard let resultData = result as? Data else { print("Load failed: \(status)"); return nil }
         guard let value = NSKeyedUnarchiver.unarchiveObject(with: resultData) as? String else { return nil }
 
-//        print("Load key: \(key), value : \(value)")
         return value
     }
 
-    // MARK: -- unuse
-    public func update(_ key: String, _ value: String, _ group: String? = nil) {
-        guard let valueData = value.data(using: .utf8, allowLossyConversion: false) else {
-            print("Update failed")
-            return
-        }
-
-        let updateQuery: [String: Any] = [
-            kSecClassValue: kSecClassGenericPassword,
-            kSecAttrAccountValue: key
-        ]
-
-        let updateAttributes: [String: Any] = [
-            kSecValueDataValue: valueData
-        ]
-
-        if SecItemCopyMatching(updateQuery as CFDictionary, nil) == noErr {
-            let status = SecItemUpdate(updateQuery as CFDictionary, updateAttributes as CFDictionary)
-            if status != errSecSuccess {
-                print("Update failed: \(status)")
-            }
-            else {
-//                print("KeychainManager: Successfully updated data")
-            }
-        }
-    }
-
-    public func delete(_ key: String, _ group: String? = nil) {
-        let keychainQuery = self.getKeychainQuery(key, group)
+    public func delete(_ key: String) {
+        let keychainQuery = self.getKeychainQuery(key)
 
         let status = SecItemDelete(keychainQuery as CFDictionary)
         if status != errSecSuccess {
             print("Delete failed: \(status)")
         }
         else {
-//            print("KeychainManager: Successfully Delete data")
+            print("Successfully Delete data")
         }
     }
 
-    public func getKeychainQuery(_ key: String, _ group: String? = nil) -> [String: Any] {
+    public func getKeychainQuery(_ key: String) -> [String: Any] {
         var keychainQuery: [String: Any] = [
             kSecClassValue: kSecClassGenericPassword,
             kSecAttrServiceValue: key,
             kSecAttrAccountValue: key,
             kSecAttrAccessibleValue: kSecAttrAccessibleAfterFirstUnlock
+            //장치가 다시 시작된 후 잠금이 해제되었을 때 한번만 엑세스 가능.
+            //백그라운드 앱에서 엑세스가 요구되는 항목에 대해 권장.
         ]
-
-        if let group = group {
-            keychainQuery[kSecAttrAccessGroupValue] = self.getFullAppleIdentifier(group)
-        }
 
         return keychainQuery
     }
-
-    public func getFullAppleIdentifier(_ bundleIdentifier: String) -> String {
-        let bundleSeedIdentifier = self.getBundleSeedIdentifier()
-        let bundleIdentifier = "\(bundleSeedIdentifier).\(bundleIdentifier)"
-        return bundleIdentifier
-    }
-
-    public func getBundleSeedIdentifier() -> String {
-        let query: [String: Any] = [
-            kSecClassValue: kSecClassGenericPassword,
-            kSecAttrAccountValue: "bundleSeedID",
-            kSecAttrServiceValue: "",
-            kSecReturnAttributesValue: kCFBooleanTrue as Any
-        ]
-
-        var result: AnyObject?
-        var status: OSStatus = SecItemCopyMatching(query as CFDictionary, &result)
-
-        if status == errSecItemNotFound {
-            status = SecItemAdd(query as CFDictionary, &result)
-        }
-
-        var bundleSeedID: String = ""
-        if status == errSecSuccess {
-            guard let resultDic = result as? [String: Any] else { return "" }
-            guard let accessGroup = resultDic[kSecAttrAccessGroupValue] as? String else { return "" }
-            let components = accessGroup.components(separatedBy: ".")
-
-            for str in components {
-                bundleSeedID += str
-            }
-        }
-
-        return bundleSeedID
-    }
-
 }
