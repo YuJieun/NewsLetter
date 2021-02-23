@@ -18,6 +18,9 @@ enum HomeSection: Int, CaseIterable {
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    private var refreshControl = UIRefreshControl()
+    var hasMoreLetters: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("홈메뉴")
@@ -25,11 +28,64 @@ class HomeViewController: UIViewController {
         self.collectionView.registerNibCell("HomeNewLettersCell", Classs: HomeNewLettersCell.self)
         self.collectionView.registerNibCell("HomeFilterBarCell", Classs: HomeFilterBarCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+                
         setup()
     }
     
     func setup() {
         
+    }
+    
+    @objc private func refresh(){
+        // Fetch Weather Data
+//            fetchWeatherData()
+        self.refreshControl.endRefreshing()
+    }
+    
+//    private func fetchWeatherData() {
+//        dataManager.weatherDataForLocation(latitude: 37.8267, longitude: -122.423) { (location, error) in
+//            DispatchQueue.main.async {
+//                if let location = location {
+//                    self.days = location.days
+//                }
+//
+//                self.updateView()
+//                self.refreshControl.endRefreshing()
+//                self.activityIndicatorView.stopAnimating()
+//            }
+//        }
+//    }
+//    refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
+//    refreshControl.attributedTitle = NSAttributedString(string: "Fetching Weather Data ...", attributes: attributes)
+
+
+    func checkMoreLetters(_ collectionView: UICollectionView) {
+        
+        /* 첫번째 케이스
+        let offsety = collectionView.contentOffset.y
+        let contentHeight = collectionView.contentSize.height
+
+        if offsety > contentHeight - collectionView.frame.height
+        {
+            
+        }
+         */
+        
+        guard hasMoreLetters == true else { return }
+        let contentSize: CGFloat
+        let offsetY: CGFloat
+
+        contentSize = collectionView.contentSize.height - UISCREEN_HEIGHT * 3
+        offsetY = collectionView.contentOffset.y + collectionView.height
+        
+        if offsetY >= contentSize || contentSize <= 0 {
+            hasMoreLetters = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001, execute: {
+                self.collectionView.reloadData()
+            })
+        }
     }
 }
 
@@ -65,6 +121,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        defer {
+            checkMoreLetters(collectionView)
+        }
         switch indexPath.section {
         case HomeSection.mainTitle.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeTitleCell.self, "HomeTitleCell", for: indexPath)

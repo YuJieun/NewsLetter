@@ -35,7 +35,7 @@
                                     <constraint firstItem="lAO-05-5LD" firstAttribute="top" secondItem="Es6-T3-7X0" secondAttribute="top" id="qTy-mZ-ujx"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="36N-pO-SB9">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="36N-pO-SB9">
                                 <rect key="frame" x="0.0" y="233" width="414" height="629"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3dz-cV-7UQ">
