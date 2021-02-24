@@ -10,15 +10,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HomeNewLettersCell" reuseIdentifier="HomeNewLettersCell" id="gTV-IL-0wX" customClass="HomeNewLettersCell" customModule="NewsLetter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h5G-MA-g6M">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h5G-MA-g6M">
+                        <rect key="frame" x="0.0" y="25" width="375" height="288"/>
+                        <color key="backgroundColor" red="1" green="0.8666666666666667" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gcn-Qd-B7x">
                             <size key="itemSize" width="325" height="300"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -32,9 +32,10 @@
                     </collectionView>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="1" green="0.8666666666666667" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="h5G-MA-g6M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9uU-RE-KM0"/>
-                <constraint firstAttribute="bottom" secondItem="h5G-MA-g6M" secondAttribute="bottom" id="EcW-Ce-Yjc"/>
+                <constraint firstItem="h5G-MA-g6M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="25" id="9uU-RE-KM0"/>
+                <constraint firstAttribute="bottom" secondItem="h5G-MA-g6M" secondAttribute="bottom" constant="25" id="EcW-Ce-Yjc"/>
                 <constraint firstAttribute="trailing" secondItem="h5G-MA-g6M" secondAttribute="trailing" id="ch6-57-IDx"/>
                 <constraint firstItem="h5G-MA-g6M" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fPZ-qA-m4G"/>
             </constraints>

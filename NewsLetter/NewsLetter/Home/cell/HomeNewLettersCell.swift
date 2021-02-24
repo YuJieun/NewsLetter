@@ -22,15 +22,15 @@ class HomeNewLettersCell: CommonCollectionViewCell {
         //셀 사이즈가 고정이어야할지, 아니면 좌우여백이 고정이어야할지는 고민해봐야할 문제..!(디자이너분과)
         
         //셀
-        let cellWidth:CGFloat = 325
+        let cellWidth:CGFloat = 320
         
         // 좌우
-        let insetX = (UISCREEN_WIDTH - cellWidth) / 2.0
+        let inset:CGFloat = 19
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 10
         layout.scrollDirection = .horizontal
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
     }
     
     func configure(data: Any? = nil) {
@@ -38,7 +38,7 @@ class HomeNewLettersCell: CommonCollectionViewCell {
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 300)
+        return CGSize(width: UISCREEN_WIDTH, height: 338)
     }
 
 }
@@ -55,11 +55,12 @@ extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(BigLetterBannerCell.self, "BigLetterBannerCell", for: indexPath)
+        cell.configure()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH - 50, height: 300)
+        return CGSize(width: 322, height: 288)
 //        let size = BigLetterBannerCell.getSize(nil)
 //        return size
     }

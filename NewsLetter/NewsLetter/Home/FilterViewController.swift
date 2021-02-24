@@ -16,7 +16,7 @@ enum FilterSection: Int, CaseIterable {
 
 //할 것
 /*
- 일단 다른 탭바 누르면 얘가 dismiss되어야함
+ 1. topView height 정해주기
  */
 
 class FilterViewController: UIViewController {
@@ -73,6 +73,7 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case FilterSection.date.rawValue:
             let cell = collectionView.dequeueReusableCell(FilterDateCell.self, "FilterDateCell", for: indexPath)
+            cell.configure(data:nil)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

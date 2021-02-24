@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "MainCenter", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MainCenterViewController")
         let nvc = UINavigationController(rootViewController: vc)
-//        nvc.isNavigationBarHidden = true
+        nvc.isNavigationBarHidden = true
         
         self.window?.rootViewController = nvc
         window?.makeKeyAndVisible()

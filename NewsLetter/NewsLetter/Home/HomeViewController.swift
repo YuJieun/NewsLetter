@@ -21,6 +21,8 @@ class HomeViewController: UIViewController {
     private var refreshControl = UIRefreshControl()
     var hasMoreLetters: Bool = true
     
+    //MARK:- 데이터
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("홈메뉴")
@@ -35,7 +37,8 @@ class HomeViewController: UIViewController {
     }
     
     func setup() {
-        
+        //0. 로그인하면, 사용자정보 가지고있음(싱글톤 패턴으로. 사용자이름과 아이디는 그 싱글톤에서 빼오기)
+        //1.
     }
     
     @objc private func refresh(){
@@ -127,6 +130,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch indexPath.section {
         case HomeSection.mainTitle.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeTitleCell.self, "HomeTitleCell", for: indexPath)
+            cell.configure(data: "유지은")
             return cell
             
         case HomeSection.newLetters.rawValue:

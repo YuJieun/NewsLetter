@@ -12,18 +12,21 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var bannerTitleLabel: UILabel!
     @IBOutlet weak var bannerLogoImageView: UIImageView!
-    @IBOutlet weak var bannerInfoLabel: UILabel!
+    @IBOutlet weak var bannerBookmarkView: UIView!
+    @IBOutlet weak var bannerBrandLabel: UILabel!
+    @IBOutlet weak var bannerDateLabel: UILabel!
     @IBOutlet weak var lockView: UIView!
+    @IBOutlet weak var bannerBorderView: UIView!
     
-    var isLock: Bool = true
+    var isLock: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configure(data: Any? = nil) {
-        guard let _ = data else { return }
+        updateUI()
+//        guard let _ = data else { return }
         if isLock {
             self.lockView.isHidden = false
         }
@@ -32,12 +35,22 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         }
     }
     
+    func updateUI() {
+        self.bannerBorderView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
+        self.bannerBorderView.layer.borderWidth = 1
+        self.bannerBorderView.layer.cornerRadius = 5
+        
+        self.bannerBookmarkView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
+        self.bannerBookmarkView.layer.borderWidth = 1
+        self.bannerBookmarkView.layer.cornerRadius = 3
+    }
+    
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 100)
+        return CGSize(width: UISCREEN_WIDTH, height: 96)
     }
     
     @IBAction func onBookmarkButton(_ sender: UIButton) {
-
+        
     }
 
     @IBAction func onLockButton(_ sender: UIButton) {

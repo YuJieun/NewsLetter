@@ -20,7 +20,7 @@ class FilterTitleCell: CommonCollectionViewCell {
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 50)
+        return CGSize(width: UISCREEN_WIDTH, height: 62)
     }
 
 

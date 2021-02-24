@@ -8,10 +8,17 @@
 import UIKit
 import DatePickerDialog
 
+class DI_FilterDate {
+    var startData: Date?
+    var endData: Date?
+}
+
 class FilterDateCell: CommonCollectionViewCell {
 
     @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var endDate: UILabel!
+    
+    var filterDate: DI_FilterDate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,7 +27,8 @@ class FilterDateCell: CommonCollectionViewCell {
     //https://github.com/squimer/DatePickerDialog-iOS-Swift 라이브러리 사용
     
     func configure(data: Any? = nil) {
-        guard let _ = data else { return }
+//        guard let _ = data else { return }
+        self.filterDate = DI_FilterDate()
 
     }
 
@@ -29,8 +37,11 @@ class FilterDateCell: CommonCollectionViewCell {
     }
 
     @IBAction func onStartDateButton(_ sender: UIButton) {
-        DatePickerDialog(locale: Locale(identifier: "ko_KO")).show("Start Date", doneButtonTitle: "완료", cancelButtonTitle: "취소", datePickerMode: .date) { date in
+        let today = Date()
+        DatePickerDialog(locale: Locale(identifier: "ko_KO")).show("Start Date", doneButtonTitle: "완료", cancelButtonTitle: "취소", minimumDate: nil, maximumDate: today, datePickerMode: .date) { date in
             if let dt = date {
+                guard let filterDate = self.filterDate else { return }
+                filterDate.startData = dt
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyy/MM/dd"
                 self.startDate.text = formatter.string(from: dt)
@@ -39,23 +50,33 @@ class FilterDateCell: CommonCollectionViewCell {
     }
 
     @IBAction func onEndDateButton(_ sender: UIButton) {
-        let today = Date()
-        DatePickerDialog(locale: Locale(identifier: "ko_KO")).show("End Date", doneButtonTitle: "완료", cancelButtonTitle: "취소", maximumDate: today, datePickerMode: .date) { date in
-            if let dt = date {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy/MM/dd"
-                self.endDate.text = formatter.string(from: dt)
+        guard let filterDate = self.filterDate else { return }
+        if filterDate.startData == nil {
+            let alert: UIAlertController = UIAlertController(title: "알림", message: "시작날짜를 먼저 입력해주세요", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .cancel) { (action) in }
+            alert.addAction(okAction)
+            alert.show()
+        }
+        else {
+            let today = Date()
+            DatePickerDialog(locale: Locale(identifier: "ko_KO")).show("End Date", doneButtonTitle: "완료", cancelButtonTitle: "취소", minimumDate: filterDate.startData, maximumDate: today, datePickerMode: .date) { date in
+                if let dt = date {
+                    filterDate.endData = dt
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy/MM/dd"
+                    self.endDate.text = formatter.string(from: dt)
+                    
+                    self.cellClosure?("",self.filterDate)
+                }
             }
         }
     }
+
 }
 
 
 // 나중에 해야할 것
 /*
-    1. startDate부터 선택하도록 바꾸기 : 시작일을 먼저 입력해주세요
-    2. endDate가 startDate 보다 무조건 크도록
-    3. 둘다 잘 입력되어야 날짜 필터링 되도록
-    4. startDate끝나면 endDate 다이얼로그도 자동 띄우기
+    1. 필터 초기화기능이 필요해보임.
  
  */

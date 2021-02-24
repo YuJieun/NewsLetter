@@ -4,49 +4,72 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Bold.otf">
+            <string>NotoSansKR-Bold</string>
+        </array>
+        <array key="NotoSansKR-Medium.otf">
+            <string>NotoSansKR-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HomeTitleCell" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HomeTitleCell" id="gTV-IL-0wX" customClass="HomeTitleCell" customModule="NewsLetter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="118"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="118"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gf1-OB-dKW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="118"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유지은님, 2월 첫째주에 도착한 레터에요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrv-Dt-whP">
-                                <rect key="frame" x="85.5" y="14.5" width="204.5" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemGreenColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="파인애플" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNO-3u-Eii">
+                                <rect key="frame" x="19" y="55" width="89" height="35"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="24"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="님," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uc9-ex-x9H">
+                                <rect key="frame" x="108" y="58" width="27" height="32"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="22"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 한주간 도착한 레터에요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPH-jY-jhl">
+                                <rect key="frame" x="19" y="90" width="269" height="32"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="22"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Nrv-Dt-whP" firstAttribute="centerX" secondItem="gf1-OB-dKW" secondAttribute="centerX" id="Ui3-Lb-RZv"/>
-                            <constraint firstItem="Nrv-Dt-whP" firstAttribute="centerY" secondItem="gf1-OB-dKW" secondAttribute="centerY" id="n4h-Td-IgU"/>
+                            <constraint firstItem="rNO-3u-Eii" firstAttribute="top" secondItem="gf1-OB-dKW" secondAttribute="top" constant="55" id="10B-Rp-cnG"/>
+                            <constraint firstItem="rNO-3u-Eii" firstAttribute="leading" secondItem="gf1-OB-dKW" secondAttribute="leading" constant="19" id="3Ik-ol-GbX"/>
+                            <constraint firstItem="uc9-ex-x9H" firstAttribute="top" secondItem="gf1-OB-dKW" secondAttribute="top" constant="58" id="Hm8-I5-PgC"/>
+                            <constraint firstItem="EPH-jY-jhl" firstAttribute="top" secondItem="rNO-3u-Eii" secondAttribute="bottom" id="PPC-SY-0F9"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uc9-ex-x9H" secondAttribute="trailing" constant="39" id="SbR-ne-jHk"/>
+                            <constraint firstItem="uc9-ex-x9H" firstAttribute="leading" secondItem="rNO-3u-Eii" secondAttribute="trailing" id="oqA-JJ-qAj"/>
+                            <constraint firstItem="EPH-jY-jhl" firstAttribute="leading" secondItem="gf1-OB-dKW" secondAttribute="leading" constant="19" id="ts6-IU-Xx2"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="gf1-OB-dKW" secondAttribute="trailing" id="1db-4C-K3x"/>
                 <constraint firstAttribute="bottom" secondItem="gf1-OB-dKW" secondAttribute="bottom" id="3w9-px-NHk"/>
                 <constraint firstItem="gf1-OB-dKW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aUB-r2-uuM"/>
                 <constraint firstItem="gf1-OB-dKW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hhz-Tg-48G"/>
             </constraints>
+            <connections>
+                <outlet property="nameLabel" destination="rNO-3u-Eii" id="Vwj-rb-GhF"/>
+            </connections>
             <point key="canvasLocation" x="139" y="107"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

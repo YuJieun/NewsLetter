@@ -27,13 +27,13 @@ public class KeychainService {
     public static let shared = KeychainService()
     private init() {}
 
-    public class func saveToken(token: NSString) {
+    public class func saveToken(token: String) {
         let key = "LOGIN_TOKEN" //이후에 const group으로 빼기
-        self.save(key, token)
+        KeychainService.shared.save(key, token)
     }
 
-    public class func loadToken() -> NSString? {
-        var token = self.load()
+    public class func loadToken() -> String? {
+        var token = KeychainService.shared.load("key")
         return token
     }
 

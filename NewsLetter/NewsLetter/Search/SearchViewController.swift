@@ -19,15 +19,13 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.registerNibCell("SearchBarCell", Classs: SearchBarCell.self)
+        self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
+        self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
         setup()
     }
 
     func setup() {
-        self.collectionView.registerNibCell("SearchBarCell", Classs: SearchBarCell.self)
-        self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
-        self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
-
-
     }
 }
 
@@ -60,6 +58,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case SearchSection.letters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
+            cell.configure(data: nil)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

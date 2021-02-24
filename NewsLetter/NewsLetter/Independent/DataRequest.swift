@@ -27,6 +27,15 @@ class DataRequest {
         }
     }
     
+    static func getBookMark(success: @escaping (DI_BookMarkList) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.BOOKMARK_LIST_URL
+        ApiManager.shared.getApi(url, DI_BookMarkList.self, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
     static func getWeatherApI(success: @escaping (Bool, DI_Weather) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.WEATHER_URL
         ApiManager.shared.getApi(url, DI_Weather.self, success: { (data) in

@@ -19,13 +19,23 @@ class MypageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.registerNibCell("MypageProfileCell", Classs: MypageProfileCell.self)
+        self.collectionView.registerNibCell("MypageTitleCell", Classs: MypageTitleCell.self)
+        self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
         setup()
     }
     
     func setup() {
-        self.collectionView.registerNibCell("MypageProfileCell", Classs: MypageProfileCell.self)
-        self.collectionView.registerNibCell("MypageTitleCell", Classs: MypageTitleCell.self)
-        self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
+        //1. 회원데이터 변수에 저장.
+        //2. 이제 그 회원데이터로 통신
+        //3. 나의 북마크 정보 가져오기
+        DataRequest.getBookMark(){(data) in
+            guard let data = data as? DI_BookMarkList else { return }
+            
+        } failure: { error in
+            print(error?.localizedDescription ?? "")
+        }
+        
     }
 }
 

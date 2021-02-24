@@ -11,6 +11,5 @@ import UIKit
 class MainCenterViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectedIndex = 1
     }
 }

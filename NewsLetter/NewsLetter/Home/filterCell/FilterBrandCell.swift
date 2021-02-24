@@ -15,7 +15,6 @@ class FilterBrandCell: CommonCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.registerNibCell("FilterBrandItemCell", Classs: FilterBrandItemCell.self)
-
     }
 
     func configure(data: Any? = nil) {
@@ -24,7 +23,6 @@ class FilterBrandCell: CommonCollectionViewCell {
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
-//        let fixedHeight = titleView.heightConstraint
 
         return CGSize(width: UISCREEN_WIDTH, height: 200)
     }

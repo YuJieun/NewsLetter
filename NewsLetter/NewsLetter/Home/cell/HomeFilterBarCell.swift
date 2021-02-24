@@ -18,7 +18,7 @@ class HomeFilterBarCell: CommonCollectionViewCell {
     }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 40)
+        return CGSize(width: UISCREEN_WIDTH, height: 74)
     }
 
     @IBAction func onFilterButton(_ sender: UIButton) {
