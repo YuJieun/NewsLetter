@@ -38,7 +38,7 @@ class HomeNewLettersCell: CommonCollectionViewCell {
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 338)
+        return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize().height)
     }
 
 }
@@ -60,9 +60,8 @@ extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 322, height: 288)
-//        let size = BigLetterBannerCell.getSize(nil)
-//        return size
+        let size = BigLetterBannerCell.getSize(nil)
+        return size
     }
     
 //    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

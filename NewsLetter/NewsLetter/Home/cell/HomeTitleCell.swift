@@ -25,6 +25,7 @@ class HomeTitleCell: CommonCollectionViewCell {
  
     
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 118)
+        let size = self.from
+        return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize().height)
     }
 }

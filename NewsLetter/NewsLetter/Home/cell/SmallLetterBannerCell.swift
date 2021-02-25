@@ -46,7 +46,7 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 96)
+        return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize().height)
     }
     
     @IBAction func onBookmarkButton(_ sender: UIButton) {

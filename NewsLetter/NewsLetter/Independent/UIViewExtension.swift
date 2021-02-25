@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-    public class func fromNib<T>(className: String, as type: T.Type) -> T {
+    public class func getXib<T>(className: String, as type: T.Type) -> T {
         if let path: String = Bundle.main.path(forResource: className, ofType: "nib") {
             if FileManager.default.fileExists(atPath: path) {
                 let view: UIView = Bundle.main.loadNibNamed(className, owner: nil, options: nil)!.first as! UIView
@@ -17,6 +17,10 @@ extension UIView {
             }
         }
         fatalError("\(className) XIB File Not Exist")
+    }
+
+    public class func getXibSize() -> CGSize {
+        return getXib(cache: true).frame.size
     }
     
     public var x: CGFloat {
@@ -69,4 +73,5 @@ extension UIView {
             self.h = newValue
         }
     }
+
 }
