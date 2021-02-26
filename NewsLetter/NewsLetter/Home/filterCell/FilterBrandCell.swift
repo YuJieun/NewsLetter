@@ -23,8 +23,13 @@ class FilterBrandCell: CommonCollectionViewCell {
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
-
-        return CGSize(width: UISCREEN_WIDTH, height: 200)
+        let cell = Self.getXib(className: "FilterBrandCell", as: self)
+        cell.configure()
+        cell.collectionView.reloadData()
+        cell.collectionView.layoutIfNeeded()
+        let fixedHeight = cell.titleView.h + cell.collectionView.bottomConstraint
+        let collectionViewHeight = cell.collectionView.contentSize.height
+        return CGSize(width: UISCREEN_WIDTH, height: fixedHeight + collectionViewHeight)
     }
 }
 
@@ -35,18 +40,18 @@ extension FilterBrandCell: UICollectionViewDataSource, UICollectionViewDelegate,
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 8
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let arr = ["디독", "뉴미디어", "유지은", "레인보우레인보우아이렇게길면어떻게나오나", "엥"]
+        let arr = ["디독", "뉴미디어", "유지은", "레인보우레인보우아이렇게길면어떻게나오나", "엥","중간길이", "테스트용이지롱", "와우우우우우우"]
         let cell = collectionView.dequeueReusableCell(FilterBrandItemCell.self, "FilterBrandItemCell", for: indexPath)
         cell.configure(data: arr[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let arr = ["디독", "뉴미디어", "유지은", "레인보우레인보우아이렇게길면어떻게나오나", "엥"]
+        let arr = ["디독", "뉴미디어", "유지은", "레인보우레인보우아이렇게길면어떻게나오나", "엥","중간길이", "테스트용이지롱", "와우우우우우우"]
         let size = FilterBrandItemCell.getSize(arr[indexPath.row])
         return size
     }

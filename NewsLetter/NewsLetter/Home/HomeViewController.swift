@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
         let offsetY: CGFloat
 
         contentSize = collectionView.contentSize.height - UISCREEN_HEIGHT * 3
-        offsetY = collectionView.contentOffset.y + collectionView.height
+        offsetY = collectionView.contentOffset.y + collectionView.h
         
         if offsetY >= contentSize || contentSize <= 0 {
             hasMoreLetters = false
@@ -145,7 +145,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier:  "FilterViewController")
                 vc.modalPresentationStyle = .overCurrentContext
-               self.present(vc, animated: true)
+                self.present(vc, animated: true)
             }
             return cell
         case HomeSection.oldLetters.rawValue:

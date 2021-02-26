@@ -26,7 +26,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.70246179845948886" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="lAO-05-5LD" firstAttribute="leading" secondItem="Es6-T3-7X0" secondAttribute="leading" id="9Nm-7e-Miw"/>
                                     <constraint firstAttribute="bottom" secondItem="lAO-05-5LD" secondAttribute="bottom" id="9o1-4a-OaK"/>
@@ -34,7 +34,7 @@
                                     <constraint firstItem="lAO-05-5LD" firstAttribute="top" secondItem="Es6-T3-7X0" secondAttribute="top" id="qTy-mZ-ujx"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="36N-pO-SB9">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="36N-pO-SB9">
                                 <rect key="frame" x="0.0" y="233" width="414" height="629"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3dz-cV-7UQ">
@@ -51,7 +51,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jfi-eU-xYs"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Es6-T3-7X0" firstAttribute="height" secondItem="36N-pO-SB9" secondAttribute="height" multiplier="0.3" id="4MN-y0-Cma"/>
                             <constraint firstItem="Es6-T3-7X0" firstAttribute="leading" secondItem="jfi-eU-xYs" secondAttribute="leading" id="KJQ-u3-N0v"/>

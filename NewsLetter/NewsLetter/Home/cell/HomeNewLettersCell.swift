@@ -38,7 +38,7 @@ class HomeNewLettersCell: CommonCollectionViewCell {
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize().height)
+        return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize(className: "HomeNewLettersCell").height)
     }
 
 }

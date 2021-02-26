@@ -53,7 +53,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yte-25-77P">
-                                <rect key="frame" x="0.0" y="37" width="375" height="163"/>
+                                <rect key="frame" x="0.0" y="37" width="375" height="123"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fq3-I5-FkE" customClass="LeftAlignedCollectionViewFlowLayout" customModule="NewsLetter" customModuleProvider="target">
                                     <size key="itemSize" width="128" height="128"/>
@@ -69,7 +69,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="yte-25-77P" secondAttribute="bottom" id="2AF-xZ-3qs"/>
+                            <constraint firstAttribute="bottom" secondItem="yte-25-77P" secondAttribute="bottom" constant="40" id="2AF-xZ-3qs"/>
                             <constraint firstAttribute="trailing" secondItem="yte-25-77P" secondAttribute="trailing" id="3iU-XH-3HO"/>
                             <constraint firstItem="8Fr-cD-MwO" firstAttribute="leading" secondItem="kJa-v8-rAe" secondAttribute="leading" id="L2d-me-tzM"/>
                             <constraint firstItem="8Fr-cD-MwO" firstAttribute="top" secondItem="kJa-v8-rAe" secondAttribute="top" id="aUs-yw-fDd"/>

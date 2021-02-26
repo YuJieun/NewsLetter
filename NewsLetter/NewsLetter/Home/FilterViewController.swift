@@ -28,11 +28,13 @@ class FilterViewController: UIViewController {
     }
     
     func setup() {
-        view.backgroundColor = UIColor.clear
-        view.isOpaque = false
+        collectionView.layer.cornerRadius = 10
         self.collectionView.registerNibCell("FilterTitleCell", Classs: FilterTitleCell.self)
         self.collectionView.registerNibCell("FilterBrandCell", Classs: FilterBrandCell.self)
         self.collectionView.registerNibCell("FilterDateCell", Classs: FilterDateCell.self)
+        view.isOpaque = false
+        let color = UIColor(rgb: 0x333333).withAlphaComponent(0.5)
+        view.backgroundColor = color
     }
     
     @IBAction func onTopView(_ sender: UIButton) {
@@ -72,8 +74,9 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(FilterBrandCell.self, "FilterBrandCell", for: indexPath)
             return cell
         case FilterSection.date.rawValue:
+            let dateData = DI_FilterDate()
             let cell = collectionView.dequeueReusableCell(FilterDateCell.self, "FilterDateCell", for: indexPath)
-            cell.configure(data:nil)
+            cell.configure(data:dateData)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
