@@ -9,17 +9,19 @@ import UIKit
 
 class SearchTitleCell: CommonCollectionViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     func configure(data: Any? = nil) {
-        //    guard let data = data as? String else { return }
+        guard let data = data as? String else { return }
+        self.titleLabel.text = data
     }
 
 
 
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 100)
+        return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize(className: "SearchTitleCell").height)
     }
 }

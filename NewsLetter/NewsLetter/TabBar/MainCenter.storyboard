@@ -16,7 +16,16 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a7g-4d-XWA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="qc1-Jh-ZQ4" kind="relationship" relationship="viewControllers" id="HIJ-ph-iLc"/>
@@ -28,7 +37,7 @@
             </objects>
             <point key="canvasLocation" x="-1241" y="80"/>
         </scene>
-        <!--Search View Controller-->
+        <!--SEARCH-->
         <scene sceneID="GT0-6D-MAY">
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" id="Fea-Y4-5ya" customClass="SearchViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +70,7 @@
                             <constraint firstItem="HFW-ZK-FQJ" firstAttribute="leading" secondItem="pP2-Ao-sjq" secondAttribute="leading" id="zbo-06-3IU"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="KyG-ul-qzI"/>
+                    <tabBarItem key="tabBarItem" title="SEARCH" image="18SearchLine" selectedImage="18SearchFill" id="KyG-ul-qzI"/>
                     <connections>
                         <outlet property="collectionView" destination="HFW-ZK-FQJ" id="g7Q-48-VfM"/>
                     </connections>
@@ -70,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="354" y="67"/>
         </scene>
-        <!--Mypage View Controller-->
+        <!--MY PAGE-->
         <scene sceneID="h09-Wb-9Ai">
             <objects>
                 <viewController storyboardIdentifier="MypageViewController" id="GDb-OD-ki4" customClass="MypageViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,7 +112,7 @@
                             <constraint firstItem="keq-gD-qXT" firstAttribute="trailing" secondItem="K9K-FU-yal" secondAttribute="trailing" id="Ss7-5p-KV6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="TV7-Mn-J0g"/>
+                    <tabBarItem key="tabBarItem" title="MY PAGE" image="18MypageLine" selectedImage="18MypageFill" id="TV7-Mn-J0g"/>
                     <connections>
                         <outlet property="collectionView" destination="K9K-FU-yal" id="FDX-fw-h1G"/>
                     </connections>
@@ -112,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="1032" y="67"/>
         </scene>
-        <!--Home View Controller-->
+        <!--HOME-->
         <scene sceneID="hjg-EQ-LBh">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="qc1-Jh-ZQ4" customClass="HomeViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
@@ -145,7 +154,7 @@
                             <constraint firstItem="PMX-jP-SGi" firstAttribute="trailing" secondItem="ydX-im-CLh" secondAttribute="trailing" id="zmz-LJ-AzB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="PQO-rW-8XK"/>
+                    <tabBarItem key="tabBarItem" title="HOME" image="18EnvelopeLine" selectedImage="18EnvelopeFill" id="PQO-rW-8XK"/>
                     <connections>
                         <outlet property="collectionView" destination="ydX-im-CLh" id="kRR-DP-Wn1"/>
                     </connections>
@@ -156,6 +165,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="18EnvelopeFill" width="26" height="20"/>
+        <image name="18EnvelopeLine" width="26" height="20"/>
+        <image name="18MypageFill" width="21" height="20"/>
+        <image name="18MypageLine" width="21" height="20"/>
+        <image name="18SearchFill" width="21" height="21"/>
+        <image name="18SearchLine" width="21" height="21"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

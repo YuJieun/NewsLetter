@@ -20,11 +20,12 @@ class MypageProfileCell: CommonCollectionViewCell {
     
     func configure(data: Any? = nil) {
 //        guard let data = data as? String else { return }
+        #warning("이름이나 이메일 길게해서 테스트필요")
     }
 
     
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 70)
+        return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize(className: "MypageProfileCell").height)
     }
     
 
