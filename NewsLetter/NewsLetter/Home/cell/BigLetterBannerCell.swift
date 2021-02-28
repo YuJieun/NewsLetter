@@ -25,10 +25,6 @@ class BigLetterBannerCell: CommonCollectionViewCell {
         self.layer.borderColor = UIColor(rgb: 0x333333).cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 5
-        
-        self.bannerBookMarkButton.layer.borderColor = UIColor(rgb: 0x333333).cgColor
-        self.bannerBookMarkButton.layer.borderWidth = 1
-        self.bannerBookMarkButton.layer.cornerRadius = 3
     }
     
     func configure(data: Any? = nil) {

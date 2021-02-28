@@ -16,13 +16,25 @@ enum SettingSection: Int, CaseIterable {
     case deleteAccount
 }
 
-class SettingViewController: UIViewController {
+class SettingViewController: CommonNavigationController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "설정"
+
+//                    let yourBackImage = UIImage(named: "14BackPickygray")
+//                    self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+//                    self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+//                    self.navigationController?.navigationBar.backItem?.title = ""
+        
+        self.navigationController?.isNavigationBarHidden = false
         setup()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func setup() {

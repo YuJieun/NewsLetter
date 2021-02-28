@@ -52,6 +52,9 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAk-Oh-J5p">
                                 <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+                                <connections>
+                                    <action selector="onSettingButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="5It-9l-ufa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -19,22 +19,31 @@ class MypageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
+//        let yourBackImage = UIImage(named: "14BackPickygray")
+//        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+//        self.navigationController?.navigationBar.backItem?.title = ""
         self.collectionView.registerNibCell("MypageProfileCell", Classs: MypageProfileCell.self)
-        self.collectionView.registerNibCell("MypageTitleCell", Classs: MypageTitleCell.self)
+        self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
         setup()
+    }
+    
+    func setupNavigationBar() {
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "14BackPickygray")
     }
     
     func setup() {
         //1. 회원데이터 변수에 저장.
         //2. 이제 그 회원데이터로 통신
         //3. 나의 북마크 정보 가져오기
-        DataRequest.getBookMark(){(data) in
-            guard let data = data as? DI_BookMarkList else { return }
-            
-        } failure: { error in
-            print(error?.localizedDescription ?? "")
-        }
+//        DataRequest.getBookMark(){(data) in
+//            guard let data = data as? DI_BookMarkList else { return }
+//
+//        } failure: { error in
+//            print(error?.localizedDescription ?? "")
+//        }
         
     }
 }
@@ -52,7 +61,7 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
         case MypageSection.title.rawValue:
             return 1
         case MypageSection.letters.rawValue:
-            return 10
+            return 3
         default:
             return 0
         }
@@ -70,10 +79,12 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             }
             return cell
         case MypageSection.title.rawValue:
-            let cell = collectionView.dequeueReusableCell(MypageTitleCell.self, "MypageTitleCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(SearchTitleCell.self, "SearchTitleCell", for: indexPath)
+            cell.configure(data: "나의 북마크 (3)")
             return cell
         case MypageSection.letters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
+            cell.configure(data: nil)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
@@ -87,7 +98,7 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             let size = MypageProfileCell.getSize(nil)
             return size
         case MypageSection.title.rawValue:
-            let size = MypageTitleCell.getSize(nil)
+            let size = SearchTitleCell.getSize(nil)
             return size
         case MypageSection.letters.rawValue:
             let size = SmallLetterBannerCell.getSize(nil)

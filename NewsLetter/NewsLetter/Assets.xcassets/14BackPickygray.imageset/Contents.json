@@ -6,18 +6,21 @@
       "scale" : "1x"
     },
     {
+      "filename" : "14BackPickygray@2x.png",
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "14BackPickygray@2x.png"
+      "scale" : "2x"
     },
     {
-      "scale" : "3x",
       "filename" : "14BackPickygray@3x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

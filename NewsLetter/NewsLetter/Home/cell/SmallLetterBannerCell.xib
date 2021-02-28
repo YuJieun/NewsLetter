@@ -56,6 +56,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-ax-dv5">
                                         <rect key="frame" x="209" y="8" width="24" height="24"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="24BookmarkLine" translatesAutoresizingMaskIntoConstraints="NO" id="0Kb-ob-BOW">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcJ-dJ-2Mu">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                 <connections>
@@ -65,12 +68,16 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="0Kb-ob-BOW" firstAttribute="leading" secondItem="1Eb-ax-dv5" secondAttribute="leading" id="6ii-7v-RHu"/>
                                             <constraint firstAttribute="trailing" secondItem="UcJ-dJ-2Mu" secondAttribute="trailing" id="9CU-Ku-Zlf"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Kb-ob-BOW" secondAttribute="trailing" id="Aoz-1M-TzG"/>
                                             <constraint firstItem="UcJ-dJ-2Mu" firstAttribute="top" secondItem="1Eb-ax-dv5" secondAttribute="top" id="J9J-yL-rY4"/>
                                             <constraint firstAttribute="bottom" secondItem="UcJ-dJ-2Mu" secondAttribute="bottom" id="Twe-7L-jCX"/>
+                                            <constraint firstItem="0Kb-ob-BOW" firstAttribute="top" secondItem="1Eb-ax-dv5" secondAttribute="top" id="ZL6-uN-8NY"/>
                                             <constraint firstAttribute="width" constant="24" id="b2W-BN-lc7"/>
                                             <constraint firstItem="UcJ-dJ-2Mu" firstAttribute="leading" secondItem="1Eb-ax-dv5" secondAttribute="leading" id="dGd-yi-zym"/>
                                             <constraint firstAttribute="height" constant="24" id="ecR-gL-UkG"/>
+                                            <constraint firstAttribute="bottom" secondItem="0Kb-ob-BOW" secondAttribute="bottom" id="tmn-JM-Kyz"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dge-sD-FOg">
@@ -124,10 +131,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pM5-qx-Iq4">
                                 <rect key="frame" x="0.0" y="0.0" width="337" height="96"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="10q-NM-eTl">
-                                        <rect key="frame" x="148.5" y="28" width="40" height="40"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="40LockLine" translatesAutoresizingMaskIntoConstraints="NO" id="10q-NM-eTl">
+                                        <rect key="frame" x="148.5" y="24" width="40" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Oec-oe-pz6"/>
+                                            <constraint firstAttribute="height" constant="48" id="Oec-oe-pz6"/>
                                             <constraint firstAttribute="width" constant="40" id="bW4-7f-hi1"/>
                                         </constraints>
                                     </imageView>
@@ -186,6 +193,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="24BookmarkLine" width="24" height="24"/>
+        <image name="40LockLine" width="42" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

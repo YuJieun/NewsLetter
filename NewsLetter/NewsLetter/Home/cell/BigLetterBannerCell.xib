@@ -98,6 +98,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbG-B8-EHG">
                                 <rect key="frame" x="272" y="16" width="32" height="32"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="32BookmarkLine" translatesAutoresizingMaskIntoConstraints="NO" id="T5K-iY-4Gp">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIk-7i-Ykg">
                                         <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                         <connections>
@@ -111,8 +114,12 @@
                                     <constraint firstAttribute="trailing" secondItem="MIk-7i-Ykg" secondAttribute="trailing" id="7SB-IG-wX5"/>
                                     <constraint firstAttribute="bottom" secondItem="MIk-7i-Ykg" secondAttribute="bottom" id="Jhm-Co-FP2"/>
                                     <constraint firstAttribute="height" constant="32" id="YpI-ty-Hsq"/>
+                                    <constraint firstAttribute="bottom" secondItem="T5K-iY-4Gp" secondAttribute="bottom" id="cLO-uw-wIP"/>
                                     <constraint firstItem="MIk-7i-Ykg" firstAttribute="leading" secondItem="EbG-B8-EHG" secondAttribute="leading" id="drk-zE-21q"/>
+                                    <constraint firstAttribute="trailing" secondItem="T5K-iY-4Gp" secondAttribute="trailing" id="i5d-zu-Jgz"/>
+                                    <constraint firstItem="T5K-iY-4Gp" firstAttribute="leading" secondItem="EbG-B8-EHG" secondAttribute="leading" id="jy0-Uq-W1H"/>
                                     <constraint firstItem="MIk-7i-Ykg" firstAttribute="top" secondItem="EbG-B8-EHG" secondAttribute="top" id="rW6-u8-6sB"/>
+                                    <constraint firstItem="T5K-iY-4Gp" firstAttribute="top" secondItem="EbG-B8-EHG" secondAttribute="top" id="xfR-oS-QbI"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -150,6 +157,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="32BookmarkLine" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

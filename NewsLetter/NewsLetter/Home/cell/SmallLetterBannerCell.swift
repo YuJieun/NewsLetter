@@ -39,10 +39,6 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         self.bannerBorderView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
         self.bannerBorderView.layer.borderWidth = 1
         self.bannerBorderView.layer.cornerRadius = 5
-        
-        self.bannerBookmarkView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
-        self.bannerBookmarkView.layer.borderWidth = 1
-        self.bannerBookmarkView.layer.cornerRadius = 3
     }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
