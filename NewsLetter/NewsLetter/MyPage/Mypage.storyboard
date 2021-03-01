@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Setting View Controller-->
         <scene sceneID="iCy-5G-AHV">
@@ -20,7 +25,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Px6-yx-dez">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0F0-Xg-NlS">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0F0-Xg-NlS">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -58,42 +63,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-ev-63c">
-                                <rect key="frame" x="39" y="88" width="45" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-ev-63c">
+                                <rect key="frame" x="18" y="78" width="26" height="20.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-rX-5IW">
-                                <rect key="frame" x="39" y="129" width="277" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-rX-5IW">
+                                <rect key="frame" x="19" y="115.5" width="376" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="BZo-dv-D1a"/>
+                                </constraints>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1id-70-mNn">
-                                <rect key="frame" x="331" y="119" width="32" height="34"/>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="WEo-Ae-5bc"/>
-                                </constraints>
-                                <state key="normal" title="변경">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
                                 <connections>
-                                    <action selector="onButton:" destination="QPA-2o-6o4" eventType="touchUpInside" id="Sht-KI-Siq"/>
+                                    <outlet property="delegate" destination="QPA-2o-6o4" id="eZb-XN-9Bh"/>
                                 </connections>
-                            </button>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7rU-lU-nhE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7rU-lU-nhE" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lcU-ev-63c" secondAttribute="trailing" constant="30" id="3Cr-SR-Fv4"/>
-                            <constraint firstItem="1id-70-mNn" firstAttribute="leading" secondItem="Pql-rX-5IW" secondAttribute="trailing" constant="15" id="J73-fI-nMR"/>
-                            <constraint firstItem="lcU-ev-63c" firstAttribute="top" secondItem="7rU-lU-nhE" secondAttribute="top" constant="44" id="O6c-0r-47b"/>
-                            <constraint firstItem="7rU-lU-nhE" firstAttribute="trailing" secondItem="1id-70-mNn" secondAttribute="trailing" constant="51" id="PHl-jx-yNh"/>
-                            <constraint firstItem="1id-70-mNn" firstAttribute="top" secondItem="7rU-lU-nhE" secondAttribute="top" constant="75" id="QqQ-bg-iq1"/>
-                            <constraint firstItem="Pql-rX-5IW" firstAttribute="top" secondItem="lcU-ev-63c" secondAttribute="bottom" constant="20" id="ZW6-3G-mA4"/>
-                            <constraint firstItem="Pql-rX-5IW" firstAttribute="leading" secondItem="7rU-lU-nhE" secondAttribute="leading" constant="39" id="jaL-5E-ODL"/>
-                            <constraint firstItem="lcU-ev-63c" firstAttribute="leading" secondItem="7rU-lU-nhE" secondAttribute="leading" constant="39" id="kPv-Sh-b1x"/>
+                            <constraint firstItem="7rU-lU-nhE" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lcU-ev-63c" secondAttribute="trailing" constant="18" id="3Cr-SR-Fv4"/>
+                            <constraint firstItem="lcU-ev-63c" firstAttribute="top" secondItem="7rU-lU-nhE" secondAttribute="top" constant="34" id="O6c-0r-47b"/>
+                            <constraint firstItem="Pql-rX-5IW" firstAttribute="top" secondItem="lcU-ev-63c" secondAttribute="bottom" constant="17" id="ZW6-3G-mA4"/>
+                            <constraint firstItem="7rU-lU-nhE" firstAttribute="trailing" secondItem="Pql-rX-5IW" secondAttribute="trailing" constant="19" id="guN-EE-Wsy"/>
+                            <constraint firstItem="Pql-rX-5IW" firstAttribute="leading" secondItem="7rU-lU-nhE" secondAttribute="leading" constant="19" id="jaL-5E-ODL"/>
+                            <constraint firstItem="lcU-ev-63c" firstAttribute="leading" secondItem="7rU-lU-nhE" secondAttribute="leading" constant="18" id="kPv-Sh-b1x"/>
                         </constraints>
                     </view>
                     <connections>
@@ -112,10 +110,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fhF-2r-eUj">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fhF-2r-eUj">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LZF-G3-sx2">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LZF-G3-sx2">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -147,14 +145,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

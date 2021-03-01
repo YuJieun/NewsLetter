@@ -32,6 +32,7 @@ class SearchViewController: UIViewController {
     func setup() {
         
     }
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -107,7 +108,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case SearchSection.bookmarkLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
-            cell.configure(data: nil)
+            cell.isRankingVisible = true
+            cell.configure(data: "\(indexPath.row + 1)")
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

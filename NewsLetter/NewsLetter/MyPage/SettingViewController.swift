@@ -12,7 +12,9 @@ enum SettingSection: Int, CaseIterable {
     case infoTitle = 0
     case profileEdit
     case lettersEdit
+    case divideLine
     case systemTitle
+    case contact
     case deleteAccount
 }
 
@@ -23,23 +25,13 @@ class SettingViewController: CommonNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "설정"
-
-//                    let yourBackImage = UIImage(named: "14BackPickygray")
-//                    self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-//                    self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-//                    self.navigationController?.navigationBar.backItem?.title = ""
-        
-        self.navigationController?.isNavigationBarHidden = false
         setup()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     func setup() {
         self.collectionView.registerNibCell("SettingTitleCell", Classs: SettingTitleCell.self)
         self.collectionView.registerNibCell("SettingMenuCell", Classs: SettingMenuCell.self)
+        self.collectionView.registerNibCell("SettingDivideCell", Classs: SettingDivideCell.self)
     }
 }
 
@@ -57,7 +49,11 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
             return 1
         case SettingSection.lettersEdit.rawValue:
             return 1
+        case SettingSection.divideLine.rawValue:
+            return 1
         case SettingSection.systemTitle.rawValue:
+            return 1
+        case SettingSection.contact.rawValue:
             return 1
         case SettingSection.deleteAccount.rawValue:
             return 1
@@ -92,9 +88,17 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
+        case SettingSection.divideLine.rawValue:
+            let cell = collectionView.dequeueReusableCell(SettingDivideCell.self, "SettingDivideCell", for: indexPath)
+            cell.configure(data: nil)
+            return cell
         case SettingSection.systemTitle.rawValue:
             let cell = collectionView.dequeueReusableCell(SettingTitleCell.self, "SettingTitleCell", for: indexPath)
             cell.configure(data: "시스템")
+            return cell
+        case SettingSection.contact.rawValue:
+            let cell = collectionView.dequeueReusableCell(SettingMenuCell.self, "SettingMenuCell", for: indexPath)
+            cell.configure(data: "고객센터")
             return cell
         case SettingSection.deleteAccount.rawValue:
             let cell = collectionView.dequeueReusableCell(SettingMenuCell.self, "SettingMenuCell", for: indexPath)
@@ -117,8 +121,14 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
         case SettingSection.lettersEdit.rawValue:
             let size = SettingMenuCell.getSize(nil)
             return size
+        case SettingSection.divideLine.rawValue:
+            let size = SettingDivideCell.getSize(nil)
+            return size
         case SettingSection.systemTitle.rawValue:
             let size = SettingTitleCell.getSize(nil)
+            return size
+        case SettingSection.contact.rawValue:
+            let size = SettingMenuCell.getSize(nil)
             return size
         case SettingSection.deleteAccount.rawValue:
             let size = SettingMenuCell.getSize(nil)

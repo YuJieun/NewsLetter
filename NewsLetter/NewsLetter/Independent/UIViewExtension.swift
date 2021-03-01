@@ -66,6 +66,14 @@ extension UIView {
         return getXib(className: className, as: self).frame.size
     }
     
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
+    
     /// EZSE: getter and setter for the x coordinate of the frame's origin for the view.
     public var x: CGFloat {
         get {

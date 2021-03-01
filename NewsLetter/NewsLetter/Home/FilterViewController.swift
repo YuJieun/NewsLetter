@@ -37,6 +37,10 @@ class FilterViewController: UIViewController {
         view.backgroundColor = color
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func onTopView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

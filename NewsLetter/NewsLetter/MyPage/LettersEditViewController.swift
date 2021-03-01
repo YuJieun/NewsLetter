@@ -12,11 +12,12 @@ enum EditSection: Int, CaseIterable {
     case services
 }
 
-class LettersEditViewController: UIViewController {
+class LettersEditViewController: CommonNavigationController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "구독메일 조회 및 편집"
         setup()
     }
     
@@ -44,6 +45,10 @@ extension LettersEditViewController: UICollectionViewDataSource, UICollectionVie
         switch indexPath.section {
         case EditSection.services.rawValue:
             let cell = collectionView.dequeueReusableCell(SubscribeLetterCell.self, "SubscribeLetterCell", for: indexPath)
+            if indexPath.row == 4-1 {
+                cell.isBottomViewVisible = false
+            }
+            cell.configure(data: "파인애플")
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

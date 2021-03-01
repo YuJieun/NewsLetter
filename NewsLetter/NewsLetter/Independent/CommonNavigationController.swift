@@ -11,6 +11,10 @@ import UIKit
 class CommonNavigationController: UIViewController {
     
     override func viewDidLoad() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.barTintColor = .white
         
         self.navigationController?.navigationBar.titleTextAttributes =
@@ -23,7 +27,13 @@ class CommonNavigationController: UIViewController {
             target: self,
             action: #selector(self.back(sender:))
         )
-
+        
+        self.navigationController?.navigationBar.clipsToBounds = true
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     @objc func back(sender: UIBarButtonItem) {

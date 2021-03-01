@@ -150,7 +150,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         case HomeSection.oldLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
-            cell.configure(data: nil)
+            //데이터 넘길때 rankingVisible도 같이 넘기기
+            cell.isRankingVisible = false
+            cell.configure(data: "")
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

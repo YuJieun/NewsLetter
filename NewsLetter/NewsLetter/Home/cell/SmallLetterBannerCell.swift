@@ -18,13 +18,19 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     @IBOutlet weak var lockView: UIView!
     @IBOutlet weak var bannerBorderView: UIView!
     
+    @IBOutlet weak var rankingView: UIView!
+    @IBOutlet weak var rankingLabel: UILabel!
+    
     var isLock: Bool = false
+    var isRankingVisible = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func configure(data: Any? = nil) {
+        guard let data = data as? String else { return }
+        
         updateUI()
 //        guard let _ = data else { return }
         if isLock {
@@ -33,6 +39,21 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         else {
             self.lockView.isHidden = true
         }
+        
+        if isRankingVisible {
+            configureRankingUI()
+            self.rankingView.isHidden = false
+            self.rankingLabel.text = data
+        }
+        else {
+            self.rankingView.isHidden = true
+        }
+    }
+    
+    func configureRankingUI(){
+        self.rankingView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
+        self.rankingView.layer.borderWidth = 1
+        self.rankingView.roundCorners(corners: [.topLeft], radius: 5.0)
     }
     
     func updateUI() {

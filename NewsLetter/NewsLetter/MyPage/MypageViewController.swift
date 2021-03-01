@@ -31,7 +31,7 @@ class MypageViewController: UIViewController {
     }
     
     func setupNavigationBar() {
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "14BackPickygray")
+//        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "14BackPickygray")
     }
     
     func setup() {
@@ -84,7 +84,8 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case MypageSection.letters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
-            cell.configure(data: nil)
+            cell.isRankingVisible = false
+            cell.configure(data: "")
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

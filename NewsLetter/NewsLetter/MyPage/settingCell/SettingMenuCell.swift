@@ -13,7 +13,6 @@ class SettingMenuCell: CommonCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configure(data: Any? = nil) {
@@ -22,7 +21,7 @@ class SettingMenuCell: CommonCollectionViewCell {
     }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
-        return CGSize(width: UISCREEN_WIDTH, height: 40)
+        return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize(className: "SettingMenuCell").height)
     }
 
     @IBAction func onButton(_ sender: UIButton) {

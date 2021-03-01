@@ -18,10 +18,12 @@ class FilterDateCell: CommonCollectionViewCell {
     @IBOutlet weak var checkBoxImage: UIImageView!
     
     @IBOutlet weak var startView: UIView!
+    @IBOutlet weak var startTitleLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var startInfoLabel: UILabel!
     
     @IBOutlet weak var endView: UIView!
+    @IBOutlet weak var endTitleLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var endInfoLabel: UILabel!
     
@@ -47,12 +49,14 @@ class FilterDateCell: CommonCollectionViewCell {
         self.startView.layer.cornerRadius = 6
         self.startDateLabel.textColor = UIColor(rgb: 0xbdbdbd)
         self.startInfoLabel.textColor = UIColor(rgb: 0xbdbdbd)
+        self.startTitleLabel.textColor = UIColor(rgb: 0xbdbdbd)
         
         self.endView.layer.borderColor = UIColor(rgb: 0xbdbdbd).cgColor
         self.endView.layer.borderWidth = 1
         self.endView.layer.cornerRadius = 6
         self.endDateLabel.textColor = UIColor(rgb: 0xbdbdbd)
         self.endInfoLabel.textColor = UIColor(rgb: 0xbdbdbd)
+        self.endTitleLabel.textColor = UIColor(rgb: 0xbdbdbd)
         
         self.checkBoxImage.image = UIImage(named: "18SquareCheckFill")
     }
@@ -61,6 +65,7 @@ class FilterDateCell: CommonCollectionViewCell {
         self.startView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
         self.startDateLabel.textColor = UIColor(rgb: 0x333333)
         self.startInfoLabel.textColor = UIColor(rgb: 0x333333)
+        self.startTitleLabel.textColor = UIColor(rgb: 0x333333)
         
         self.checkBoxImage.image = UIImage(named: "18SquareLine")
     }
@@ -69,6 +74,7 @@ class FilterDateCell: CommonCollectionViewCell {
         self.endView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
         self.endDateLabel.textColor = UIColor(rgb: 0x333333)
         self.endInfoLabel.textColor = UIColor(rgb: 0x333333)
+        self.endTitleLabel.textColor = UIColor(rgb: 0x333333)
     }
     
     func configureDate() {
