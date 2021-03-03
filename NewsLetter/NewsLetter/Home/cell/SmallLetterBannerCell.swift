@@ -29,7 +29,7 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     }
     
     func configure(data: Any? = nil) {
-        guard let data = data as? String else { return }
+//        guard let data = data as? String else { return }
         
         updateUI()
 //        guard let _ = data else { return }
@@ -43,7 +43,9 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         if isRankingVisible {
             configureRankingUI()
             self.rankingView.isHidden = false
-            self.rankingLabel.text = data
+            if let data = data as? String {
+                self.rankingLabel.text = data
+            }
         }
         else {
             self.rankingView.isHidden = true

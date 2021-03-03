@@ -105,9 +105,20 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
             cell.configure(data: "탈퇴")
             cell.cellClosure = {[weak self] _, _ in
                 guard let `self` = self else { return }
-                let vc = CommonAlertViewController(nibName: "CommonAlertViewController", bundle: nil)
+                let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonAlertViewController") as? CommonAlertViewController else { return }
                 vc.modalPresentationStyle = .overFullScreen
-                self.present(vc, animated: false, completion: nil)
+                self.present(vc, animated: false){
+                    let data = DI_Alert()
+                    data.infoLabel = "정말 탈퇴하실건가요?"
+                    data.leftLabel = "탈퇴할래요"
+                    data.rightLabel = "안할래요"
+                    data.leftAction = { [weak self] _, _ in
+                        //탈퇴 기능 추가
+                        print("탈퇴")
+                    }
+                    vc.configure(data)
+                }
             }
             return cell
         default:

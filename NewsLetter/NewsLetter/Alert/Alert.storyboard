@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Medium.otf">
+            <string>NotoSansKR-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Common Alert View Controller-->
+        <scene sceneID="d2f-T7-agc">
+            <objects>
+                <viewController restorationIdentifier="CommonAlertViewController" storyboardIdentifier="CommonAlertViewController" id="NWE-HD-Pr7" customClass="CommonAlertViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xIc-4c-huS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyk-3n-m8F">
+                                <rect key="frame" x="80" y="375" width="254" height="156"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3A5-vj-OkY">
+                                        <rect key="frame" x="0.0" y="14" width="254" height="87"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ii-Iv-nNW">
+                                                <rect key="frame" x="15" y="0.0" width="224" height="87"/>
+                                                <string key="text">oo을
+아직 구독하지 않고 계시네요!
+구독하여 더 다양한 뉴스레터를
+받아보시겠어요?</string>
+                                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="13"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="4Ii-Iv-nNW" secondAttribute="bottom" id="UHH-17-2oP"/>
+                                            <constraint firstItem="4Ii-Iv-nNW" firstAttribute="leading" secondItem="3A5-vj-OkY" secondAttribute="leading" constant="15" id="dsa-mJ-AjU"/>
+                                            <constraint firstItem="4Ii-Iv-nNW" firstAttribute="top" secondItem="3A5-vj-OkY" secondAttribute="top" id="nAE-Nz-0Gi"/>
+                                            <constraint firstAttribute="trailing" secondItem="4Ii-Iv-nNW" secondAttribute="trailing" constant="15" id="uu3-qX-qHR"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bw8-yS-iTl">
+                                        <rect key="frame" x="0.0" y="113" width="127" height="43"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="0ai-B7-6vF"/>
+                                            <constraint firstAttribute="width" constant="127" id="gos-F2-3u8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="14"/>
+                                        <state key="normal" title="다음에">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onLeftButton:" destination="NWE-HD-Pr7" eventType="touchUpInside" id="sBv-sl-Msm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mh-we-3pv">
+                                        <rect key="frame" x="127" y="113" width="127" height="43"/>
+                                        <color key="backgroundColor" red="1" green="0.86274509799999999" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="127" id="4sR-L3-dED"/>
+                                            <constraint firstAttribute="height" constant="43" id="xu9-hG-qY9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="14"/>
+                                        <state key="normal" title="구독할래요">
+                                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onRightButton:" destination="NWE-HD-Pr7" eventType="touchUpInside" id="Vcd-AR-MtQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Bw8-yS-iTl" firstAttribute="top" secondItem="3A5-vj-OkY" secondAttribute="bottom" constant="12" id="EGJ-u5-zcJ"/>
+                                    <constraint firstAttribute="width" constant="254" id="I2i-iU-wmT"/>
+                                    <constraint firstItem="3A5-vj-OkY" firstAttribute="top" secondItem="wyk-3n-m8F" secondAttribute="top" constant="14" id="Pmu-hU-qQ2"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Mh-we-3pv" secondAttribute="bottom" id="QLW-tR-JZm"/>
+                                    <constraint firstAttribute="trailing" secondItem="3A5-vj-OkY" secondAttribute="trailing" id="THH-z6-AkJ"/>
+                                    <constraint firstItem="0Mh-we-3pv" firstAttribute="leading" secondItem="Bw8-yS-iTl" secondAttribute="trailing" id="Wwl-DT-5aC"/>
+                                    <constraint firstItem="3A5-vj-OkY" firstAttribute="leading" secondItem="wyk-3n-m8F" secondAttribute="leading" id="c4r-Ll-Gnz"/>
+                                    <constraint firstItem="Bw8-yS-iTl" firstAttribute="leading" secondItem="wyk-3n-m8F" secondAttribute="leading" id="e1F-GA-uPy"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bw8-yS-iTl" secondAttribute="bottom" id="gQr-8w-W71"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Mh-we-3pv" secondAttribute="trailing" id="h87-F9-Wa3"/>
+                                    <constraint firstAttribute="height" constant="156" id="lBX-nE-r5C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="z79-Bi-HPW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wyk-3n-m8F" firstAttribute="centerX" secondItem="z79-Bi-HPW" secondAttribute="centerX" id="304-85-zBM"/>
+                            <constraint firstItem="wyk-3n-m8F" firstAttribute="centerY" secondItem="z79-Bi-HPW" secondAttribute="centerY" id="8m2-qJ-FDs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alertView" destination="wyk-3n-m8F" id="fDi-aY-Abt"/>
+                        <outlet property="infoLabel" destination="4Ii-Iv-nNW" id="jnJ-xn-h7z"/>
+                        <outlet property="leftButton" destination="Bw8-yS-iTl" id="fl1-SJ-3Kc"/>
+                        <outlet property="rightButton" destination="0Mh-we-3pv" id="msU-Yf-e3u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ntb-2E-R9a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="707" y="90"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

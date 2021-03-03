@@ -100,6 +100,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case SearchSection.searchResultLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
+            cell.isRankingVisible = false
             cell.configure(data: nil)
             return cell
         case SearchSection.bookmarkTitle.rawValue:
