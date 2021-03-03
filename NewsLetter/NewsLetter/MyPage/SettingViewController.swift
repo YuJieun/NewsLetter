@@ -103,6 +103,12 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
         case SettingSection.deleteAccount.rawValue:
             let cell = collectionView.dequeueReusableCell(SettingMenuCell.self, "SettingMenuCell", for: indexPath)
             cell.configure(data: "탈퇴")
+            cell.cellClosure = {[weak self] _, _ in
+                guard let `self` = self else { return }
+                let vc = CommonAlertViewController(nibName: "CommonAlertViewController", bundle: nil)
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: false, completion: nil)
+            }
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

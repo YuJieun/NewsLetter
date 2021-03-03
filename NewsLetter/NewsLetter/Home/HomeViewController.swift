@@ -10,7 +10,9 @@ import UIKit
 
 enum HomeSection: Int, CaseIterable {
     case mainTitle = 0
+    case noLetterTitle
     case newLetters
+    case noLetters
     case filterBar
     case oldLetters
 }
@@ -27,7 +29,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         print("홈메뉴")
         self.collectionView.registerNibCell("HomeTitleCell", Classs: HomeTitleCell.self)
+        self.collectionView.registerNibCell("HomeNoTitleCell", Classs: HomeNoTitleCell.self)
         self.collectionView.registerNibCell("HomeNewLettersCell", Classs: HomeNewLettersCell.self)
+        self.collectionView.registerNibCell("HomeNoLetterCell", Classs: HomeNoLetterCell.self)
         self.collectionView.registerNibCell("HomeFilterBarCell", Classs: HomeFilterBarCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
         collectionView.refreshControl = refreshControl
@@ -112,8 +116,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch section {
         case HomeSection.mainTitle.rawValue:
             return 1
+        case HomeSection.noLetterTitle.rawValue:
+            return 0
         case HomeSection.newLetters.rawValue:
             return 1
+        case HomeSection.noLetters.rawValue:
+            return 0
         case HomeSection.filterBar.rawValue:
             return 1
         case HomeSection.oldLetters.rawValue:
@@ -132,10 +140,21 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             let cell = collectionView.dequeueReusableCell(HomeTitleCell.self, "HomeTitleCell", for: indexPath)
             cell.configure(data: "유지은")
             return cell
-            
+        case HomeSection.noLetterTitle.rawValue:
+            let cell = collectionView.dequeueReusableCell(HomeNoTitleCell.self, "HomeNoTitleCell", for: indexPath)
+            return cell
         case HomeSection.newLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeNewLettersCell.self, "HomeNewLettersCell", for: indexPath)
             cell.configure(data: nil)
+            cell.cellClosure = { [weak self] _,_ in
+                guard let `self` = self else { return }
+                let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            return cell
+        case HomeSection.noLetters.rawValue:
+            let cell = collectionView.dequeueReusableCell(HomeNoLetterCell.self, "HomeNoLetterCell", for: indexPath)
             return cell
         case HomeSection.filterBar.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeFilterBarCell.self, "HomeFilterBarCell", for: indexPath)
@@ -166,11 +185,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case HomeSection.mainTitle.rawValue:
             let size = HomeTitleCell.getSize(nil)
             return size
-            
+        case HomeSection.noLetterTitle.rawValue:
+            let size = HomeNoTitleCell.getSize(nil)
+            return size
         case HomeSection.newLetters.rawValue:
             let size = HomeNewLettersCell.getSize(nil)
             return size
-        
+        case HomeSection.noLetters.rawValue:
+            let size = HomeNoLetterCell.getSize(nil)
+            return size
         case HomeSection.filterBar.rawValue:
             let size = HomeFilterBarCell.getSize(nil)
             return size

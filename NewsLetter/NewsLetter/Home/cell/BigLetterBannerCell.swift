@@ -36,7 +36,10 @@ class BigLetterBannerCell: CommonCollectionViewCell {
         return self.getXibSize(className: "BigLetterBannerCell")
     }
     
-
+    @IBAction func onLetterButton(_ sender: UIButton) {
+        cellClosure?("letter",nil)
+    }
+    
     @IBAction func onBookMarkButton(_ sender: UIButton) {
     }
 }

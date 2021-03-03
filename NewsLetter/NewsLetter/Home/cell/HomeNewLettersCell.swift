@@ -56,6 +56,10 @@ extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(BigLetterBannerCell.self, "BigLetterBannerCell", for: indexPath)
         cell.configure()
+        cell.cellClosure = { [weak self] _,_ in
+            guard let `self` = self else { return }
+            self.cellClosure?("letters", nil)
+        }
         return cell
     }
     
