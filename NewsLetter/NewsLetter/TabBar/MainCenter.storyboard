@@ -70,7 +70,10 @@
                             <constraint firstItem="HFW-ZK-FQJ" firstAttribute="leading" secondItem="pP2-Ao-sjq" secondAttribute="leading" id="zbo-06-3IU"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SEARCH" image="18SearchLine" selectedImage="18SearchFill" id="KyG-ul-qzI"/>
+                    <tabBarItem key="tabBarItem" title="SEARCH" image="18SearchLine" selectedImage="18SearchFill" id="KyG-ul-qzI">
+                        <inset key="imageInsets" minX="0.0" minY="3" maxX="0.0" maxY="-2"/>
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="collectionView" destination="HFW-ZK-FQJ" id="g7Q-48-VfM"/>
                     </connections>
@@ -112,7 +115,9 @@
                             <constraint firstItem="keq-gD-qXT" firstAttribute="trailing" secondItem="K9K-FU-yal" secondAttribute="trailing" id="Ss7-5p-KV6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="MY PAGE" image="18MypageLine" selectedImage="18MypageFill" id="TV7-Mn-J0g"/>
+                    <tabBarItem key="tabBarItem" title="MY PAGE" image="18MypageLine" selectedImage="18MypageFill" id="TV7-Mn-J0g">
+                        <inset key="imageInsets" minX="0.0" minY="3" maxX="0.0" maxY="-2"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="collectionView" destination="K9K-FU-yal" id="FDX-fw-h1G"/>
                     </connections>
@@ -154,7 +159,9 @@
                             <constraint firstItem="PMX-jP-SGi" firstAttribute="trailing" secondItem="ydX-im-CLh" secondAttribute="trailing" id="zmz-LJ-AzB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="HOME" image="18EnvelopeLine" selectedImage="18EnvelopeFill" id="PQO-rW-8XK"/>
+                    <tabBarItem key="tabBarItem" title="HOME" image="18EnvelopeLine" selectedImage="18EnvelopeFill" id="PQO-rW-8XK">
+                        <inset key="imageInsets" minX="0.0" minY="3" maxX="0.0" maxY="-2"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="collectionView" destination="ydX-im-CLh" id="kRR-DP-Wn1"/>
                     </connections>

@@ -1,24 +1,24 @@
 {
   "images" : [
     {
-      "filename" : "18SearchFill.png",
+      "scale" : "1x",
       "idiom" : "universal",
-      "scale" : "1x"
+      "filename" : "18SearchFill.png"
     },
     {
       "filename" : "18SearchFill@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "idiom" : "universal"
     },
     {
       "filename" : "18SearchFill@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   },
   "properties" : {
     "template-rendering-intent" : "original"
