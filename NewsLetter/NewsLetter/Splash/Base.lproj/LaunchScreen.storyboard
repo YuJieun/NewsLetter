@@ -17,18 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스플래시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OB-fh-asj">
-                                <rect key="frame" x="155" y="435" width="104" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmp_text" translatesAutoresizingMaskIntoConstraints="NO" id="icr-Vu-adl">
+                                <rect key="frame" x="19" y="135" width="317" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="BG6-Ks-PHO"/>
+                                    <constraint firstAttribute="width" constant="317" id="OqT-JC-30N"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0D-ff-p2v">
+                                <rect key="frame" x="72" y="287" width="270" height="270"/>
+                                <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="jwc-A4-lzR"/>
+                                    <constraint firstAttribute="height" constant="270" id="rKF-lI-0Hn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="3OB-fh-asj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Iit-db-Jj5"/>
-                            <constraint firstItem="3OB-fh-asj" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="sng-n1-EHZ"/>
+                            <constraint firstItem="icr-Vu-adl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="EqW-zk-lBG"/>
+                            <constraint firstItem="icr-Vu-adl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="91" id="J41-IL-1eK"/>
+                            <constraint firstItem="e0D-ff-p2v" firstAttribute="top" secondItem="icr-Vu-adl" secondAttribute="bottom" constant="89" id="JsR-Fv-Drk"/>
+                            <constraint firstItem="e0D-ff-p2v" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VWw-RD-O5S"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +49,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tmp_text" width="464" height="122"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

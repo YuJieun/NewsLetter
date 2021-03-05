@@ -10,9 +10,6 @@ import UIKit
 
 class SignupPasswordViewController: UIViewController {
     
-    @IBOutlet weak var passwordInputField: UITextField!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
     
     var userData: DIR_User?
     
@@ -23,8 +20,8 @@ class SignupPasswordViewController: UIViewController {
     
     func setup() {
         guard let data = self.userData else { return }
-        self.emailLabel.text = data.email
-        self.nameLabel.text = data.name
+//        self.emailLabel.text = data.email
+//        self.nameLabel.text = data.name
     }
     
     

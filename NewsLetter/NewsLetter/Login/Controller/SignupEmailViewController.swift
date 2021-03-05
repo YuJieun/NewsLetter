@@ -9,8 +9,6 @@ import UIKit
 
 class SignupEmailViewController: UIViewController {
 
-    @IBOutlet weak var emailInputField: UITextField!
-    @IBOutlet weak var nameLabel: UILabel!
     
     var userData: DIR_User?
     
@@ -21,7 +19,7 @@ class SignupEmailViewController: UIViewController {
     
     func setup() {
         guard let data = self.userData else { return }
-        self.nameLabel.text = data.name
+//        self.nameLabel.text = data.name
     }
     
     @IBAction func onNextButton(_ sender: UIButton) {

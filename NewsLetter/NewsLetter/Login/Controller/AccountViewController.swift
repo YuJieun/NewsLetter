@@ -21,12 +21,11 @@ class AccountViewController: UIViewController {
     
     //로그인 버튼
     @IBAction func onSigninButton(_ sender: UIButton) {
-        guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") else{
-            return
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.switchHome()
         }
-        self.navigationController?.pushViewController(uvc, animated: true)
     }
-    
+ 
     //회원가입 버튼
     @IBAction func onSignupButton(_ sender: UIButton) {
         guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "SignupViewController") else{
