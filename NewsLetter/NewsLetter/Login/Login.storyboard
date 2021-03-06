@@ -18,6 +18,9 @@
         <array key="NotoSansKR-Regular.otf">
             <string>NotoSansKR-Regular</string>
         </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Account View Controller-->
@@ -46,9 +49,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rqk-Gy-2hS">
-                                        <rect key="frame" x="16" y="29" width="344" height="28"/>
-                                        <color key="textColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="18"/>
+                                        <rect key="frame" x="16" y="29" width="344" height="31.5"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -73,9 +76,9 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1nv-jS-2vV">
                                         <rect key="frame" x="16" y="29" width="312" height="27"/>
-                                        <color key="textColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dxr-jp-oU3">
                                         <rect key="frame" x="344" y="36.5" width="16" height="12"/>
@@ -84,6 +87,9 @@
                                             <constraint firstAttribute="height" constant="12" id="whM-1a-eLz"/>
                                         </constraints>
                                         <state key="normal" image="16ClosedEyes"/>
+                                        <connections>
+                                            <action selector="onPwdSecureButton:" destination="YfD-QQ-hn3" eventType="touchUpInside" id="lql-7F-uI2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -163,6 +169,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wgA-65-Kaw"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="Rqk-Gy-2hS" id="tLL-qb-V0M"/>
+                        <outlet property="loginButton" destination="zrV-C7-fcj" id="ZZI-ab-hNq"/>
+                        <outlet property="passwordTextField" destination="1nv-jS-2vV" id="WJd-VM-pi6"/>
+                        <outlet property="pwdSecureButton" destination="Dxr-jp-oU3" id="eAs-ah-65w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSw-0u-oWT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

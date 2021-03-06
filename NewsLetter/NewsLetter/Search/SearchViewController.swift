@@ -15,14 +15,13 @@ enum SearchSection: Int, CaseIterable {
     case bookmarkLetters
 }
 
-class SearchViewController: UIViewController {
+class SearchViewController: CommonViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var keyword: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
         self.collectionView.registerNibCell("SearchBarCell", Classs: SearchBarCell.self)
         self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
@@ -31,16 +30,6 @@ class SearchViewController: UIViewController {
 
     func setup() {
         
-    }
-    
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
     }
 }
 
