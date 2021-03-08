@@ -138,7 +138,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch indexPath.section {
         case HomeSection.mainTitle.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeTitleCell.self, "HomeTitleCell", for: indexPath)
-            cell.configure(data: "유지은")
+            cell.configure(data: "파인애플")
             return cell
         case HomeSection.noLetterTitle.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeNoTitleCell.self, "HomeNoTitleCell", for: indexPath)
