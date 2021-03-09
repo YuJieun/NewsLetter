@@ -60,6 +60,12 @@
                                     <constraint firstAttribute="trailing" secondItem="PcR-0d-bKd" secondAttribute="trailing" id="dmY-e2-vg7"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAg-z5-JSf">
+                                <rect key="frame" x="0.0" y="0.0" width="337" height="96"/>
+                                <connections>
+                                    <action selector="onLetterButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="fD1-7f-oEo"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szk-6h-Who">
                                 <rect key="frame" x="96" y="0.0" width="241" height="96"/>
                                 <subviews>
@@ -182,11 +188,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="szk-6h-Who" secondAttribute="trailing" id="6Nr-Bs-Vnz"/>
+                            <constraint firstAttribute="bottom" secondItem="lAg-z5-JSf" secondAttribute="bottom" id="9Rm-S9-9By"/>
                             <constraint firstItem="tZT-2K-fKJ" firstAttribute="leading" secondItem="7cF-cb-FSC" secondAttribute="leading" id="E8x-fY-OMN"/>
                             <constraint firstItem="pM5-qx-Iq4" firstAttribute="leading" secondItem="7cF-cb-FSC" secondAttribute="leading" id="HEj-pf-14z"/>
                             <constraint firstAttribute="bottom" secondItem="szk-6h-Who" secondAttribute="bottom" id="IsJ-LZ-xuE"/>
                             <constraint firstItem="szk-6h-Who" firstAttribute="top" secondItem="7cF-cb-FSC" secondAttribute="top" id="MFD-vG-azG"/>
+                            <constraint firstItem="lAg-z5-JSf" firstAttribute="top" secondItem="7cF-cb-FSC" secondAttribute="top" id="OaB-7A-ITD"/>
+                            <constraint firstItem="lAg-z5-JSf" firstAttribute="leading" secondItem="7cF-cb-FSC" secondAttribute="leading" id="P7r-06-Iss"/>
                             <constraint firstAttribute="trailing" secondItem="pM5-qx-Iq4" secondAttribute="trailing" id="PU5-7W-lhr"/>
+                            <constraint firstAttribute="trailing" secondItem="lAg-z5-JSf" secondAttribute="trailing" id="VlH-Mj-1vx"/>
                             <constraint firstAttribute="bottom" secondItem="pM5-qx-Iq4" secondAttribute="bottom" id="aoA-uD-QHK"/>
                             <constraint firstItem="qAi-hn-ohd" firstAttribute="top" secondItem="7cF-cb-FSC" secondAttribute="top" id="cav-UZ-F5W"/>
                             <constraint firstItem="szk-6h-Who" firstAttribute="leading" secondItem="qAi-hn-ohd" secondAttribute="trailing" id="pdE-lM-JXd"/>
@@ -212,9 +222,10 @@
                 <outlet property="bannerImageView" destination="qAi-hn-ohd" id="3eh-Vd-yrL"/>
                 <outlet property="bannerLogoImageView" destination="dge-sD-FOg" id="v9B-3g-dF1"/>
                 <outlet property="bannerTitleLabel" destination="0I8-8n-Umf" id="ybz-9u-f2t"/>
+                <outlet property="bookmarkButton" destination="UcJ-dJ-2Mu" id="GKr-Bw-dbi"/>
                 <outlet property="lockView" destination="pM5-qx-Iq4" id="BVK-Le-8sJ"/>
                 <outlet property="rankingLabel" destination="PcR-0d-bKd" id="cIo-20-mKK"/>
-                <outlet property="rankingView" destination="PcR-0d-bKd" id="Ol4-5F-I0l"/>
+                <outlet property="rankingView" destination="tZT-2K-fKJ" id="ccS-fs-RHz"/>
             </connections>
             <point key="canvasLocation" x="38.405797101449281" y="104.46428571428571"/>
         </collectionViewCell>

@@ -35,7 +35,7 @@ extension LettersEditViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case EditSection.services.rawValue:
-            return 4
+            return 3
         default:
             return 0
         }
@@ -48,7 +48,8 @@ extension LettersEditViewController: UICollectionViewDataSource, UICollectionVie
             if indexPath.row == 4-1 {
                 cell.isBottomViewVisible = false
             }
-            cell.configure(data: "파인애플")
+            cell.row = indexPath.row
+            cell.configure()
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

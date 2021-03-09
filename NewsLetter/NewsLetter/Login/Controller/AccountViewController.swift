@@ -14,6 +14,8 @@ class AccountViewController: CommonViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var pwdSecureButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var pwdView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,14 @@ class AccountViewController: CommonViewController {
     }
     
     func setup() {
+        emailView.layer.borderWidth = 1
+        emailView.layer.borderColor = UIColor(rgb: 0xdfdfdf).cgColor
+        emailView.layer.cornerRadius = 3
+        
+        pwdView.layer.borderWidth = 1
+        pwdView.layer.borderColor = UIColor(rgb: 0xdfdfdf).cgColor
+        pwdView.layer.cornerRadius = 3
+        
         pwdSecureButton.setImage(UIImage(named: "16ClosedEyes"), for: .normal)
         pwdSecureButton.setImage(UIImage(named: "16OpenedEyes"), for: .selected)
         loginButton.setImage(UIImage(named: "337ButtonInitial_login"), for: .normal)

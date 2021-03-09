@@ -50,11 +50,12 @@ extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(BigLetterBannerCell.self, "BigLetterBannerCell", for: indexPath)
+        cell.row = indexPath.row
         cell.configure()
         cell.cellClosure = { [weak self] _,_ in
             guard let `self` = self else { return }

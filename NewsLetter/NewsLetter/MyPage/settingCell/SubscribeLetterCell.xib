@@ -30,7 +30,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지은" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqE-Zx-chJ">
-                        <rect key="frame" x="75" y="26" width="28" height="19"/>
+                        <rect key="frame" x="75" y="24" width="29.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                             <constraint firstAttribute="height" constant="32" id="Nsp-Dc-Eb5"/>
                             <constraint firstAttribute="width" constant="56" id="s2Q-9K-luR"/>
                         </constraints>
-                        <state key="normal" image="delete">
+                        <state key="normal" image="deleteFill">
                             <color key="titleColor" systemColor="labelColor"/>
                         </state>
                         <connections>
@@ -72,13 +72,14 @@
             <connections>
                 <outlet property="bottomView" destination="yeZ-Gy-XQO" id="nLP-s1-Gea"/>
                 <outlet property="brandTitleLabel" destination="fqE-Zx-chJ" id="MwB-PR-aHF"/>
+                <outlet property="logoImage" destination="qJD-cf-9My" id="bs0-S0-f1g"/>
             </connections>
             <point key="canvasLocation" x="122" y="65"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="48Profile" width="48" height="48"/>
-        <image name="delete" width="56" height="31"/>
+        <image name="deleteFill" width="58" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

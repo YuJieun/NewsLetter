@@ -35,6 +35,8 @@ class MailDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     let str = ConstGroup.TMP_STR
+    
+    var tmpflag: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ class MailDetailViewController: UIViewController {
         self.webView.navigationDelegate = self
 //        self.headerView.backgroundColor = .clear
         setup()
+        tmp()
     }
     
     func setup() {
@@ -52,6 +55,15 @@ class MailDetailViewController: UIViewController {
         self.webView.scrollView.isScrollEnabled = false
         self.webView.navigationDelegate = self
         self.webView.loadHTMLString(str, baseURL: nil)
+    }
+    
+    func tmp() {
+        guard tmpflag else { return }
+        self.headerImageView.image = UIImage(named: "dee1")
+        self.titleLabel.text = "가게 배달지역 관리방식 개편 프로젝트"
+        self.logoLabel.text = "디독"
+        self.logoImageView.image = UIImage(named: "d_logo")
+        self.dateLabel.text = "03/08/2021"
     }
     
     @IBAction func onBackButton(_ sender: UIButton) {

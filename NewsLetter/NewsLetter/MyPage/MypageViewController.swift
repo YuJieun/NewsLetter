@@ -84,8 +84,10 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case MypageSection.letters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
+            cell.row = indexPath.row
             cell.isRankingVisible = false
             cell.configure(data: "")
+            cell.tmpConfigure()
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

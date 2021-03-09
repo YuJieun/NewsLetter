@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "6DropUnablegray.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "6DropUnablegray@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "scale" : "3x",
+      "filename" : "6DropUnablegray@3x.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

@@ -16,6 +16,9 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var secureButton: UIButton!
     
+    @IBOutlet weak var pwdLabel: UILabel!
+    @IBOutlet weak var warningMsg: UILabel!
+    
     var userData: DIR_User?
     
     override func viewDidLoad() {
@@ -34,13 +37,16 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
         pwdField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         nextButton.setImage(UIImage(named: "337ButtonInitial_2"), for: .normal)
         nextButton.setImage(UIImage(named: "337ButtonActive_2"), for: .highlighted)
+        warningMsg.isHidden = true
         pwdField.delegate = self
     }
     
     
     @IBAction func onNextButton(_ sender: UIButton) {
+        guard let data = userData else { return }
         guard checkPasswordValidate() else { return }
         guard let pwdText = pwdField.text, pwdText.isValid else { return }
+        data.password = pwdText
         signup()
     }
     
@@ -50,8 +56,16 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checkPasswordValidate() -> Bool {
-        //유효하지 않으면 alert and return false
-        return true
+        //8자리 이상
+        guard let text = pwdField.text else { return false }
+        if text.count < 8 {
+            warningMsg.isHidden = false
+            return false
+        }
+        else {
+            warningMsg.isHidden = true
+            return true
+        }
     }
     
     func signup() {

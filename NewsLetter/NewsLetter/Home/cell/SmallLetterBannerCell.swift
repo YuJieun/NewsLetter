@@ -21,8 +21,12 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     @IBOutlet weak var rankingView: UIView!
     @IBOutlet weak var rankingLabel: UILabel!
     
+    @IBOutlet weak var bookmarkButton: UIButton!
+    
     var isLock: Bool = false
     var isRankingVisible = false
+    
+    var row: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +36,7 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
 //        guard let data = data as? String else { return }
         
         updateUI()
+        updateTmp()
 //        guard let _ = data else { return }
         if isLock {
             self.lockView.isHidden = false
@@ -52,6 +57,10 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         }
     }
     
+    func tmpConfigure() {
+        self.bookmarkButton.setImage(UIImage(named: "24BookmarkFill"), for: .normal)
+    }
+    
     func configureRankingUI(){
         self.rankingView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
         self.rankingView.layer.borderWidth = 1
@@ -62,6 +71,17 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         self.bannerBorderView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
         self.bannerBorderView.layer.borderWidth = 1
         self.bannerBorderView.layer.cornerRadius = 5
+        
+        self.bookmarkButton.setImage(UIImage(named: "24BookmarkLine"), for: .normal)
+        self.bookmarkButton.setImage(UIImage(named: "24BookmarkFill"), for: .selected)
+    }
+    
+    func updateTmp() {
+        self.bannerImageView.image = UIImage(named: ConstGroup.BANNERIMG[row])
+        self.bannerTitleLabel.text = ConstGroup.BANNERTXT[row]
+        self.bannerLogoImageView.image = UIImage(named: ConstGroup.LOGOIMG[row])
+        self.bannerBrandLabel.text = ConstGroup.LOGOTXT[row]
+        self.bannerDateLabel.text = ConstGroup.DATETXT[row]
     }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
@@ -69,19 +89,23 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     }
     
     @IBAction func onBookmarkButton(_ sender: UIButton) {
-        
+        self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
     }
 
     @IBAction func onLockButton(_ sender: UIButton) {
         //https://stackoverflow.com/questions/44719277/alertcontroller-with-white-borders
         guard isLock == true else { return }
-        let alert: UIAlertController = UIAlertController(title: "알림", message: "해당 레터를 보려면 구독이 필요해요!\n지은을 구독하시겠습니까?", preferredStyle: .alert)
-        let cancleAction = UIAlertAction(title: "취소", style: .destructive) { (action) in }
-        let okAction = UIAlertAction(title: "확인", style: .cancel) { (action) in }
-        alert.addAction(cancleAction)
-        alert.addAction(okAction)
-        alert.show()
+//        let alert: UIAlertController = UIAlertController(title: "알림", message: "해당 레터를 보려면 구독이 필요해요!\n지은을 구독하시겠습니까?", preferredStyle: .alert)
+//        let cancleAction = UIAlertAction(title: "취소", style: .destructive) { (action) in }
+//        let okAction = UIAlertAction(title: "확인", style: .cancel) { (action) in }
+//        alert.addAction(cancleAction)
+//        alert.addAction(okAction)
+//        alert.show()
+        cellClosure?("lock", nil)
     
     }
     
+    @IBAction func onLetterButton(_ sender: UIButton) {
+        cellClosure?("letter",nil)
+    }
 }

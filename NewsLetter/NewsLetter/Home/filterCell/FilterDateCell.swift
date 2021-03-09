@@ -21,11 +21,13 @@ class FilterDateCell: CommonCollectionViewCell {
     @IBOutlet weak var startTitleLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var startInfoLabel: UILabel!
+    @IBOutlet weak var startArrow: UIImageView!
     
     @IBOutlet weak var endView: UIView!
     @IBOutlet weak var endTitleLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var endInfoLabel: UILabel!
+    @IBOutlet weak var endArrow: UIImageView!
     
     var filterDate: DI_FilterDate?
     var weekdayName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"]
@@ -50,6 +52,7 @@ class FilterDateCell: CommonCollectionViewCell {
         self.startDateLabel.textColor = UIColor(rgb: 0xbdbdbd)
         self.startInfoLabel.textColor = UIColor(rgb: 0xbdbdbd)
         self.startTitleLabel.textColor = UIColor(rgb: 0xbdbdbd)
+        self.startArrow.image = UIImage(named: "6DropUnablegray")
         
         self.endView.layer.borderColor = UIColor(rgb: 0xbdbdbd).cgColor
         self.endView.layer.borderWidth = 1
@@ -57,6 +60,7 @@ class FilterDateCell: CommonCollectionViewCell {
         self.endDateLabel.textColor = UIColor(rgb: 0xbdbdbd)
         self.endInfoLabel.textColor = UIColor(rgb: 0xbdbdbd)
         self.endTitleLabel.textColor = UIColor(rgb: 0xbdbdbd)
+        self.endArrow.image = UIImage(named: "6DropUnablegray")
         
         self.checkBoxImage.image = UIImage(named: "18SquareCheckFill")
     }
@@ -66,6 +70,7 @@ class FilterDateCell: CommonCollectionViewCell {
         self.startDateLabel.textColor = UIColor(rgb: 0x333333)
         self.startInfoLabel.textColor = UIColor(rgb: 0x333333)
         self.startTitleLabel.textColor = UIColor(rgb: 0x333333)
+        self.startArrow.image = UIImage(named: "6DropPickygray")
         
         self.checkBoxImage.image = UIImage(named: "18SquareLine")
     }
@@ -75,6 +80,8 @@ class FilterDateCell: CommonCollectionViewCell {
         self.endDateLabel.textColor = UIColor(rgb: 0x333333)
         self.endInfoLabel.textColor = UIColor(rgb: 0x333333)
         self.endTitleLabel.textColor = UIColor(rgb: 0x333333)
+        self.endArrow.image = UIImage(named: "6DropPickygray")
+
     }
     
     func configureDate() {

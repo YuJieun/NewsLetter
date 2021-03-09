@@ -89,6 +89,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case SearchSection.searchResultLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
+            cell.row = indexPath.row
+            cell.isLock = false
             cell.isRankingVisible = false
             cell.configure(data: nil)
             return cell
@@ -98,8 +100,43 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case SearchSection.bookmarkLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
+            cell.row = indexPath.row
             cell.isRankingVisible = true
+            if indexPath.row == 3 || indexPath.row == 7 {
+                cell.isLock = true
+            }
+            else {
+                cell.isLock = false
+            }
             cell.configure(data: "\(indexPath.row + 1)")
+            cell.cellClosure = { [weak self] type ,_ in
+                guard let `self` = self else { return }
+                
+                switch type {
+                case "letter":
+                    let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
+                    guard let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
+                    vc.tmpflag = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case "lock":
+                    let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+                    guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonAlertViewController") as? CommonAlertViewController else { return }
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: false){
+                        let data = DI_Alert()
+                        data.infoLabel = "디독을\n아직 구독하지 않고 계시네요!\n구독하여 더 다양한 뉴스레터를\n받아보시겠어요?"
+                        data.leftLabel = "다음에"
+                        data.rightLabel = "구독할래요"
+                        data.leftAction = { [weak self] _, _ in
+                            //탈퇴 기능 추가
+                            print("구독구독")
+                        }
+                        vc.configure(data)
+                    }
+                default:
+                    break
+                }
+            }
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

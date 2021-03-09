@@ -25,7 +25,7 @@ class ProfileEditViewController: CommonNavigationController, UITextFieldDelegate
         self.nameTextField.addLeftPadding()
         
         let rightButton = UIButton()
-        let rightImage = UIImage(named: "change")
+        let rightImage = UIImage(named: "changeFill")
         rightButton.setBackgroundImage(rightImage, for: .normal)
         rightButton.frame = CGRect(x: 0,y: 0, width: 71.4, height: 46)
         rightButton.addTarget(self, action: #selector(self.onButton), for: .touchUpInside)
