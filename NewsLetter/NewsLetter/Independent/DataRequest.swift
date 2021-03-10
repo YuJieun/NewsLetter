@@ -27,6 +27,18 @@ class DataRequest {
         }
     }
     
+    //MARK:- 회원가입
+    static func postJoin(param: DIR_User, success: @escaping (DI_User) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.JOIN_URL
+        let parameter = param.dictionary
+        ApiManager.shared.postApi(url, parameter, DI_User.self, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
+    //MARK:- 북마크
     static func getBookMark(success: @escaping (DI_BookMarkList) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.BOOKMARK_LIST_URL
         ApiManager.shared.getApi(url, DI_BookMarkList.self, success: { (data) in

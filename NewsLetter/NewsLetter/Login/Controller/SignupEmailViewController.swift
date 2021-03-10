@@ -26,7 +26,7 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
     
     func setup() {
         guard let data = self.userData else { return }
-        self.nameLabel.text = data.name
+        self.nameLabel.text = data.nickname
         
         emailField.attributedPlaceholder = NSAttributedString(string: "이메일을 입력해주세요.", attributes: [NSAttributedString.Key.foregroundColor: UIColor(rgb: 0xdfdfdf)])
         emailField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)

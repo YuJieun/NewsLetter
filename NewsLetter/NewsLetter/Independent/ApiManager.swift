@@ -16,6 +16,10 @@ enum FailureResult {
 }
 
 class ApiManager {
+    let headers: HTTPHeaders = [
+        "x-access-token": "",
+    ]
+    
     static let shared = ApiManager()
     private init() {} //생성자를 private하게 정의. 외부에서 인스턴스 생성x. 싱글톤 인스턴스를 하나만!
     
@@ -41,9 +45,9 @@ class ApiManager {
         }
     }
     
-    func postApi<T: Decodable>(_ url: String, _ param: [String:String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
+    func postApi<T: Decodable>(_ url: String, _ param: [String: String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
         guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
-        AF.request(url, method: .post, parameters: param).validate().responseJSON { response in
+        AF.request(url, method: .post, parameters: param, headers: headers).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
                 do {

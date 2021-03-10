@@ -11,7 +11,11 @@ class DI_UserInfo: Codable {
     var userId: String = ""
     var email: String = ""
     var nickname: String = ""
-    var password: String = ""
     var bookmarkCount: Int = 0
     var subscribingPlatformCount: Int = 0
+}
+
+class DI_User: Codable {
+    var token: String = ""
+    var user: DI_UserInfo
 }

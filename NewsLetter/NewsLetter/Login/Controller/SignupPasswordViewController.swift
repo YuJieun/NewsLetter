@@ -29,7 +29,7 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
     func setup() {
         guard let data = self.userData else { return }
         self.emailField.text = data.email
-        self.nameField.text = data.name
+        self.nameField.text = data.nickname
         
         secureButton.setImage(UIImage(named: "16ClosedEyes"), for: .normal)
         secureButton.setImage(UIImage(named: "16OpenedEyes"), for: .selected)
@@ -37,6 +37,7 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
         pwdField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         nextButton.setImage(UIImage(named: "337ButtonInitial_2"), for: .normal)
         nextButton.setImage(UIImage(named: "337ButtonActive_2"), for: .highlighted)
+        pwdLabel.textColor = UIColor(rgb: 0x828282)
         warningMsg.isHidden = true
         pwdField.delegate = self
     }
@@ -57,28 +58,38 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
     
     func checkPasswordValidate() -> Bool {
         //8자리 이상
-        guard let text = pwdField.text else { return false }
+        guard let text = pwdField.text else {
+            pwdLabel.textColor = UIColor(rgb: 0x828282)
+            return false
+        }
         if text.count < 8 {
+            pwdLabel.textColor = UIColor(rgb: 0xeb5757)
             warningMsg.isHidden = false
             return false
         }
         else {
+            pwdLabel.textColor = UIColor(rgb: 0x333333)
             warningMsg.isHidden = true
             return true
         }
     }
     
     func signup() {
-        //이후에 코드추가
         //회원가입 요청하고 실패하면 얼럿
         //성공하면 콜백타서 switchHome
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.switchLogin()
+        guard let userData = self.userData else { return }
+        DataRequest.postJoin(param: userData){ user in
+//            guard user is DI_User else { return }
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.switchLogin()
+            }
+        } failure: { error in
+            print(error?.localizedDescription ?? "")
         }
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        self.nextButton.isHighlighted = self.pwdField.text?.isValid  ?? false
+        self.nextButton.isHighlighted = checkPasswordValidate()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){

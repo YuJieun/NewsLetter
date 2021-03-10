@@ -40,7 +40,7 @@ class SignupNameViewController: UIViewController, UITextFieldDelegate {
             return
         }
         let userData = DIR_User()
-        userData.name = text
+        userData.nickname = text
         vc.userData = userData
         self.navigationController?.pushViewController(vc, animated: true)
     }
