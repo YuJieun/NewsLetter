@@ -78,13 +78,12 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
         //회원가입 요청하고 실패하면 얼럿
         //성공하면 콜백타서 switchHome
         guard let userData = self.userData else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         DataRequest.postJoin(param: userData){ user in
 //            guard user is DI_User else { return }
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                appDelegate.switchLogin()
-            }
+            appDelegate.switchLogin()
         } failure: { error in
-            print(error?.localizedDescription ?? "")
+            appDelegate.switchLogin()
         }
     }
     

@@ -11,13 +11,18 @@ import Network
 import Reachability
 
 enum FailureResult {
-    case alert
+    case network
     case custom
+}
+
+class DI_Error: Codable {
+    var code: String = ""
+    var message: String = ""
 }
 
 class ApiManager {
     let headers: HTTPHeaders = [
-        "x-access-token": "",
+        "Content-Type": "application/json"
     ]
     
     static let shared = ApiManager()
@@ -27,7 +32,7 @@ class ApiManager {
     //validate는 status code가 200대인지와 header와 일치하는 content type인지를 검사한다.
 
     func getApi<T: Decodable>(_ url: String, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
-        guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
+        guard checkNetworkAvailable() == true else { failure(.network, nil); return }
         AF.request(url).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
@@ -45,9 +50,9 @@ class ApiManager {
         }
     }
     
-    func postApi<T: Decodable>(_ url: String, _ param: [String: String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
-        guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
-        AF.request(url, method: .post, parameters: param, headers: headers).validate().responseJSON { response in
+    func postApi<T: Decodable>(_ url: String, _ param: [String: String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
+        guard checkNetworkAvailable() == true else { failure(.network, ""); return }
+        AF.request(url, method: .post, parameters: param, encoder: JSONParameterEncoder.default, headers: headers).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
                 do {
@@ -56,16 +61,28 @@ class ApiManager {
                     success(json)
                 }
                 catch(let err) {
-                    failure(.custom, err)
+                    failure(.custom, err.localizedDescription)
                 }
             case .failure(let err):
-                failure(.custom, err)
+                if let data = response.data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+                        let posts = json?["message"] ?? "Error"
+                        failure(.custom, posts)
+                    }
+                    catch(let err) {
+                        failure(.custom, err.localizedDescription )
+                    }
+                }
+                else {
+                    failure(.custom, err.localizedDescription)
+                }
             }
         }
     }
     
     func deleteApi<T: Decodable>(_ url: String, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
-        guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
+        guard checkNetworkAvailable() == true else { failure(.network, nil); return }
         AF.request(url, method: .delete).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
@@ -85,7 +102,7 @@ class ApiManager {
     
     
     func patchApi<T: Decodable>(_ url: String, _ param: [String:String]?, _ type: T.Type, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Error?) -> Void) {
-        guard checkNetworkAvailable() == true else { failure(.alert, nil); return }
+        guard checkNetworkAvailable() == true else { failure(.network, nil); return }
         AF.request(url, method: .patch, parameters: param).validate().responseJSON { response in
             switch response.result {
             case .success(let res):

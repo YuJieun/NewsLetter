@@ -8,7 +8,7 @@
 import Foundation
 
 class DI_UserInfo: Codable {
-    var userId: String = ""
+    var userId: Int = 0
     var email: String = ""
     var nickname: String = ""
     var bookmarkCount: Int = 0
@@ -17,5 +17,5 @@ class DI_UserInfo: Codable {
 
 class DI_User: Codable {
     var token: String = ""
-    var user: DI_UserInfo
+    var user: DI_UserInfo?
 }

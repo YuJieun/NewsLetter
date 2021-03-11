@@ -112,6 +112,85 @@
             </objects>
             <point key="canvasLocation" x="707" y="90"/>
         </scene>
+        <!--Common Error View Controller-->
+        <scene sceneID="nsa-Bs-xUj">
+            <objects>
+                <viewController restorationIdentifier="CommonErrorViewController" storyboardIdentifier="CommonErrorViewController" id="CZd-9H-uPN" customClass="CommonErrorViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ypd-Vd-wVf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fe8-jX-DFe">
+                                <rect key="frame" x="80" y="375" width="254" height="156"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWe-ra-AAk">
+                                        <rect key="frame" x="0.0" y="14" width="254" height="87"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyD-eM-lHN">
+                                                <rect key="frame" x="15" y="0.0" width="224" height="87"/>
+                                                <string key="text">oo을
+아직 구독하지 않고 계시네요!
+구독하여 더 다양한 뉴스레터를
+받아보시겠어요?</string>
+                                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="13"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="iyD-eM-lHN" secondAttribute="bottom" id="Xmb-YC-TIv"/>
+                                            <constraint firstItem="iyD-eM-lHN" firstAttribute="top" secondItem="CWe-ra-AAk" secondAttribute="top" id="Y6e-JU-ZVg"/>
+                                            <constraint firstAttribute="trailing" secondItem="iyD-eM-lHN" secondAttribute="trailing" constant="15" id="mzp-Es-7nS"/>
+                                            <constraint firstItem="iyD-eM-lHN" firstAttribute="leading" secondItem="CWe-ra-AAk" secondAttribute="leading" constant="15" id="yGg-Uh-cJK"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3G-xc-ANV">
+                                        <rect key="frame" x="0.0" y="113" width="254" height="43"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="PAD-ui-EtZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="14"/>
+                                        <state key="normal" title="다음에">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onButton:" destination="CZd-9H-uPN" eventType="touchUpInside" id="7KG-PF-92Y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="f3G-xc-ANV" firstAttribute="top" secondItem="CWe-ra-AAk" secondAttribute="bottom" constant="12" id="8qC-KK-YO4"/>
+                                    <constraint firstAttribute="height" constant="156" id="N6q-aP-erC"/>
+                                    <constraint firstAttribute="trailing" secondItem="f3G-xc-ANV" secondAttribute="trailing" id="O06-gH-rgO"/>
+                                    <constraint firstAttribute="width" constant="254" id="TFy-df-Lr2"/>
+                                    <constraint firstItem="CWe-ra-AAk" firstAttribute="leading" secondItem="fe8-jX-DFe" secondAttribute="leading" id="ZoC-qp-Gyt"/>
+                                    <constraint firstItem="f3G-xc-ANV" firstAttribute="leading" secondItem="fe8-jX-DFe" secondAttribute="leading" id="cOg-s4-2Ku"/>
+                                    <constraint firstAttribute="trailing" secondItem="CWe-ra-AAk" secondAttribute="trailing" id="icP-uH-m5Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="f3G-xc-ANV" secondAttribute="bottom" id="sDn-Re-zAy"/>
+                                    <constraint firstItem="CWe-ra-AAk" firstAttribute="top" secondItem="fe8-jX-DFe" secondAttribute="top" constant="14" id="v7A-Yc-jqV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hob-Fd-Ksx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fe8-jX-DFe" firstAttribute="centerX" secondItem="hob-Fd-Ksx" secondAttribute="centerX" id="14o-Ia-UTN"/>
+                            <constraint firstItem="fe8-jX-DFe" firstAttribute="centerY" secondItem="hob-Fd-Ksx" secondAttribute="centerY" id="l8Y-Wi-TYE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alertButton" destination="f3G-xc-ANV" id="NYe-7f-0EV"/>
+                        <outlet property="alertLabel" destination="iyD-eM-lHN" id="IL0-gz-hxh"/>
+                        <outlet property="alertView" destination="fe8-jX-DFe" id="G39-Bl-ZPu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AWZ-pB-5Kp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="707" y="90"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
