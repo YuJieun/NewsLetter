@@ -15,6 +15,7 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var warningMsg: UILabel!
+    @IBOutlet weak var warningImg: UIImageView!
     @IBOutlet weak var clearButton: UIButton!
     
     var userData: DIR_User?
@@ -35,6 +36,7 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
         emailLabel.textColor = UIColor(rgb: 0x828282)
         clearButton.isHidden = true
         warningMsg.isHidden = true
+        warningImg.isHidden = true
         emailField.delegate = self
     }
     
@@ -54,6 +56,7 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
         emailField.text = ""
         emailLabel.textColor = UIColor(rgb: 0x828282)
         warningMsg.isHidden = true
+        warningImg.isHidden = true
         clearButton.isHidden = true
     }
     
@@ -62,6 +65,7 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
         guard let text = emailField.text, text.isValid else {
             emailLabel.textColor = UIColor(rgb: 0x828282)
             warningMsg.isHidden = true
+            warningImg.isHidden = true
             clearButton.isHidden = true
             return false
         }
@@ -74,11 +78,13 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
         if flag {
             emailLabel.textColor = UIColor(rgb: 0x333333)
             warningMsg.isHidden = true
+            warningImg.isHidden = true
             return true
         }
         else {
             emailLabel.textColor = UIColor(rgb: 0xeb5757)
             warningMsg.isHidden = false
+            warningImg.isHidden = false
             return false
         }
     }

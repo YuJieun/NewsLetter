@@ -16,6 +16,7 @@ class SignupNameViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var warningMsg: UILabel!
+    @IBOutlet weak var warningImg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class SignupNameViewController: UIViewController, UITextFieldDelegate {
         nameLabel.textColor = UIColor(rgb: 0x828282)
         clearButton.isHidden = true
         warningMsg.isHidden = true
+        warningImg.isHidden = true
         nameTextField.delegate = self
     }
     
@@ -49,6 +51,7 @@ class SignupNameViewController: UIViewController, UITextFieldDelegate {
         nameTextField.text = ""
         nameLabel.textColor = UIColor(rgb: 0x828282)
         warningMsg.isHidden = true
+        warningImg.isHidden = true
         clearButton.isHidden = true
     }
     
@@ -59,18 +62,21 @@ class SignupNameViewController: UIViewController, UITextFieldDelegate {
             clearButton.isHidden = false
             nameLabel.textColor = UIColor(rgb: 0x333333)
             warningMsg.isHidden = true
+            warningImg.isHidden = true
             if text.count <= 10 {
                 return true
             }
             else {
                 nameLabel.textColor = UIColor(rgb: 0xeb5757)
                 warningMsg.isHidden = false
+                warningImg.isHidden = false
                 return false
             }
         }
         else {
             nameLabel.textColor = UIColor(rgb: 0x828282)
             warningMsg.isHidden = true
+            warningImg.isHidden = true
             clearButton.isHidden = true
             return false
         }

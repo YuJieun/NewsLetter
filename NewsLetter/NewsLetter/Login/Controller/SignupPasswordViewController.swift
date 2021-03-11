@@ -18,6 +18,7 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var pwdLabel: UILabel!
     @IBOutlet weak var warningMsg: UILabel!
+    @IBOutlet weak var warningImg: UIImageView!
     
     var userData: DIR_User?
     
@@ -39,6 +40,7 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
         nextButton.setImage(UIImage(named: "337ButtonActive_2"), for: .highlighted)
         pwdLabel.textColor = UIColor(rgb: 0x828282)
         warningMsg.isHidden = true
+        warningImg.isHidden = true
         pwdField.delegate = self
     }
     
@@ -65,11 +67,13 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
         if text.count < 8 {
             pwdLabel.textColor = UIColor(rgb: 0xeb5757)
             warningMsg.isHidden = false
+            warningImg.isHidden = false
             return false
         }
         else {
             pwdLabel.textColor = UIColor(rgb: 0x333333)
             warningMsg.isHidden = true
+            warningImg.isHidden = true
             return true
         }
     }
