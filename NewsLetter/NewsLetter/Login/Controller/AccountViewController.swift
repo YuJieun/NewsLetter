@@ -16,7 +16,7 @@ class AccountViewController: CommonViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var pwdView: UIView!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -53,8 +53,25 @@ class AccountViewController: CommonViewController {
     
     //로그인 버튼
     @IBAction func onSigninButton(_ sender: UIButton) {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.switchHome()
+        guard let pwd = passwordTextField.text else { return }
+        guard let email = emailTextField.text else { return }
+        guard checkEmailValidate() && checkPasswordValidate() else { return }
+        let userData = DIR_User()
+        userData.password = pwd
+        userData.email = email
+        
+        DataRequest.postLogin(param: userData){ user in
+            guard let userInfo = user.user else { return }
+            MemberManager.shared.setNickName(userInfo.nickname)
+            KeychainService.shared.saveToken(token: user.token)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.switchHome()
+            }
+        } failure: { [weak self] _ in
+            guard let self = self else { return }
+            self.passwordTextField.text = ""
+            self.emailTextField.text = ""
+            print("로그인 에러")
         }
     }
  
@@ -79,7 +96,7 @@ extension AccountViewController: UITextFieldDelegate {
     }
     
     func checkEmailValidate() -> Bool{
-        guard let text = emailTextField.text else { return false }
+        guard let text = emailTextField.text, text.isValid else { return false }
         if text.isValid {
             return true
         }

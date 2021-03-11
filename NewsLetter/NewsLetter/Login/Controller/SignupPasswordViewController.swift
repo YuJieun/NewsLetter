@@ -82,7 +82,7 @@ class SignupPasswordViewController: UIViewController, UITextFieldDelegate {
         DataRequest.postJoin(param: userData){ user in
 //            guard user is DI_User else { return }
             appDelegate.switchLogin()
-        } failure: { error in
+        } failure: { _ in
             appDelegate.switchLogin()
         }
     }

@@ -39,6 +39,7 @@
 		910A760525D3B64D00F16E3F /* HomeNewLettersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910A760325D3B64D00F16E3F /* HomeNewLettersCell.xib */; };
 		91418FFE25CFE0AD0097248D /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91418FFD25CFE0AD0097248D /* ApiManager.swift */; };
 		9143BBD825FA4776004185EF /* CommonErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9143BBD725FA4776004185EF /* CommonErrorViewController.swift */; };
+		9143BBE225FA5E74004185EF /* MemberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9143BBE125FA5E74004185EF /* MemberManager.swift */; };
 		91733A3025E69E99009BBB04 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91733A2E25E69E99009BBB04 /* Poppins-Bold.ttf */; };
 		91733A3125E69E99009BBB04 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91733A2F25E69E99009BBB04 /* Poppins-Medium.ttf */; };
 		917EDC3825CD126800AF600A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917EDC3725CD126800AF600A /* Login.storyboard */; };
@@ -145,6 +146,7 @@
 		910A760325D3B64D00F16E3F /* HomeNewLettersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNewLettersCell.xib; sourceTree = "<group>"; };
 		91418FFD25CFE0AD0097248D /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		9143BBD725FA4776004185EF /* CommonErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonErrorViewController.swift; sourceTree = "<group>"; };
+		9143BBE125FA5E74004185EF /* MemberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManager.swift; sourceTree = "<group>"; };
 		91733A2E25E69E99009BBB04 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		91733A2F25E69E99009BBB04 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		917EDC3725CD126800AF600A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				910A75F425D3A56600F16E3F /* DI_UserInfo.swift */,
+				9143BBE125FA5E74004185EF /* MemberManager.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				91D3862E25D2531B00235438 /* CommonCollectionViewCell.swift in Sources */,
 				91ABDD7525DB5AE000CD7C37 /* SmallLetterBannerCell.swift in Sources */,
 				91B9ECB025DE4C85006B3E68 /* SettingMenuCell.swift in Sources */,
+				9143BBE225FA5E74004185EF /* MemberManager.swift in Sources */,
 				91B9ECA325DE46D1006B3E68 /* MypageProfileCell.swift in Sources */,
 				91ABDD6D25DB580900CD7C37 /* HomeFilterBarCell.swift in Sources */,
 				91885B3525ED19F90000D8E6 /* HomeNoLetterCell.swift in Sources */,

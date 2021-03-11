@@ -56,6 +56,17 @@ class DataRequest {
         })
     }
     
+    //MARK:- 로그인
+    static func postLogin(param: DIR_User, success: @escaping (DI_User) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.LOGIN_URL
+        let parameter = param.dictionary
+        ApiManager.shared.postApi(url, parameter, DI_User.self, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
     //MARK:- 북마크
 //    static func getBookMark(success: @escaping (DI_BookMarkList) -> Void, failure: @escaping (Error?) -> Void ) {
 //        let url = ConstGroup.BOOKMARK_LIST_URL
