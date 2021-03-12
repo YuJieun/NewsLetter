@@ -28,17 +28,17 @@ public class KeychainService {
     private init() {}
 
     public func saveToken(token: String) {
-        let key = "LOGIN_TOKEN" //이후에 const group으로 빼기
+        let key = ConstGroup.KEYCHAIN_TOKEN
         KeychainService.shared.save(key, token)
     }
 
     public func loadToken() -> String? {
-        let token = KeychainService.shared.load("LOGIN_TOKEN")
+        let token = KeychainService.shared.load(ConstGroup.KEYCHAIN_TOKEN)
         return token
     }
     
     public func isTokenValidate() -> Bool {
-        if let token = KeychainService.shared.load("LOGIN_TOKEN") {
+        if let token = KeychainService.shared.load(ConstGroup.KEYCHAIN_TOKEN) {
             return true
         }
         else {
@@ -47,7 +47,7 @@ public class KeychainService {
     }
     
     public func deleteToken() {
-        KeychainService.shared.delete("LOGIN_TOKEN")
+        KeychainService.shared.delete(ConstGroup.KEYCHAIN_TOKEN)
     }
 
     public func save(_ key: String, _ value: String) {

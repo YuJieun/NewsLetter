@@ -63,12 +63,13 @@ class AccountViewController: CommonViewController {
         DataRequest.postLogin(param: userData){ user in
             guard let userInfo = user.user else { return }
             MemberManager.shared.setNickName(userInfo.nickname)
+            MemberManager.shared.setUserId(userInfo.userId)
             KeychainService.shared.saveToken(token: user.token)
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.switchHome()
             }
         } failure: { [weak self] _ in
-            guard let self = self else { return }
+            guard let `self` = self else { return }
             self.passwordTextField.text = ""
             self.emailTextField.text = ""
             print("로그인 에러")
