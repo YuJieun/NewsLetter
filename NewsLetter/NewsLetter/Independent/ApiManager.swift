@@ -48,7 +48,8 @@ class ApiManager {
                     success(json)
                 }
                 catch(let err) {
-                    failure(.custom, err.localizedDescription)
+                    print(err.localizedDescription)
+                    failure(.custom, "Parsing Error")
                 }
             case .failure(let err):
                 if let data = response.data {
@@ -57,8 +58,8 @@ class ApiManager {
                         let posts = json?["message"] ?? "Error"
                         failure(.custom, posts)
                     }
-                    catch(let err) {
-                        failure(.custom, err.localizedDescription )
+                    catch {
+                        failure(.custom, "Parsing Error" )
                     }
                 }
                 else {

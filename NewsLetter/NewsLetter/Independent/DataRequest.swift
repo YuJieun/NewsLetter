@@ -87,6 +87,17 @@ class DataRequest {
             handleErrorType(errType, data, failure)
         })
     }
+    
+    //MARK:- 메일목록
+    static func getMailList(success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
+        let userId = MemberManager.shared.getuserId()
+        let url = "\(ConstGroup.BASE_URL)/\(userId)/mailbox"
+        ApiManager.shared.requestApi(url, nil, DI_MailList.self, .get, isContainToken: false, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
 
 
     //MARK:- 북마크
