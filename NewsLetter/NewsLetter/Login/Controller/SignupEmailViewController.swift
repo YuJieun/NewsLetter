@@ -44,7 +44,7 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
         guard let data = userData else { return }
         guard checkEmailValidate() else { return }
         guard let emailText = emailField.text, emailText.isValid else { return }
-        DataRequest.postEmailCheck(param: emailText){ _ in
+        DataRequest.postEmailCheck(email: emailText){ _ in
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupPasswordViewController") as? SignupPasswordViewController else{
                 return
             }

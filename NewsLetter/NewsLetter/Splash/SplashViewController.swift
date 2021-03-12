@@ -20,26 +20,21 @@ class SplashViewController: UIViewController {
     
     func setup() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
-        print("check auto login")
-        if let token = KeychainService.shared.loadToken() {
-            
+        guard KeychainService.shared.isTokenValidate() else {
+            //토큰 유효하지 않으면 로그인화면으로 이동
+            appDelegate.switchLogin()
+            return
         }
-
-        //자동로그인 체크
-        appDelegate.switchLogin()
-//        DataRequest.getWeatherApI(){(isAutoLogin, data) in
-//            if isAutoLogin {
-//                appDelegate.switchHome()
-//            }
-//            else {
-//                appDelegate.switchLogin()
-//            }
-//        } failure: { error in
-//            //그럼 얘는 스플래시에서 아예 안넘어가는거 알쥬?
-//            //실패시 뭐할건지 처리..!
-//            print(error?.localizedDescription ?? "")
-//        }
+        
+        DataRequest.getUserInfo(){ data in
+            MemberManager.shared.setNickName(data.nickname)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.switchHome()
+            }
+        } failure: { _ in
+            KeychainService.shared.deleteToken()
+            appDelegate.switchLogin()
+        }
     }
     
     //자동 로그인 체크. 자동 로그인 되면 true 아니면 false리턴

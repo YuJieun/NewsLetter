@@ -36,6 +36,19 @@ public class KeychainService {
         let token = KeychainService.shared.load("LOGIN_TOKEN")
         return token
     }
+    
+    public func isTokenValidate() -> Bool {
+        if let token = KeychainService.shared.load("LOGIN_TOKEN") {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    public func deleteToken() {
+        KeychainService.shared.delete("LOGIN_TOKEN")
+    }
 
     public func save(_ key: String, _ value: String) {
         var keychainQuery = self.getKeychainQuery(key)

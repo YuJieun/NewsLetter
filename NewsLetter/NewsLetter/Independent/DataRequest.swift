@@ -49,7 +49,7 @@ class DataRequest {
     static func postJoin(param: DIR_User, success: @escaping (DI_User) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.JOIN_URL
         let parameter = param.dictionary
-        ApiManager.shared.postApi(url, parameter, DI_User.self, success: { (data) in
+        ApiManager.shared.requestApi(url, parameter, DI_User.self, .post,  success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -60,7 +60,7 @@ class DataRequest {
     static func postEmailCheck(email: String, success: @escaping (DI_EmailCheck) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.EMAIL_URL
         let parameter = ["email" : email]
-        ApiManager.shared.postApi(url, parameter, DI_EmailCheck.self, success: { (data) in
+        ApiManager.shared.requestApi(url, parameter, DI_EmailCheck.self, .post, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -71,7 +71,7 @@ class DataRequest {
     static func postLogin(param: DIR_User, success: @escaping (DI_User) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.LOGIN_URL
         let parameter = param.dictionary
-        ApiManager.shared.postApi(url, parameter, DI_User.self, success: { (data) in
+        ApiManager.shared.requestApi(url, parameter, DI_User.self, .post, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -79,10 +79,9 @@ class DataRequest {
     }
 
     //사용자 정보 가져오기
-    static func getUserInfo(param: DIR_User, success: @escaping (DI_User) -> Void, failure: @escaping (Error?) -> Void ) {
-        let url = ConstGroup.LOGIN_URL
-        let parameter = param.dictionary
-        ApiManager.shared.postApi(url, parameter, DI_User.self, success: { (data) in
+    static func getUserInfo(success: @escaping (DI_UserInfo) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.USERINFO_URL
+        ApiManager.shared.requestApi(url, nil, DI_UserInfo.self, .get, isContainToken: true, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
