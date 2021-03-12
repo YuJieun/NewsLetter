@@ -20,14 +20,18 @@ class SplashViewController: UIViewController {
     
     func setup() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+//        KeychainService.shared.deleteToken()
+
         guard KeychainService.shared.isTokenValidate() else {
             //토큰 유효하지 않으면 로그인화면으로 이동
             appDelegate.switchLogin()
             return
         }
-        
+
         DataRequest.getUserInfo(){ data in
             MemberManager.shared.setNickName(data.nickname)
+            MemberManager.shared.setUserId(data.userId)
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.switchHome()
             }
