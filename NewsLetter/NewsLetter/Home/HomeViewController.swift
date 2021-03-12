@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     var hasMoreLetters: Bool = true
     
     //MARK:- 데이터
+    var oldLetters: DI_MailList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +42,18 @@ class HomeViewController: UIViewController {
     }
     
     func setup() {
-        //0. 로그인하면, 사용자정보 가지고있음(싱글톤 패턴으로. 사용자이름과 아이디는 그 싱글톤에서 빼오기)
-        //1.
+        DataRequest.getMailList() { [weak self] data in
+            guard let `self` = self else { return }
+            self.oldLetters = data
+            self.collectionView.reloadData()
+        } failure: { _ in
+            print("메일 못가져옴")
+        }
     }
     
     @objc private func refresh(){
         // Fetch Weather Data
+        self.setup()
 //            fetchWeatherData()
         self.refreshControl.endRefreshing()
     }
@@ -125,7 +132,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case HomeSection.filterBar.rawValue:
             return 1
         case HomeSection.oldLetters.rawValue:
-            return 10
+            return self.oldLetters?.resultList.count ?? 0
         default:
             return 0
         }
@@ -168,11 +175,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
             return cell
         case HomeSection.oldLetters.rawValue:
+            guard let oldLetters = self.oldLetters else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
-            cell.row = indexPath.row
+//            cell.row = indexPath.row
             //데이터 넘길때 rankingVisible도 같이 넘기기
             cell.isRankingVisible = false
-            cell.configure(data: "")
+            cell.configure(data: oldLetters.resultList[indexPath.row])
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

@@ -28,33 +28,23 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     
     var row: Int = 0
     
+    var data: DI_Mail?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func configure(data: Any? = nil) {
-//        guard let data = data as? String else { return }
+        guard let data = data as? DI_Mail else { return }
+        self.data = data
         
         updateUI()
-        updateTmp()
-//        guard let _ = data else { return }
-        if isLock {
-            self.lockView.isHidden = false
-        }
-        else {
-            self.lockView.isHidden = true
-        }
-        
-        if isRankingVisible {
-            configureRankingUI()
-            self.rankingView.isHidden = false
-            if let data = data as? String {
-                self.rankingLabel.text = data
-            }
-        }
-        else {
-            self.rankingView.isHidden = true
-        }
+//        updateTmp()
+        self.bannerImageView.image = UIImage(named: ConstGroup.BANNERIMG[0])
+        self.bannerTitleLabel.text = data.title
+        self.bannerLogoImageView.load(urlStr: data.platformImageUrl)
+        self.bannerBrandLabel.text = data.platformName
+        self.bannerDateLabel.text = data.createdAt
     }
     
     func tmpConfigure() {
@@ -74,15 +64,33 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         
         self.bookmarkButton.setImage(UIImage(named: "24BookmarkLine"), for: .normal)
         self.bookmarkButton.setImage(UIImage(named: "24BookmarkFill"), for: .selected)
+        
+        if isLock {
+            self.lockView.isHidden = false
+        }
+        else {
+            self.lockView.isHidden = true
+        }
+        
+        if isRankingVisible {
+            configureRankingUI()
+            self.rankingView.isHidden = false
+            if let data = self.data, let ranking = data.rankingLabel{
+                self.rankingLabel.text = ranking
+            }
+        }
+        else {
+            self.rankingView.isHidden = true
+        }
     }
     
-    func updateTmp() {
-        self.bannerImageView.image = UIImage(named: ConstGroup.BANNERIMG[row])
-        self.bannerTitleLabel.text = ConstGroup.BANNERTXT[row]
-        self.bannerLogoImageView.image = UIImage(named: ConstGroup.LOGOIMG[row])
-        self.bannerBrandLabel.text = ConstGroup.LOGOTXT[row]
-        self.bannerDateLabel.text = ConstGroup.DATETXT[row]
-    }
+//    func updateTmp() {
+//        self.bannerImageView.image = UIImage(named: ConstGroup.BANNERIMG[row])
+//        self.bannerTitleLabel.text = ConstGroup.BANNERTXT[row]
+//        self.bannerLogoImageView.image = UIImage(named: ConstGroup.LOGOIMG[row])
+//        self.bannerBrandLabel.text = ConstGroup.LOGOTXT[row]
+//        self.bannerDateLabel.text = ConstGroup.DATETXT[row]
+//    }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
         return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize(className: "SmallLetterBannerCell").height)

@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+class DI_MailList: Codable {
+    var resultList: [DI_Mail] = []
+}
+
+class DI_Mail: Codable {
+    var letterId: Int = 0
+    var platformId: Int = 0
+    var platformName: String = ""
+    var platformImageUrl: String = ""
+    var bookmarkId: Int = 0
+    var title: String = ""
+    var content: String = ""
+    var thumbnailImageUrl: String? = ""
+    var bookmarkCount: Int = 0
+    var createdAt: String = ""
+    var modifiedAt: String = ""
+    
+    //custom
+    var rankingLabel: String?
+}

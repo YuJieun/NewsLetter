@@ -72,6 +72,7 @@
 		91ABDD6E25DB580900CD7C37 /* HomeFilterBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABDD6C25DB580900CD7C37 /* HomeFilterBarCell.xib */; };
 		91ABDD7525DB5AE000CD7C37 /* SmallLetterBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ABDD7325DB5AE000CD7C37 /* SmallLetterBannerCell.swift */; };
 		91ABDD7625DB5AE000CD7C37 /* SmallLetterBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABDD7425DB5AE000CD7C37 /* SmallLetterBannerCell.xib */; };
+		91AD442325FBADD600C1027A /* DI_Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD442225FBADD600C1027A /* DI_Mail.swift */; };
 		91AFAA1825EFBB9400150098 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91AFAA1725EFBB9400150098 /* Alert.storyboard */; };
 		91AFAA1A25EFBD1700150098 /* DI_Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AFAA1925EFBD1700150098 /* DI_Alert.swift */; };
 		91B1606A25EE84B10072E4F9 /* MailDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91B1606925EE84B10072E4F9 /* MailDetail.storyboard */; };
@@ -180,6 +181,7 @@
 		91ABDD6C25DB580900CD7C37 /* HomeFilterBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFilterBarCell.xib; sourceTree = "<group>"; };
 		91ABDD7325DB5AE000CD7C37 /* SmallLetterBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLetterBannerCell.swift; sourceTree = "<group>"; };
 		91ABDD7425DB5AE000CD7C37 /* SmallLetterBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallLetterBannerCell.xib; sourceTree = "<group>"; };
+		91AD442225FBADD600C1027A /* DI_Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI_Mail.swift; sourceTree = "<group>"; };
 		91AFAA1725EFBB9400150098 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		91AFAA1925EFBD1700150098 /* DI_Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI_Alert.swift; sourceTree = "<group>"; };
 		91B1606925EE84B10072E4F9 /* MailDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MailDetail.storyboard; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 		917EDC4425CD18F200AF600A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				91AD442125FBADC600C1027A /* DI */,
 				91ABDD6A25DB57DD00CD7C37 /* filterCell */,
 				91D3861F25D2419F00235438 /* cell */,
 				917EDC4825CD192D00AF600A /* HomeViewController.swift */,
@@ -420,6 +423,14 @@
 			children = (
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		91AD442125FBADC600C1027A /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				91AD442225FBADD600C1027A /* DI_Mail.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		91B1606825EE7FC10072E4F9 /* MailDetail */ = {
@@ -715,6 +726,7 @@
 				91064C0725CAC6DC0086E2EF /* AppDelegate.swift in Sources */,
 				91885B2B25ECF2F40000D8E6 /* SettingDivideCell.swift in Sources */,
 				91ABDD6825DB526F00CD7C37 /* BigLetterBannerCell.swift in Sources */,
+				91AD442325FBADD600C1027A /* DI_Mail.swift in Sources */,
 				91AFAA1A25EFBD1700150098 /* DI_Alert.swift in Sources */,
 				91885B3C25ED200B0000D8E6 /* CommonAlertViewController.swift in Sources */,
 				9183356E25EBD531007721CD /* SearchBarCell.swift in Sources */,
