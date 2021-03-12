@@ -44,12 +44,16 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
         guard let data = userData else { return }
         guard checkEmailValidate() else { return }
         guard let emailText = emailField.text, emailText.isValid else { return }
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupPasswordViewController") as? SignupPasswordViewController else{
-            return
+        DataRequest.postEmailCheck(param: emailText){ _ in
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupPasswordViewController") as? SignupPasswordViewController else{
+                return
+            }
+            data.email = emailText
+            vc.userData = data
+            self.navigationController?.pushViewController(vc, animated: true)
+        } failure: { _ in
+            print("이메일 중복!! 요쪽 미완성임~~ㅎㅎ")
         }
-        data.email = emailText
-        vc.userData = data
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func onClearButton(_ sender: UIButton) {

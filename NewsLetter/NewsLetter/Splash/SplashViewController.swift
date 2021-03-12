@@ -23,7 +23,7 @@ class SplashViewController: UIViewController {
         
         print("check auto login")
         if let token = KeychainService.shared.loadToken() {
-            print("=========토큰있어======\(token)")
+            
         }
 
         //자동로그인 체크

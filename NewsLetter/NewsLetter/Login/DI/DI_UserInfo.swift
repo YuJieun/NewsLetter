@@ -19,3 +19,4 @@ class DI_User: Codable {
     var token: String = ""
     var user: DI_UserInfo?
 }
+
