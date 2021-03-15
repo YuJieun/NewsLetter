@@ -45,8 +45,8 @@ class HomeViewController: UIViewController {
     func setup() {
         DataRequest.getMailList() { [weak self] data in
             guard let `self` = self else { return }
-            self.oldLetters = data
-            self.newLetters = data
+            self.oldLetters = data //임시 셋팅
+            self.newLetters = data //임시 셋팅
             self.collectionView.reloadData()
         } failure: { _ in
             print("메일 못가져옴")

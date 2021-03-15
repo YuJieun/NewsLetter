@@ -14,13 +14,12 @@ class SearchBarCell: CommonCollectionViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         self.searchBar.delegate = self
+        configureUI()
     }
 
     //https://devmjun.github.io/archive/SearchController
     
     func configure(data: Any? = nil) {
-//        guard let _ = data as? String else { return }
-        configureUI()
     }
     
     func configureUI() {

@@ -64,7 +64,7 @@ class BigLetterBannerCell: CommonCollectionViewCell {
     }
     
     @IBAction func onLetterButton(_ sender: UIButton) {
-        cellClosure?("letter",nil)
+        cellClosure?(MailCallbackType.letterDetail.rawValue, nil)
     }
     
     @IBAction func onBookMarkButton(_ sender: UIButton) {

@@ -99,6 +99,25 @@ class DataRequest {
         })
     }
 
+    static func getMailRankingList(success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.RANKING_URL
+        ApiManager.shared.requestApi(url, nil, DI_MailList.self, .get, isContainToken: true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+
+    static func getMailSearch(keyword: String, success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.SEARCH_URL
+        let parameter = ["searchKeyword" : keyword]
+        ApiManager.shared.requestApi(url, parameter, DI_MailList.self, .get, isContainToken: true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+
 
     //MARK:- 북마크
     static func postAddBookMark(letterId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {

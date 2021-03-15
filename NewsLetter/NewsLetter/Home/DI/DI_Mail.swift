@@ -10,6 +10,7 @@ import Foundation
 enum MailCallbackType: String, CaseIterable {
     case letterDetail
     case bookmark
+    case lock
 }
 
 class DI_MailList: Codable {
@@ -23,11 +24,12 @@ class DI_Mail: Codable {
     var platformImageUrl: String = ""
     var bookmarkId: Int = 0
     var title: String = ""
-    var content: String = ""
+    var content: String? = ""
     var thumbnailImageUrl: String? = ""
     var bookmarkCount: Int = 0
     var createdAt: String = ""
     var modifiedAt: String = ""
+    var isSubscribing: Int = 1
     
     //custom
     var rankingLabel: String?
