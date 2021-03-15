@@ -57,10 +57,10 @@ class DataRequest {
     }
 
     //이메일 중복체크
-    static func postEmailCheck(email: String, success: @escaping (DI_EmailCheck) -> Void, failure: @escaping (Error?) -> Void ) {
+    static func postEmailCheck(email: String, success: @escaping (DI_Common) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.EMAIL_URL
         let parameter = ["email" : email]
-        ApiManager.shared.requestApi(url, parameter, DI_EmailCheck.self, .post, success: { (data) in
+        ApiManager.shared.requestApi(url, parameter, DI_Common.self, .post, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -101,6 +101,27 @@ class DataRequest {
 
 
     //MARK:- 북마크
+    static func postAddBookMark(letterId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.BOOKMARK_URL
+        let parameter = ["letterId" : letterId]
+        ApiManager.shared.requestApi(url, parameter, DI_None.self, .post, isContainToken: true, success: { _ in
+            success()
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+
+    static func deleteBookMark(bookmarkId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = "\(ConstGroup.BOOKMARK_URL)/\(bookmarkId)"
+        ApiManager.shared.requestApi(url, parameter, DI_None.self, .delete, isContainToken: true, success: { _ in
+            success()
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+
+
+
 //    static func getBookMark(success: @escaping (DI_BookMarkList) -> Void, failure: @escaping (Error?) -> Void ) {
 //        let url = ConstGroup.BOOKMARK_LIST_URL
 //        ApiManager.shared.getApi(url, DI_BookMarkList.self, success: { (data) in

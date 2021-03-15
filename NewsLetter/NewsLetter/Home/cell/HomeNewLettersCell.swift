@@ -59,9 +59,9 @@ extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSour
         guard let data = self.data else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
         let cell = collectionView.dequeueReusableCell(BigLetterBannerCell.self, "BigLetterBannerCell", for: indexPath)
         cell.configure(data: data.resultList[indexPath.row])
-        cell.cellClosure = { [weak self] _,_ in
+        cell.cellClosure = { [weak self] type ,_ in
             guard let `self` = self else { return }
-            self.cellClosure?("letters", nil)
+            cell.cellClosure?(type, nil)
         }
         return cell
     }

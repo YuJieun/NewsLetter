@@ -51,6 +51,16 @@ class HomeViewController: UIViewController {
         } failure: { _ in
             print("메일 못가져옴")
         }
+
+        //이후에 밑에 getNewLetters, getOldLetters로 나누기
+    }
+
+    func getNewLetters() {
+
+    }
+
+    func getOldLetters() {
+
     }
     
     @objc private func refresh(){
@@ -94,20 +104,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let isNewLetterValid: Bool = self.newLetters?.resultList.count ?? 0 > 0 ? true : false
         switch section {
         case HomeSection.mainTitle.rawValue:
-            return 1
+            return isNewLetterValid ? 1 : 0
         case HomeSection.noLetterTitle.rawValue:
-            return 0
+            return isNewLetterValid ? 0 : 1
         case HomeSection.newLetters.rawValue:
-            if self.newLetters?.resultList.count ?? 0 > 0 {
-                return 1
-            }
-            else {
-                return 0
-            }
+            return isNewLetterValid ? 1 : 0
         case HomeSection.noLetters.rawValue:
-            return 0
+            return isNewLetterValid ? 0 : 1
         case HomeSection.filterBar.rawValue:
             return 1
         case HomeSection.oldLetters.rawValue:
@@ -132,12 +138,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case HomeSection.newLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeNewLettersCell.self, "HomeNewLettersCell", for: indexPath)
             cell.configure(data: self.newLetters)
-            cell.cellClosure = { [weak self] _,_ in
-                //메일 세부페이지
+            cell.cellClosure = { [weak self] type, _ in
                 guard let `self` = self else { return }
-                let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
-                self.navigationController?.pushViewController(vc, animated: true)
+                guard let type = type as? String else { return }
+                if let type = MailCallbackType(rawValue: type) {
+                    switch type {
+                    case .letterDetail:
+                        let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    case .bookmark:
+                        self.getNewLetters()
+                        //이후에 newletter섹션만 reload하기
+                    default:
+                        break
+                    }
+                }
             }
             return cell
         case HomeSection.noLetters.rawValue:
@@ -160,10 +176,19 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.configure(data: oldLetters.resultList[indexPath.row])
             cell.cellClosure = { [weak self] (type,data) in
                 guard let `self` = self else { return }
-                if type == "letter" {
-                    let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
-                    self.navigationController?.pushViewController(vc, animated: true)
+                guard let type = type as? String else { return }
+                if let type = MailCallbackType(rawValue: type) {
+                    switch type {
+                    case .letterDetail:
+                        let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    case .bookmark:
+                        self.getOldLetters()
+                        //이후에 oleLetter섹션만 reload하기
+                    default:
+                        break
+                    }
                 }
             }
             return cell

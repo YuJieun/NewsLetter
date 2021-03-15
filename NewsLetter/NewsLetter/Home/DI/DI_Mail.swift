@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum MailCallbackType: String, CaseIterable {
+    case letterDetail
+    case bookmark
+}
+
 class DI_MailList: Codable {
     var resultList: [DI_Mail] = []
 }

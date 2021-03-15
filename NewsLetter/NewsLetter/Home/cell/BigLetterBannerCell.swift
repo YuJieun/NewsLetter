@@ -68,6 +68,29 @@ class BigLetterBannerCell: CommonCollectionViewCell {
     }
     
     @IBAction func onBookMarkButton(_ sender: UIButton) {
-        self.bookMarkButton.isSelected = !self.bookMarkButton.isSelected
+        guard let data = self.data else { return }
+        if self.bookMarkButton.isSelected {
+            //북마크 해제
+            DataRequest.deleteBookMark(bookmarkId: data.bookmarkId) { [weak self] _ in
+                guard let `self` = self else { return }
+                self.bookMarkButton.isSelected = false
+                cellClosure?(MailCallbackType.bookmark.rawValue, nil)
+                #warning("북마크 하고 전체 reload때리는게 과연 맞는가?")
+            } failure: { _ in
+                print("북마크 추가 오류")
+            }
+        }
+        else {
+            //북마크 추가
+            DataRequest.postAddBookMark(letterId: data.letterId) { [weak self] _ in
+                guard let `self` = self else { return }
+                self.bookMarkButton.isSelected = true
+                cellClosure?(MailCallbackType.bookmark.rawValue, nil)
+            } failure: { _ in
+                print("북마크 추가 오류")
+            }
+        }
     }
 }
+
+
