@@ -10,7 +10,9 @@ import UIKit
 class HomeNewLettersCell: CommonCollectionViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
+
     var currentIndex: CGFloat = 0 // 현재 보여지고 있는 페이지의 인덱스
+    var data: DI_MailList?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,12 +21,10 @@ class HomeNewLettersCell: CommonCollectionViewCell {
     }
     
     func setCollectionView() {
-        //셀 사이즈가 고정이어야할지, 아니면 좌우여백이 고정이어야할지는 고민해봐야할 문제..!(디자이너분과)
-        
-        //셀
+        //셀너비
         let cellWidth:CGFloat = 320
         
-        // 좌우
+        // 좌우 여백
         let inset:CGFloat = 19
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -34,7 +34,9 @@ class HomeNewLettersCell: CommonCollectionViewCell {
     }
     
     func configure(data: Any? = nil) {
-//        guard let data = data as? String else { return }
+        guard let data = data as? DI_MailList else { return }
+        self.data = data
+        self.collectionView.reloadData()
     }
 
     class func getSize(_ data: Any? = nil) -> CGSize {
@@ -50,13 +52,13 @@ extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.data?.resultList.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let data = self.data else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
         let cell = collectionView.dequeueReusableCell(BigLetterBannerCell.self, "BigLetterBannerCell", for: indexPath)
-        cell.row = indexPath.row
-        cell.configure()
+        cell.configure(data: data.resultList[indexPath.row])
         cell.cellClosure = { [weak self] _,_ in
             guard let `self` = self else { return }
             self.cellClosure?("letters", nil)

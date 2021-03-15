@@ -27,3 +27,4 @@ class DI_Mail: Codable {
     //custom
     var rankingLabel: String?
 }
+

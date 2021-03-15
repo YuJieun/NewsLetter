@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     
     //MARK:- 데이터
     var oldLetters: DI_MailList?
+    var newLetters: DI_MailList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class HomeViewController: UIViewController {
         DataRequest.getMailList() { [weak self] data in
             guard let `self` = self else { return }
             self.oldLetters = data
+            self.newLetters = data
             self.collectionView.reloadData()
         } failure: { _ in
             print("메일 못가져옴")
@@ -52,27 +54,9 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func refresh(){
-        // Fetch Weather Data
         self.setup()
-//            fetchWeatherData()
         self.refreshControl.endRefreshing()
     }
-    
-//    private func fetchWeatherData() {
-//        dataManager.weatherDataForLocation(latitude: 37.8267, longitude: -122.423) { (location, error) in
-//            DispatchQueue.main.async {
-//                if let location = location {
-//                    self.days = location.days
-//                }
-//
-//                self.updateView()
-//                self.refreshControl.endRefreshing()
-//                self.activityIndicatorView.stopAnimating()
-//            }
-//        }
-//    }
-//    refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-//    refreshControl.attributedTitle = NSAttributedString(string: "Fetching Weather Data ...", attributes: attributes)
 
 
     func checkMoreLetters(_ collectionView: UICollectionView) {
@@ -103,16 +87,6 @@ class HomeViewController: UIViewController {
     }
 }
 
-
-//호출순서..이후에 이거 확인해봐야할듯.! setup과 collectionView채우는순서
-/*
- UIViewController.viewDidLoad
- UIViewController.viewDidLayoutSubviews
- UICollectionViewDataSource.collectionView(_, numberOfItemsInSection)
- UICollectionViewDelegateFlowLayout.collectionView(_, layout, sizeForItemAt)
- UICollectionViewCell.preferredLayoutAttributesFitting
-
- */
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -126,7 +100,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case HomeSection.noLetterTitle.rawValue:
             return 0
         case HomeSection.newLetters.rawValue:
-            return 1
+            if self.newLetters?.resultList.count ?? 0 > 0 {
+                return 1
+            }
+            else {
+                return 0
+            }
         case HomeSection.noLetters.rawValue:
             return 0
         case HomeSection.filterBar.rawValue:
@@ -152,8 +131,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         case HomeSection.newLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeNewLettersCell.self, "HomeNewLettersCell", for: indexPath)
-            cell.configure(data: nil)
+            cell.configure(data: self.newLetters)
             cell.cellClosure = { [weak self] _,_ in
+                //메일 세부페이지
                 guard let `self` = self else { return }
                 let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
@@ -177,10 +157,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case HomeSection.oldLetters.rawValue:
             guard let oldLetters = self.oldLetters else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
-//            cell.row = indexPath.row
-            //데이터 넘길때 rankingVisible도 같이 넘기기
-            cell.isRankingVisible = false
             cell.configure(data: oldLetters.resultList[indexPath.row])
+            cell.cellClosure = { [weak self] (type,data) in
+                guard let `self` = self else { return }
+                if type == "letter" {
+                    let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
