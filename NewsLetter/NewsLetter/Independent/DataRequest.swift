@@ -139,15 +139,12 @@ class DataRequest {
         })
     }
 
-
-
-//    static func getBookMark(success: @escaping (DI_BookMarkList) -> Void, failure: @escaping (Error?) -> Void ) {
-//        let url = ConstGroup.BOOKMARK_LIST_URL
-//        ApiManager.shared.getApi(url, DI_BookMarkList.self, success: { (data) in
-//            success(data)
-//        }, failure: { (errType, data) in
-//            handleErrorType(errType, data, failure)
-//        })
-//    }
-    
+    static func getBookMarkList(success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.BOOKMARK_URL
+        ApiManager.shared.requestApi(url, parameter, DI_MailList.self, .get, isContainToken: true, success: { _ in
+            success()
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
 }
