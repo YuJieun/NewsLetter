@@ -68,6 +68,90 @@ class ApiManager {
             }
         }
     }
+    
+    func requestApi2<T: Decodable>(_ url: String, _ intParam: [String: Int]?, _ type: T.Type, _ method: HTTPMethod, isContainToken: Bool = false, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
+        guard checkNetworkAvailable() == true else { failure(.network, ""); return }
+        var headerData: HTTPHeaders = [ "Content-Type": "application/json" ]
+        if isContainToken {
+            if let token = KeychainService.shared.loadToken() {
+                headerData.add(name: "x-access-token", value: token)
+            }
+            else {
+                failure(.custom, "Error")
+            }
+        }
+        
+        AF.request(url, method: method, parameters: intParam, encoder: JSONParameterEncoder.default, headers: headerData).validate().responseJSON { response in
+            switch response.result {
+            case .success(let res):
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+                    let json = try JSONDecoder().decode(type, from: jsonData)
+                    success(json)
+                }
+                catch(let err) {
+                    print(err.localizedDescription)
+                    failure(.custom, "Parsing Error")
+                }
+            case .failure(let err):
+                if let data = response.data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+                        let posts = json?["message"] ?? "Error"
+                        failure(.custom, posts)
+                    }
+                    catch {
+                        failure(.custom, "Parsing Error" )
+                    }
+                }
+                else {
+                    failure(.custom, err.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func requestApi3<T: Decodable, U: Codable>(_ url: String, _ classParam: Any?, _ type: T.Type, _ paramType: U.Type, _ method: HTTPMethod, isContainToken: Bool = false, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
+        guard checkNetworkAvailable() == true else { failure(.network, ""); return }
+        guard let classParam = classParam as? U else { failure(.custom, "Error"); return }
+        var headerData: HTTPHeaders = [ "Content-Type": "application/json" ]
+        if isContainToken {
+            if let token = KeychainService.shared.loadToken() {
+                headerData.add(name: "x-access-token", value: token)
+            }
+            else {
+                failure(.custom, "Error")
+            }
+        }
+        AF.request(url, method: method, parameters: classParam, encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: headerData).validate().responseJSON { response in
+            switch response.result {
+            case .success(let res):
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+                    let json = try JSONDecoder().decode(type, from: jsonData)
+                    success(json)
+                }
+                catch(let err) {
+                    print(err.localizedDescription)
+                    failure(.custom, "Parsing Error")
+                }
+            case .failure(let err):
+                if let data = response.data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+                        let posts = json?["message"] ?? "Error"
+                        failure(.custom, posts)
+                    }
+                    catch {
+                        failure(.custom, "Parsing Error" )
+                    }
+                }
+                else {
+                    failure(.custom, err.localizedDescription)
+                }
+            }
+        }
+    }
        
     func checkNetworkAvailable() -> Bool {
         let reachability = try! Reachability()

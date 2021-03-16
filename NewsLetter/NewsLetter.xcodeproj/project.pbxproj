@@ -99,6 +99,7 @@
 		91D7D31F25E686D5002FF440 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91D7D31D25E6869E002FF440 /* NotoSansKR-Medium.otf */; };
 		91D7D32125E68A6F002FF440 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91D7D32025E68A6F002FF440 /* NotoSansKR-Regular.otf */; };
 		91D7D32325E68B37002FF440 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91D7D32225E68B37002FF440 /* Poppins-Regular.ttf */; };
+		91F3ADB7260098AB00548A64 /* DIR_Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3ADB6260098AB00548A64 /* DIR_Mail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -208,6 +209,7 @@
 		91D7D31D25E6869E002FF440 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		91D7D32025E68A6F002FF440 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		91D7D32225E68B37002FF440 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		91F3ADB6260098AB00548A64 /* DIR_Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIR_Mail.swift; sourceTree = "<group>"; };
 		BAC74B461B8C189D3F4631EB /* Pods_NewsLetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsLetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E65595458D4F8616A4031FF6 /* Pods-NewsLetter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsLetter.release.xcconfig"; path = "Target Support Files/Pods-NewsLetter/Pods-NewsLetter.release.xcconfig"; sourceTree = "<group>"; };
 		F600D2C01707A2B8D3553D9F /* Pods-NewsLetter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsLetter.debug.xcconfig"; path = "Target Support Files/Pods-NewsLetter/Pods-NewsLetter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 		917EDC4425CD18F200AF600A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				91F3ADB52600989B00548A64 /* DIR */,
 				91AD442125FBADC600C1027A /* DI */,
 				91ABDD6A25DB57DD00CD7C37 /* filterCell */,
 				91D3861F25D2419F00235438 /* cell */,
@@ -536,6 +539,14 @@
 			path = NewsLetter/Font;
 			sourceTree = SOURCE_ROOT;
 		};
+		91F3ADB52600989B00548A64 /* DIR */ = {
+			isa = PBXGroup;
+			children = (
+				91F3ADB6260098AB00548A64 /* DIR_Mail.swift */,
+			);
+			path = DIR;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -726,6 +737,7 @@
 				91064C0725CAC6DC0086E2EF /* AppDelegate.swift in Sources */,
 				91885B2B25ECF2F40000D8E6 /* SettingDivideCell.swift in Sources */,
 				91ABDD6825DB526F00CD7C37 /* BigLetterBannerCell.swift in Sources */,
+				91F3ADB7260098AB00548A64 /* DIR_Mail.swift in Sources */,
 				91AD442325FBADD600C1027A /* DI_Mail.swift in Sources */,
 				91AFAA1A25EFBD1700150098 /* DI_Alert.swift in Sources */,
 				91885B3C25ED200B0000D8E6 /* CommonAlertViewController.swift in Sources */,

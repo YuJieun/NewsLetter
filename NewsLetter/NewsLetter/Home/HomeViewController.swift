@@ -43,7 +43,15 @@ class HomeViewController: UIViewController {
     }
     
     func setup() {
-        DataRequest.getMailList() { [weak self] data in
+        var formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        var current = formatter.string(from: Date())
+        
+        let start = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        var startDate = formatter.string(from: start! )
+
+        let requestData = DIR_Mail(startDate: startDate, endDate: current, page: 0)
+        DataRequest.getMailList(parameter: requestData) { [weak self] data in
             guard let `self` = self else { return }
             self.oldLetters = data //임시 셋팅
             self.newLetters = data //임시 셋팅

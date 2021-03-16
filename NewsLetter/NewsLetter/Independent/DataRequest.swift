@@ -89,10 +89,10 @@ class DataRequest {
     }
     
     //MARK:- 메일목록
-    static func getMailList(success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
+    static func getMailList(parameter: DIR_Mail, success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
         let userId = MemberManager.shared.getuserId()
-        let url = "\(ConstGroup.BASE_URL)/\(userId)/mailbox"
-        ApiManager.shared.requestApi(url, nil, DI_MailList.self, .get, isContainToken: false, success: { (data) in
+        let url = "\(ConstGroup.USERINFO_URL)/\(userId)/mailbox"
+        ApiManager.shared.requestApi3(url, parameter, DI_MailList.self, DIR_Mail.self, .get, isContainToken: true, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -123,7 +123,7 @@ class DataRequest {
     static func postAddBookMark(letterId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.BOOKMARK_URL
         let parameter = ["letterId" : letterId]
-        ApiManager.shared.requestApi(url, parameter, DI_None.self, .post, isContainToken: true, success: { _ in
+        ApiManager.shared.requestApi2(url, parameter, DI_None.self, .post, isContainToken: true, success: { _ in
             success()
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -132,7 +132,7 @@ class DataRequest {
 
     static func deleteBookMark(bookmarkId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {
         let url = "\(ConstGroup.BOOKMARK_URL)/\(bookmarkId)"
-        ApiManager.shared.requestApi(url, parameter, DI_None.self, .delete, isContainToken: true, success: { _ in
+        ApiManager.shared.requestApi(url, nil, DI_None.self, .delete, isContainToken: true, success: { _ in
             success()
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -141,8 +141,8 @@ class DataRequest {
 
     static func getBookMarkList(success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.BOOKMARK_URL
-        ApiManager.shared.requestApi(url, parameter, DI_MailList.self, .get, isContainToken: true, success: { _ in
-            success()
+        ApiManager.shared.requestApi(url, nil, DI_MailList.self, .get, isContainToken: true, success: { (data) in
+            success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
         })

@@ -29,9 +29,8 @@ class DI_Mail: Codable {
     var bookmarkCount: Int = 0
     var createdAt: String = ""
     var modifiedAt: String = ""
-    var isSubscribing: Int = 1
+    var isSubscribing: Int? = 1
     
     //custom
     var rankingLabel: String?
 }
-
