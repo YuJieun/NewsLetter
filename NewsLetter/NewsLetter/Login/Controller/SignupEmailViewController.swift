@@ -44,15 +44,31 @@ class SignupEmailViewController: UIViewController, UITextFieldDelegate {
         guard let data = userData else { return }
         guard checkEmailValidate() else { return }
         guard let emailText = emailField.text, emailText.isValid else { return }
-        DataRequest.postEmailCheck(email: emailText){ [weak self] data in
-            print(data)
-//            guard let `self` = self else { return }
-//            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupPasswordViewController") as? SignupPasswordViewController else{
-//                return
-//            }
-//            data.email = emailText
-//            vc.userData = data
-//            self.navigationController?.pushViewController(vc, animated: true)
+        DataRequest.postEmailCheck(email: emailText){ [weak self] response in
+            if response.result {
+                guard let `self` = self else { return }
+                let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonErrorViewController") as? CommonErrorViewController else { return }
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: false){
+                    let alertData = DI_Alert()
+                    alertData.infoLabel = "중복된 이메일입니다"
+                    alertData.leftLabel = "확인"
+                    alertData.leftAction = {  _, _ in
+                        self.emailField.text = ""
+                    }
+                    vc.configure(alertData)
+                }
+            }
+            else {
+                guard let `self` = self else { return }
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupPasswordViewController") as? SignupPasswordViewController else{
+                    return
+                }
+                data.email = emailText
+                vc.userData = data
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         } failure: { _ in
             print("이메일 중복!! 요쪽 미완성임~~ㅎㅎ")
         }

@@ -21,7 +21,6 @@ class MypageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
         self.collectionView.registerNibCell("MypageProfileCell", Classs: MypageProfileCell.self)
         self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
@@ -52,7 +51,7 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
         case MypageSection.title.rawValue:
             return 1
         case MypageSection.letters.rawValue:
-            return self.bookmarkList?.count ?? 0
+            return self.bookmarkList?.resultList.count ?? 0
         default:
             return 0
         }
@@ -71,12 +70,12 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case MypageSection.title.rawValue:
             let cell = collectionView.dequeueReusableCell(SearchTitleCell.self, "SearchTitleCell", for: indexPath)
-            cell.configure(data: "나의 북마크 (\(self.bookmarkList?.count ?? 0))")
+            cell.configure(data: "나의 북마크 (\(self.bookmarkList?.resultList.count ?? 0))")
             return cell
         case MypageSection.letters.rawValue:
             guard let bookmarkList = self.bookmarkList else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
-            cell.configure(data: bookmarkList[indexPath.row])
+            cell.configure(data: bookmarkList.resultList[indexPath.row])
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

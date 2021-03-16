@@ -68,7 +68,7 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         self.bookmarkButton.setImage(UIImage(named: "24BookmarkFill"), for: .selected)
 
         //3: 잠금
-        if data.isSubscribing == 1 {
+        if let isSubscribing = data.isSubscribing, isSubscribing == 1 {
             self.lockView.isHidden = false
         }
         else {
@@ -76,12 +76,10 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         }
 
         //4: 랭킹
-        if isRankingVisible {
+        if let ranking = data.rankingLabel, ranking.isValid {
             self.rankingView.isHidden = false
             configureRankingUI()
-            if let ranking = data.rankingLabel, ranking.isValid {
-                self.rankingLabel.text = ranking
-            }
+            self.rankingLabel.text = ranking
         }
         else {
             self.rankingView.isHidden = true
@@ -94,12 +92,12 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     
     @IBAction func onBookmarkButton(_ sender: UIButton) {
         guard let data = self.data else { return }
-        if self.bookMarkButton.isSelected {
+        if self.bookmarkButton.isSelected {
             //북마크 해제
-            DataRequest.deleteBookMark(bookmarkId: data.bookmarkId) { [weak self] _ in
+            DataRequest.deleteBookMark(bookmarkId: data.bookmarkId) { [weak self] in
                 guard let `self` = self else { return }
-                self.bookMarkButton.isSelected = false
-                cellClosure?(MailCallbackType.bookmark.rawValue, nil)
+                self.bookmarkButton.isSelected = false
+                self.cellClosure?(MailCallbackType.bookmark.rawValue, nil)
                 #warning("북마크 하고 전체 reload때리는게 과연 맞는가?")
             } failure: { _ in
                 print("북마크 추가 오류")
@@ -107,10 +105,10 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         }
         else {
             //북마크 추가
-            DataRequest.postAddBookMark(letterId: data.letterId) { [weak self] _ in
+            DataRequest.postAddBookMark(letterId: data.letterId) { [weak self] in
                 guard let `self` = self else { return }
-                self.bookMarkButton.isSelected = true
-                cellClosure?(MailCallbackType.bookmark.rawValue, nil)
+                self.bookmarkButton.isSelected = true
+                self.cellClosure?(MailCallbackType.bookmark.rawValue, nil)
             } failure: { _ in
                 print("북마크 추가 오류")
             }

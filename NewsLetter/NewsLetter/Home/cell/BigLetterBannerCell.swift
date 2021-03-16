@@ -45,6 +45,7 @@ class BigLetterBannerCell: CommonCollectionViewCell {
     }
 
     func bind() {
+        guard let data = self.data else { return }
         self.bannerImageView.image = UIImage(named: ConstGroup.BANNERIMG[0])
         self.bannerTitleLabel.text = data.title
         self.bannerLogoImageView.load(urlStr: data.platformImageUrl)
@@ -52,10 +53,10 @@ class BigLetterBannerCell: CommonCollectionViewCell {
         self.bannerDateLabel.text = data.createdAt
 
         if data.bookmarkId >= 1 {
-            self.bookmarkButton.isSelected = true
+            self.bookMarkButton.isSelected = true
         }
         else {
-            self.bookmarkButton.isSelected = false
+            self.bookMarkButton.isSelected = false
         }
     }
 
@@ -71,10 +72,10 @@ class BigLetterBannerCell: CommonCollectionViewCell {
         guard let data = self.data else { return }
         if self.bookMarkButton.isSelected {
             //북마크 해제
-            DataRequest.deleteBookMark(bookmarkId: data.bookmarkId) { [weak self] _ in
+            DataRequest.deleteBookMark(bookmarkId: data.bookmarkId) { [weak self] in
                 guard let `self` = self else { return }
                 self.bookMarkButton.isSelected = false
-                cellClosure?(MailCallbackType.bookmark.rawValue, nil)
+                self.cellClosure?(MailCallbackType.bookmark.rawValue, nil)
                 #warning("북마크 하고 전체 reload때리는게 과연 맞는가?")
             } failure: { _ in
                 print("북마크 추가 오류")
@@ -82,10 +83,10 @@ class BigLetterBannerCell: CommonCollectionViewCell {
         }
         else {
             //북마크 추가
-            DataRequest.postAddBookMark(letterId: data.letterId) { [weak self] _ in
+            DataRequest.postAddBookMark(letterId: data.letterId) { [weak self] in
                 guard let `self` = self else { return }
                 self.bookMarkButton.isSelected = true
-                cellClosure?(MailCallbackType.bookmark.rawValue, nil)
+                self.cellClosure?(MailCallbackType.bookmark.rawValue, nil)
             } failure: { _ in
                 print("북마크 추가 오류")
             }

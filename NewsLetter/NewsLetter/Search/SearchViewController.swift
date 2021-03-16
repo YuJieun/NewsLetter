@@ -52,9 +52,8 @@ class SearchViewController: CommonViewController {
     }
 
     func makeCellClosure() -> CellClosure {
-        let cellClosure = { [weak self] type ,data in
+        let cellClosure: CellClosure = { [weak self] (type, data) in
             guard let `self` = self else { return }
-            guard let type = type as? String else { return }
             if let type = MailCallbackType(rawValue: type) {
                 switch type {
                 case .letterDetail:
@@ -70,17 +69,15 @@ class SearchViewController: CommonViewController {
                     guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonAlertViewController") as? CommonAlertViewController else { return }
                     vc.modalPresentationStyle = .overFullScreen
                     self.present(vc, animated: false){
-                        let data = DI_Alert()
-                        data.infoLabel = "\(data.platformName)을\n아직 구독하지 않고 계시네요!\n구독하여 더 다양한 뉴스레터를\n받아보시겠어요?"
-                        data.leftLabel = "다음에"
-                        data.rightLabel = "구독할래요"
-                        data.leftAction = { [weak self] _, _ in
+                        let alertData = DI_Alert()
+                        alertData.infoLabel = "\(data.platformName)을\n아직 구독하지 않고 계시네요!\n구독하여 더 다양한 뉴스레터를\n받아보시겠어요?"
+                        alertData.leftLabel = "다음에"
+                        alertData.rightLabel = "구독할래요"
+                        alertData.leftAction = {  _, _ in
                             print("구독구독")
                         }
-                        vc.configure(data)
+                        vc.configure(alertData)
                     }
-                default:
-                    break
                 }
             }
         }
@@ -136,7 +133,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         case SearchSection.searchResultLetters.rawValue:
             guard let searchLetters = self.searchLetters else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
-            cell.configure(data: searchLetters[indexPath.row])
+            cell.configure(data: searchLetters.resultList[indexPath.row])
             cell.cellClosure = self.makeCellClosure()
             return cell
         case SearchSection.bookmarkTitle.rawValue:
@@ -146,8 +143,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         case SearchSection.bookmarkLetters.rawValue:
             guard let rankingLetters = self.rankingLetters else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
-            let item = rankingLetters[indexPath.row]
-            item.rankingLabel = indexPath.row + 1
+            let item = rankingLetters.resultList[indexPath.row]
+            item.rankingLabel = "\(indexPath.row + 1)"
             cell.configure(data: item)
             cell.cellClosure = self.makeCellClosure()
             return cell
