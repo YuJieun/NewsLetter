@@ -13,6 +13,7 @@ class MemberManager {
     
     private var nickname: String = ""
     private var userId: Int = 0
+    private var email: String = ""
     
     func setNickName(_ name: String) {
         self.nickname = name
@@ -28,5 +29,13 @@ class MemberManager {
     
     func getuserId() -> Int {
         return self.userId
+    }
+    
+    func setEmail(_ email: String) {
+        self.email = email
+    }
+    
+    func getEmail() -> String {
+        return self.email
     }
 }

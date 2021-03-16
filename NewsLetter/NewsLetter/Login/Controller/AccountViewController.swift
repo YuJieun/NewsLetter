@@ -64,6 +64,7 @@ class AccountViewController: CommonViewController {
             guard let userInfo = user.user else { return }
             MemberManager.shared.setNickName(userInfo.nickname)
             MemberManager.shared.setUserId(userInfo.userId)
+            MemberManager.shared.setEmail(userInfo.email)
             KeychainService.shared.saveToken(token: user.token)
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.switchHome()

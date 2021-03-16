@@ -32,6 +32,7 @@ class SplashViewController: UIViewController {
         DataRequest.getUserInfo(){ data in
             MemberManager.shared.setNickName(data.nickname)
             MemberManager.shared.setUserId(data.userId)
+            MemberManager.shared.setEmail(data.email)
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.switchHome()
             }

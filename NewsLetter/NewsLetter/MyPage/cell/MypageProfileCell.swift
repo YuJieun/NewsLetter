@@ -15,13 +15,13 @@ class MypageProfileCell: CommonCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.nameLabel.text = MemberManager.shared.getNickName()
+        self.emailLabel.text = MemberManager.shared.getEmail()
     }
     
-    func configure(data: Any? = nil) {
-//        guard let data = data as? String else { return }
-        #warning("이름이나 이메일 길게해서 테스트필요")
-    }
+//    func configure(data: Any? = nil) {
+//        #warning("이름이나 이메일 길게해서 테스트필요")
+//    }
 
     
     class func getSize(_ data: Any? = nil) -> CGSize {
