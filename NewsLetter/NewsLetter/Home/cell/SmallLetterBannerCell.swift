@@ -23,7 +23,6 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     
     @IBOutlet weak var bookmarkButton: UIButton!
     
-    var isLock: Bool = false
     var data: DI_Mail?
     
     override func awakeFromNib() {
@@ -40,7 +39,22 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         self.bannerTitleLabel.text = data.title
         self.bannerLogoImageView.load(urlStr: data.platformImageUrl)
         self.bannerBrandLabel.text = data.platformName
+        
+//        let dateString:String = data.createdAt
+//        let dateFormatter = DateFormatter()
+//
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+//
+//        let date:Date = dateFormatter.date(from: dateString)!
+//
+//        dateFormatter.dateFormat = "MM/dd/yyyy"
+//        let createDate = dateFormatter.string(from: date)
+//
+//        self.bannerDateLabel.text = createDate
+        
         self.bannerDateLabel.text = data.createdAt
+
 
         if data.bookmarkId >= 1 {
             self.bookmarkButton.isSelected = true
@@ -68,7 +82,7 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         self.bookmarkButton.setImage(UIImage(named: "24BookmarkFill"), for: .selected)
 
         //3: 잠금
-        if let isSubscribing = data.isSubscribing, isSubscribing == 1 {
+        if let isSubscribing = data.isSubscribing, isSubscribing == 0 {
             self.lockView.isHidden = false
         }
         else {
@@ -116,8 +130,9 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     }
 
     @IBAction func onLockButton(_ sender: UIButton) {
-        guard isLock == true else { return }
-        cellClosure?(MailCallbackType.lock.rawValue, data)
+        if let isSubscribing = self.data?.isSubscribing, isSubscribing == 0 {
+            cellClosure?(MailCallbackType.lock.rawValue, data)
+        }
     }
     
     @IBAction func onLetterButton(_ sender: UIButton) {

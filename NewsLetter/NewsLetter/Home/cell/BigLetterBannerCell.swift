@@ -50,7 +50,19 @@ class BigLetterBannerCell: CommonCollectionViewCell {
         self.bannerTitleLabel.text = data.title
         self.bannerLogoImageView.load(urlStr: data.platformImageUrl)
         self.bannerBrandLabel.text = data.platformName
-        self.bannerDateLabel.text = data.createdAt
+        
+        let dateString:String = data.createdAt
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+
+        let date:Date = dateFormatter.date(from: dateString)!
+        
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let createDate = dateFormatter.string(from: date)
+        
+        self.bannerDateLabel.text = createDate
 
         if data.bookmarkId >= 1 {
             self.bookMarkButton.isSelected = true
@@ -65,7 +77,8 @@ class BigLetterBannerCell: CommonCollectionViewCell {
     }
     
     @IBAction func onLetterButton(_ sender: UIButton) {
-        cellClosure?(MailCallbackType.letterDetail.rawValue, nil)
+        guard let data = self.data else { return }
+        cellClosure?(MailCallbackType.letterDetail.rawValue, data)
     }
     
     @IBAction func onBookMarkButton(_ sender: UIButton) {

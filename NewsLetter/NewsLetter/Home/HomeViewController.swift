@@ -36,6 +36,8 @@ class HomeViewController: UIViewController {
         self.collectionView.registerNibCell("HomeNoLetterCell", Classs: HomeNoLetterCell.self)
         self.collectionView.registerNibCell("HomeFilterBarCell", Classs: HomeFilterBarCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
+        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
                 
@@ -43,32 +45,59 @@ class HomeViewController: UIViewController {
     }
     
     func setup() {
-        var formatter = DateFormatter()
+        self.getNewLetters()
+        self.getOldLetters()
+    }
+
+    func getNewLetters() {
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        var current = formatter.string(from: Date())
+        let current = formatter.string(from: Date())
         
         let start = Calendar.current.date(byAdding: .day, value: -7, to: Date())
-        var startDate = formatter.string(from: start! )
+        let startDate = formatter.string(from: start! )
 
         let requestData = DIR_Mail(startDate: startDate, endDate: current, page: 0)
         DataRequest.getMailList(parameter: requestData) { [weak self] data in
             guard let `self` = self else { return }
-            self.oldLetters = data //임시 셋팅
-            self.newLetters = data //임시 셋팅
-            self.collectionView.reloadData()
+            self.newLetters = data
+            self.collectionView.reloadSections(IndexSet([HomeSection.newLetters.rawValue]))
         } failure: { _ in
             print("메일 못가져옴")
         }
-
-        //이후에 밑에 getNewLetters, getOldLetters로 나누기
-    }
-
-    func getNewLetters() {
-
     }
 
     func getOldLetters() {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd"
+//
+//        let end = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+//        let endDate = formatter.string(from: end!)
+//
+//        let requestData = DIR_Mail(startDate: nil, endDate: endDate, page: 0)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let current = formatter.string(from: Date())
+        
+        let start = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        let startDate = formatter.string(from: start! )
 
+        let requestData = DIR_Mail(startDate: startDate, endDate: current, page: 0)
+//        DataRequest.getMailList(parameter: requestData) { [weak self] data in
+//            guard let `self` = self else { return }
+//            self.oldLetters = data
+//            self.collectionView.reloadSections(IndexSet([HomeSection.oldLetters.rawValue]))
+//        } failure: { _ in
+//            print("메일 못가져옴")
+//        }
+        DataRequest.getMailList(parameter: requestData) { [weak self] data in
+            guard let `self` = self else { return }
+            self.oldLetters = data
+            self.collectionView.reloadSections(IndexSet([HomeSection.oldLetters.rawValue]))
+        } failure: { _ in
+            print("메일 못가져옴")
+        }
     }
     
     @objc private func refresh(){
@@ -113,6 +142,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let isNewLetterValid: Bool = self.newLetters?.resultList.count ?? 0 > 0 ? true : false
+        let isOldLetterValid: Bool = self.oldLetters?.resultList.count ?? 0 > 0 ? true : false
         switch section {
         case HomeSection.mainTitle.rawValue:
             return isNewLetterValid ? 1 : 0
@@ -121,7 +151,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case HomeSection.newLetters.rawValue:
             return isNewLetterValid ? 1 : 0
         case HomeSection.noLetters.rawValue:
-            return isNewLetterValid ? 0 : 1
+            return isOldLetterValid ? 0 : 1
         case HomeSection.filterBar.rawValue:
             return 1
         case HomeSection.oldLetters.rawValue:
@@ -146,14 +176,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case HomeSection.newLetters.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeNewLettersCell.self, "HomeNewLettersCell", for: indexPath)
             cell.configure(data: self.newLetters)
-            cell.cellClosure = { [weak self] type, _ in
+            cell.cellClosure = { [weak self] type, data in
                 guard let `self` = self else { return }
-                guard let type = type as? String else { return }
+                guard let data = data as? DI_Mail else { return }
                 if let type = MailCallbackType(rawValue: type) {
                     switch type {
                     case .letterDetail:
                         let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
+                        guard let  vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
+                        vc.letterId = data.letterId
                         self.navigationController?.pushViewController(vc, animated: true)
                     case .bookmark:
                         self.getNewLetters()

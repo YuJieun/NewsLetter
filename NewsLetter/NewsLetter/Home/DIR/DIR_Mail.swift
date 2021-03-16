@@ -8,7 +8,7 @@
 import Foundation
 
 struct DIR_Mail: Codable {
-    var startDate: String = ""
+    var startDate: String? = ""
     var endDate: String = ""
     var page: Int = 0
 }
