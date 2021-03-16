@@ -92,7 +92,7 @@ class DataRequest {
     static func getMailList(parameter: DIR_Mail, success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
         let userId = MemberManager.shared.getuserId()
         let url = "\(ConstGroup.USERINFO_URL)/\(userId)/mailbox"
-        ApiManager.shared.requestApi3(url, parameter, DI_MailList.self, DIR_Mail.self, .get, isContainToken: true, success: { (data) in
+        ApiManager.shared.requestApiClassParam(url, parameter, DI_MailList.self, DIR_Mail.self, .get, isContainToken: true, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -111,19 +111,27 @@ class DataRequest {
     static func getMailSearch(keyword: String, success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.SEARCH_URL
         let parameter = ["searchKeyword" : keyword]
-        ApiManager.shared.requestApi(url, parameter, DI_MailList.self, .get, isContainToken: true, success: { (data) in
+        ApiManager.shared.requestApi(url, parameter, DI_MailList.self, .get, isContainToken: true, true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
+    static func getLetterDetail(id: Int, success: @escaping (DI_Mail) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = "\(ConstGroup.MAIL_DETAIL_URL)/\(id)"
+        ApiManager.shared.requestApi(url, nil, DI_Mail.self, .get, isContainToken: true, false, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
         })
     }
 
-
     //MARK:- 북마크
     static func postAddBookMark(letterId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.BOOKMARK_URL
         let parameter = ["letterId" : letterId]
-        ApiManager.shared.requestApi2(url, parameter, DI_None.self, .post, isContainToken: true, success: { _ in
+        ApiManager.shared.requestApiParamInt(url, parameter, DI_None.self, .post, isContainToken: true, success: { _ in
             success()
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)

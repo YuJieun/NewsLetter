@@ -28,6 +28,8 @@ class SearchViewController: CommonViewController {
         self.collectionView.registerNibCell("SearchBarCell", Classs: SearchBarCell.self)
         self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
+        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+
         setup()
     }
 
@@ -95,9 +97,9 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         case SearchSection.searchBar.rawValue:
             return 1
         case SearchSection.searchResultTitle.rawValue:
-            return self.rankingLetters?.resultList.count ?? 0 > 0 ? 1 : 0
+            return self.keyword.isValid ? 1 : 0
         case SearchSection.searchResultLetters.rawValue:
-            return self.rankingLetters?.resultList.count ?? 0
+            return self.searchLetters?.resultList.count ?? 0
         case SearchSection.bookmarkTitle.rawValue:
             return self.rankingLetters?.resultList.count ?? 0 > 0 ? 1 : 0
         case SearchSection.bookmarkLetters.rawValue:

@@ -34,6 +34,8 @@ class MailDetailViewController: UIViewController {
     //스크롤뷰
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var letterId: Int?
+    var data: DI_Mail?
     let str = ConstGroup.TMP_STR
     
     var tmpflag: Bool = false
@@ -44,6 +46,7 @@ class MailDetailViewController: UIViewController {
         self.webView.navigationDelegate = self
 //        self.headerView.backgroundColor = .clear
         setup()
+        request()
         tmp()
     }
     
@@ -55,6 +58,16 @@ class MailDetailViewController: UIViewController {
         self.webView.scrollView.isScrollEnabled = false
         self.webView.navigationDelegate = self
         self.webView.loadHTMLString(str, baseURL: nil)
+    }
+    
+    func request() {
+        guard let letterId = letterId else { return }
+        DataRequest.getLetterDetail(id: letterId) { [weak self] data in
+            guard let `self` = self else { return }
+            self.data = data
+        } failure: { _ in
+            print("메일 못가져옴")
+        }
     }
     
     func tmp() {
