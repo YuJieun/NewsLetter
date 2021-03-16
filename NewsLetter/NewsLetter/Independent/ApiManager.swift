@@ -28,9 +28,9 @@ class ApiManager {
     //헤더는 이후 필요하면 추가하기!
     //validate는 status code가 200대인지와 header와 일치하는 content type인지를 검사한다.
     
-    func requestApi<T: Decodable>(_ url: String, _ param: [String: String]?, _ type: T.Type, _ method: HTTPMethod, isContainToken: Bool = false, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
+    func requestApi<T: Decodable>(_ url: String, _ param: [String: String]?, _ type: T.Type, _ method: HTTPMethod, isContainToken: Bool = false, _ isQueryEncoding: Bool = false,  success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
         guard checkNetworkAvailable() == true else { failure(.network, ""); return }
-        var headerData: HTTPHeaders = [ "Content-Type": "application/json" ]
+        var headerData: HTTPHeaders = [ "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"]
         if isContainToken {
             if let token = KeychainService.shared.loadToken() {
                 headerData.add(name: "x-access-token", value: token)
@@ -39,7 +39,13 @@ class ApiManager {
                 failure(.custom, "Error")
             }
         }
-        AF.request(url, method: method, parameters: param, encoder: JSONParameterEncoder.default, headers: headerData).validate().responseJSON { response in
+        
+        var encoder: ParameterEncoder = JSONParameterEncoder.default
+        if isQueryEncoding {
+            encoder = URLEncodedFormParameterEncoder(destination: .queryString)
+        }
+        
+        AF.request(url, method: method, parameters: param, encoder: encoder, headers: headerData).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
                 do {
@@ -69,7 +75,7 @@ class ApiManager {
         }
     }
     
-    func requestApi2<T: Decodable>(_ url: String, _ intParam: [String: Int]?, _ type: T.Type, _ method: HTTPMethod, isContainToken: Bool = false, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
+    func requestApiParamInt<T: Decodable>(_ url: String, _ intParam: [String: Int]?, _ type: T.Type, _ method: HTTPMethod, isContainToken: Bool = false, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
         guard checkNetworkAvailable() == true else { failure(.network, ""); return }
         var headerData: HTTPHeaders = [ "Content-Type": "application/json" ]
         if isContainToken {
@@ -111,7 +117,9 @@ class ApiManager {
         }
     }
     
-    func requestApi3<T: Decodable, U: Codable>(_ url: String, _ classParam: Any?, _ type: T.Type, _ paramType: U.Type, _ method: HTTPMethod, isContainToken: Bool = false, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
+    
+    
+    func requestApiClassParam<T: Decodable, U: Codable>(_ url: String, _ classParam: Any?, _ type: T.Type, _ paramType: U.Type, _ method: HTTPMethod, isContainToken: Bool = false, success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
         guard checkNetworkAvailable() == true else { failure(.network, ""); return }
         guard let classParam = classParam as? U else { failure(.custom, "Error"); return }
         var headerData: HTTPHeaders = [ "Content-Type": "application/json" ]
