@@ -32,6 +32,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8X-XO-a01">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
+                                <connections>
+                                    <action selector="onButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="w66-Kf-cn9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,6 +57,7 @@
                 <constraint firstItem="zza-B0-gY2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yq0-LJ-Wd1"/>
             </constraints>
             <connections>
+                <outlet property="backView" destination="zza-B0-gY2" id="3A2-h8-e78"/>
                 <outlet property="brandButton" destination="i8X-XO-a01" id="Sqs-6O-3US"/>
                 <outlet property="titleLabel" destination="JiT-Wu-9NH" id="iGr-9e-9q3"/>
             </connections>
