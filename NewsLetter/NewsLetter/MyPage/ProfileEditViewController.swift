@@ -12,6 +12,8 @@ class ProfileEditViewController: CommonNavigationController, UITextFieldDelegate
     
     @IBOutlet weak var nameTextField: UITextField!
     
+    var customClosure: CellClosure?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "내 프로필 수정"
@@ -45,12 +47,35 @@ class ProfileEditViewController: CommonNavigationController, UITextFieldDelegate
     //돋보기 클릭
     @objc func onButton() {
         if let text = nameTextField.text, text.isValid {
-            print(text)
+            DataRequest.patchChangeNickname(nickname: text) { [weak self] data in
+                guard let `self` = self else { return }
+                MemberManager.shared.setNickName(data.nickname)
+                self.customClosure?("",nil)
+                self.nameTextField.text = ""
+                self.nameTextField.resignFirstResponder()
+                let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonErrorViewController") as? CommonErrorViewController else { return }
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: false){
+                    let alertData = DI_Alert()
+                    alertData.infoLabel = "닉네임 변경 완료"
+                    alertData.leftLabel = "확인"
+                    vc.configure(alertData)
+                }
+            } failure: { _ in
+                print("메일 못가져옴")
+            }
         }
         else {
-            print("없어")
+            let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonErrorViewController") as? CommonErrorViewController else { return }
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: false){
+                let alertData = DI_Alert()
+                alertData.infoLabel = "한글자 이상 입력해주세요"
+                alertData.leftLabel = "확인"
+                vc.configure(alertData)
+            }
         }
-        nameTextField.text = ""
-        nameTextField.resignFirstResponder()
     }
 }

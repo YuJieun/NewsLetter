@@ -64,9 +64,16 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             cell.cellClosure = { [weak self] _,_ in
                 guard let `self` = self else { return }
                 let storyboard = UIStoryboard(name: "Mypage", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else { return }
+                vc.customClosure = { [weak self] type, _ in
+                    guard let self = self else { return }
+                    if type == "profile" {
+                        self.collectionView.reloadSections([MypageSection.profile.rawValue])
+                    }
+                }
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            cell.configure()
             return cell
         case MypageSection.title.rawValue:
             let cell = collectionView.dequeueReusableCell(SearchTitleCell.self, "SearchTitleCell", for: indexPath)
