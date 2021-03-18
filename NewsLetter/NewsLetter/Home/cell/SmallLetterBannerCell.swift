@@ -136,6 +136,6 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     }
     
     @IBAction func onLetterButton(_ sender: UIButton) {
-        cellClosure?(MailCallbackType.letterDetail.rawValue,nil)
+        cellClosure?(MailCallbackType.letterDetail.rawValue, data)
     }
 }

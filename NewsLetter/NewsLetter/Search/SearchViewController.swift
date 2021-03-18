@@ -61,7 +61,7 @@ class SearchViewController: CommonViewController {
                 case .letterDetail:
                     let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
                     guard let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
-                    vc.tmpflag = true
+//                    vc.tmpflag = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 case .bookmark:
                     self.setup()

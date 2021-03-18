@@ -38,7 +38,7 @@ class MailDetailViewController: UIViewController {
     var data: DI_Mail?
     let str = ConstGroup.TMP_STR
     
-    var tmpflag: Bool = false
+//    var tmpflag: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,37 +46,44 @@ class MailDetailViewController: UIViewController {
         self.webView.navigationDelegate = self
 //        self.headerView.backgroundColor = .clear
         setup()
+    }
+    
+    func show() {
         request()
-        tmp()
     }
     
     func setup() {
         self.headerStickyView.backgroundColor = .clear
         self.stickyBorderView.backgroundColor = .clear
         self.stickyBackButton.setImage(UIImage(named:"14BackWhite"), for: .normal)
-        
-        self.webView.scrollView.isScrollEnabled = false
-        self.webView.navigationDelegate = self
-        self.webView.loadHTMLString(str, baseURL: nil)
     }
     
     func request() {
         guard let letterId = letterId else { return }
+        DataRequest.getLetterHtml(id: letterId) {[weak self] data in
+            guard let `self` = self else { return }
+            self.webView.scrollView.isScrollEnabled = false
+            self.webView.navigationDelegate = self
+            self.webView.loadHTMLString(data, baseURL: nil)
+        } failure: { _ in
+            print("html 못가져옴")
+        }
         DataRequest.getLetterDetail(id: letterId) { [weak self] data in
             guard let `self` = self else { return }
             self.data = data
+            self.bind()
         } failure: { _ in
             print("메일 못가져옴")
         }
     }
     
-    func tmp() {
-        guard tmpflag else { return }
+    func bind() {
+        guard let data = self.data else { return }
         self.headerImageView.image = UIImage(named: "dee1")
-        self.titleLabel.text = "가게 배달지역 관리방식 개편 프로젝트"
-        self.logoLabel.text = "디독"
-        self.logoImageView.image = UIImage(named: "d_logo")
-        self.dateLabel.text = "03/08/2021"
+        self.titleLabel.text = data.title
+        self.logoLabel.text = data.platformName
+        self.logoImageView.load(urlStr: data.platformImageUrl)
+        self.dateLabel.text = data.createdAt
     }
     
     @IBAction func onBackButton(_ sender: UIButton) {

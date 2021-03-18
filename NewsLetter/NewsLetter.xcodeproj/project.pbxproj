@@ -88,6 +88,7 @@
 		91B9ECB925DE55CE006B3E68 /* LettersEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECB825DE55CE006B3E68 /* LettersEditViewController.swift */; };
 		91B9ECBC25DE56AD006B3E68 /* SubscribeLetterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECBA25DE56AD006B3E68 /* SubscribeLetterCell.swift */; };
 		91B9ECBD25DE56AD006B3E68 /* SubscribeLetterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B9ECBB25DE56AD006B3E68 /* SubscribeLetterCell.xib */; };
+		91C61EA92602203800D2E0E0 /* DI_Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C61EA82602203800D2E0E0 /* DI_Platform.swift */; };
 		91D3862225D241BB00235438 /* HomeTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3862025D241BB00235438 /* HomeTitleCell.swift */; };
 		91D3862325D241BB00235438 /* HomeTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D3862125D241BB00235438 /* HomeTitleCell.xib */; };
 		91D3862E25D2531B00235438 /* CommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */; };
@@ -198,6 +199,7 @@
 		91B9ECB825DE55CE006B3E68 /* LettersEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersEditViewController.swift; sourceTree = "<group>"; };
 		91B9ECBA25DE56AD006B3E68 /* SubscribeLetterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeLetterCell.swift; sourceTree = "<group>"; };
 		91B9ECBB25DE56AD006B3E68 /* SubscribeLetterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscribeLetterCell.xib; sourceTree = "<group>"; };
+		91C61EA82602203800D2E0E0 /* DI_Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI_Platform.swift; sourceTree = "<group>"; };
 		91D3862025D241BB00235438 /* HomeTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleCell.swift; sourceTree = "<group>"; };
 		91D3862125D241BB00235438 /* HomeTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTitleCell.xib; sourceTree = "<group>"; };
 		91D3862D25D2531B00235438 /* CommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				91AD442225FBADD600C1027A /* DI_Mail.swift */,
+				91C61EA82602203800D2E0E0 /* DI_Platform.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				91B9EC8525DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				80ECB13E25FF10B400032FF4 /* DI_Common.swift in Sources */,
 				806EA80325DCCA7F005D8688 /* StringExtension.swift in Sources */,
+				91C61EA92602203800D2E0E0 /* DI_Platform.swift in Sources */,
 				806EA7FC25DCB0B3005D8688 /* FilterBrandCell.swift in Sources */,
 				910A75FD25D3A91300F16E3F /* SignupPasswordViewController.swift in Sources */,
 				91064C0B25CAC6DC0086E2EF /* SplashViewController.swift in Sources */,

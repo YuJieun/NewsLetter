@@ -27,6 +27,13 @@ class HomeViewController: UIViewController {
     var oldLetters: DI_MailList?
     var newLetters: DI_MailList?
     
+    //지난 레터 request데이터
+    var filterData: DIR_Mail?
+    
+    //필터
+    var platforms: DI_PlatformList?
+    var totalData = DI_Platform()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("홈메뉴")
@@ -46,7 +53,20 @@ class HomeViewController: UIViewController {
     
     func setup() {
         self.getNewLetters()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let end = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        let endDate = formatter.string(from: end!)
+
+        let requestData = DIR_Mail()
+        requestData.startDate = nil
+        requestData.endDate = endDate
+        requestData.page = 0
+        self.filterData = requestData
         self.getOldLetters()
+        self.brandRequest()
     }
 
     func getNewLetters() {
@@ -57,7 +77,10 @@ class HomeViewController: UIViewController {
         let start = Calendar.current.date(byAdding: .day, value: -7, to: Date())
         let startDate = formatter.string(from: start! )
 
-        let requestData = DIR_Mail(startDate: startDate, endDate: current, page: 0)
+        let requestData = DIR_Mail()
+        requestData.startDate = startDate
+        requestData.endDate = current
+        requestData.page = 0
         DataRequest.getMailList(parameter: requestData) { [weak self] data in
             guard let `self` = self else { return }
             self.newLetters = data
@@ -68,30 +91,8 @@ class HomeViewController: UIViewController {
     }
 
     func getOldLetters() {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd"
-//
-//        let end = Calendar.current.date(byAdding: .day, value: -7, to: Date())
-//        let endDate = formatter.string(from: end!)
-//
-//        let requestData = DIR_Mail(startDate: nil, endDate: endDate, page: 0)
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let current = formatter.string(from: Date())
-        
-        let start = Calendar.current.date(byAdding: .day, value: -7, to: Date())
-        let startDate = formatter.string(from: start! )
-
-        let requestData = DIR_Mail(startDate: startDate, endDate: current, page: 0)
-//        DataRequest.getMailList(parameter: requestData) { [weak self] data in
-//            guard let `self` = self else { return }
-//            self.oldLetters = data
-//            self.collectionView.reloadSections(IndexSet([HomeSection.oldLetters.rawValue]))
-//        } failure: { _ in
-//            print("메일 못가져옴")
-//        }
-        DataRequest.getMailList(parameter: requestData) { [weak self] data in
+        guard let filterData = self.filterData else { return }
+        DataRequest.getMailList(parameter: filterData) { [weak self] data in
             guard let `self` = self else { return }
             self.oldLetters = data
             self.collectionView.reloadSections(IndexSet([HomeSection.oldLetters.rawValue]))
@@ -99,6 +100,22 @@ class HomeViewController: UIViewController {
             print("메일 못가져옴")
         }
     }
+    
+    func brandRequest() {
+        DataRequest.getSubscribingPlatforms() { [weak self] data in
+            guard let `self` = self else { return }
+            self.platforms = data
+            for item in data.resultList {
+                item.isSelected = false
+            }
+            self.totalData.name = "전체"
+            self.totalData.isSelected = true
+            self.collectionView.reloadData()
+        } failure: { _ in
+            print("플랫폼목록 못가져옴")
+        }
+    }
+    
     
     @objc private func refresh(){
         self.setup()
@@ -151,7 +168,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case HomeSection.newLetters.rawValue:
             return isNewLetterValid ? 1 : 0
         case HomeSection.noLetters.rawValue:
-            return isOldLetterValid ? 0 : 1
+            return isNewLetterValid ? 0 : 1
         case HomeSection.filterBar.rawValue:
             return 1
         case HomeSection.oldLetters.rawValue:
@@ -185,6 +202,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                         let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
                         guard let  vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
                         vc.letterId = data.letterId
+                        vc.show()
                         self.navigationController?.pushViewController(vc, animated: true)
                     case .bookmark:
                         self.getNewLetters()
@@ -204,8 +222,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 guard let `self` = self else { return }
                 self.definesPresentationContext = true
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier:  "FilterViewController")
+                guard let vc = storyboard.instantiateViewController(withIdentifier:  "FilterViewController") as? FilterViewController else { return }
                 vc.modalPresentationStyle = .overCurrentContext
+                vc.filterData = self.filterData
+                vc.platforms = self.platforms
+                vc.totalData = self.totalData
+                vc.customClosure = { [weak self] _, _ in
+                    guard let self = self else { return }
+                    self.getOldLetters()
+                }
                 self.present(vc, animated: true)
             }
             return cell
@@ -215,12 +240,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.configure(data: oldLetters.resultList[indexPath.row])
             cell.cellClosure = { [weak self] (type,data) in
                 guard let `self` = self else { return }
-                guard let type = type as? String else { return }
+                guard let data = data as? DI_Mail else { return }
                 if let type = MailCallbackType(rawValue: type) {
                     switch type {
                     case .letterDetail:
                         let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController")
+                        guard let  vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
+                        vc.letterId = data.letterId
+                        vc.show()
                         self.navigationController?.pushViewController(vc, animated: true)
                     case .bookmark:
                         self.getOldLetters()
