@@ -30,7 +30,7 @@ class ApiManager {
     
     func requestApi<T: Decodable>(_ url: String, _ param: [String: String]?, _ type: T.Type, _ method: HTTPMethod, isContainToken: Bool = false, _ isQueryEncoding: Bool = false,  success: @escaping (T)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
         guard checkNetworkAvailable() == true else { failure(.network, ""); return }
-        var headerData: HTTPHeaders = [ "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"]
+        var headerData: HTTPHeaders = [ "Content-Type": "application/json" ]
         if isContainToken {
             if let token = KeychainService.shared.loadToken() {
                 headerData.add(name: "x-access-token", value: token)

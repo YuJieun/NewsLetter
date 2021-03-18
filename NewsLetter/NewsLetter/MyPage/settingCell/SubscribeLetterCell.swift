@@ -14,16 +14,17 @@ class SubscribeLetterCell: CommonCollectionViewCell {
     @IBOutlet weak var logoImage: UIImageView!
     
     var isBottomViewVisible: Bool = true
-    var row: Int = 0
+    var data: DI_Platform?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configure(data: Any? = nil) {
-//        guard let data = data as? String else { return }
-        self.brandTitleLabel.text = ConstGroup.LOGOTXT[row]
-        self.logoImage.image = UIImage(named: ConstGroup.LOGOIMG[row])
+        guard let data = data as? DI_Platform else { return }
+        self.data = data
+        self.brandTitleLabel.text = data.name
+        self.logoImage.load(urlStr: data.imageUrl)
         self.bottomView.isHidden = !isBottomViewVisible
     }
     
@@ -31,7 +32,13 @@ class SubscribeLetterCell: CommonCollectionViewCell {
         return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize(className: "SubscribeLetterCell").height)
     }
 
-    @IBAction func onDeleye(_ sender: UIButton) {
-        
+    @IBAction func onDelete(_ sender: UIButton) {
+        guard let data = self.data else { return }
+//        DataRequest.deletePlatform(id: data.platformId) { [weak self] data in
+//            guard let `self` = self else { return }
+//            print("구독삭제성공")
+//        } failure: { _ in
+//            print("플랫폼목록 못가져옴")
+//        }
     }
 }

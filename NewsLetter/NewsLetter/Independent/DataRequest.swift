@@ -67,6 +67,16 @@ class DataRequest {
         })
     }
     
+    //계정 삭제
+    static func deleteAccount(success: @escaping (DI_UserInfo) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.USERINFO_URL
+        ApiManager.shared.requestApi(url, nil, DI_UserInfo.self, .delete, isContainToken: true,  success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
     //MARK:- 로그인
     static func postLogin(param: DIR_User, success: @escaping (DI_User) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.LOGIN_URL
@@ -170,6 +180,28 @@ class DataRequest {
         let userId = MemberManager.shared.getuserId()
         let url = "\(ConstGroup.USERINFO_URL)/\(userId)/subscribing-platforms"
         ApiManager.shared.requestApi(url, nil, DI_PlatformList.self, .get, isContainToken: true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
+    //MARK:- 마이페이지
+    //프로필
+    static func patchChangeNickname(nickname: String, success: @escaping (DI_UserInfo) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.NICKNAME_URL
+        let parameter = ["nickname" : nickname]
+        ApiManager.shared.requestApi(url, parameter, DI_UserInfo.self, .patch, isContainToken: true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
+    //플랫폼구독취소
+    static func deletePlatform(id: Int, success: @escaping (DI_Platform) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = "\(ConstGroup.PLATFORM_URL)/\(id)"
+        ApiManager.shared.requestApi(url, nil, DI_Platform.self, .delete, isContainToken: true, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)

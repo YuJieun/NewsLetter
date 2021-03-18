@@ -15,6 +15,8 @@ enum EditSection: Int, CaseIterable {
 class LettersEditViewController: CommonNavigationController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var data: DI_PlatformList?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "구독메일 조회 및 편집"
@@ -23,7 +25,20 @@ class LettersEditViewController: CommonNavigationController {
     
     func setup() {
         self.collectionView.registerNibCell("SubscribeLetterCell", Classs: SubscribeLetterCell.self)
+        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        request()
     }
+    
+    func request() {
+        DataRequest.getSubscribingPlatforms() { [weak self] data in
+            guard let `self` = self else { return }
+            self.data = data
+            self.collectionView.reloadData()
+        } failure: { _ in
+            print("플랫폼목록 못가져옴")
+        }
+    }
+    
 }
 
 extension LettersEditViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -35,7 +50,7 @@ extension LettersEditViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case EditSection.services.rawValue:
-            return 3
+            return self.data?.resultList.count ?? 0
         default:
             return 0
         }
@@ -44,12 +59,12 @@ extension LettersEditViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case EditSection.services.rawValue:
+            guard let data = self.data else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
             let cell = collectionView.dequeueReusableCell(SubscribeLetterCell.self, "SubscribeLetterCell", for: indexPath)
-            if indexPath.row == 4-1 {
+            if indexPath.row == data.resultList.count - 1 {
                 cell.isBottomViewVisible = false
             }
-            cell.row = indexPath.row
-            cell.configure()
+            cell.configure(data: data.resultList[indexPath.row])
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
