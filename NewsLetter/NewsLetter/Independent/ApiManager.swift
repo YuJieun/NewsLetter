@@ -131,7 +131,7 @@ class ApiManager {
                 failure(.custom, "Error")
             }
         }
-        AF.request(url, method: method, parameters: classParam, encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: headerData).validate().responseJSON { response in
+        AF.request(url, method: method, parameters: classParam, encoder: customEncoder(encoder: URLEncodedFormEncoder()), headers: headerData).validate().responseJSON { response in
             switch response.result {
             case .success(let res):
                 do {
@@ -160,6 +160,45 @@ class ApiManager {
             }
         }
     }
+    
+    func requestHtml(_ url: String, _ method: HTTPMethod, isContainToken: Bool = false, success: @escaping (String)-> Void, failure: @escaping (FailureResult, Any) -> Void) {
+        guard checkNetworkAvailable() == true else { failure(.network, ""); return }
+        var headerData: HTTPHeaders = [ "Content-Type": "application/json" ]
+        if isContainToken {
+            if let token = KeychainService.shared.loadToken() {
+                headerData.add(name: "x-access-token", value: token)
+            }
+            else {
+                failure(.custom, "Error")
+            }
+        }
+        
+        AF.request(url, method: method, headers: headerData).validate().responseString { response in
+            switch response.result {
+            case .success(let res):
+                if let data = response.data {
+                    success(String(decoding: data, as: UTF8.self))
+                }
+                else {
+                    failure(.custom, "No Html" )
+                }
+            case .failure(let err):
+                if let data = response.data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+                        let posts = json?["message"] ?? "Error"
+                        failure(.custom, posts)
+                    }
+                    catch {
+                        failure(.custom, "Parsing Error" )
+                    }
+                }
+                else {
+                    failure(.custom, err.localizedDescription)
+                }
+            }
+        }
+    }
        
     func checkNetworkAvailable() -> Bool {
         let reachability = try! Reachability()
@@ -169,5 +208,61 @@ class ApiManager {
         default:
             return false
         }
+    }
+}
+
+//struct ArrayEncoding: ParameterEncoder {
+//    func encode<Parameters>(_ parameters: Parameters?, into request: URLRequest) throws -> URLRequest where Parameters : Encodable {
+//        var request = try URLEncoding().encode(urlRequest, with: parameters)
+//        request.url = URL(string: request.url!.absoluteString.replacingOccurrences(of: "%5B%5D=", with: "="))
+//        return request
+//    }
+    
+//    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+//        var request = try URLEncoding().encode(urlRequest, with: parameters)
+//        request.url = URL(string: request.url!.absoluteString.replacingOccurrences(of: "%5B%5D=", with: "="))
+//        return request
+//    }
+//}
+
+struct customEncoder: ParameterEncoder {
+    public let encoder: URLEncodedFormEncoder
+
+    func encode<Parameters>(_ parameters: Parameters?, into request: URLRequest) throws -> URLRequest where Parameters : Encodable {
+        guard let parameters = parameters else { return request }
+        var request = request
+
+        guard let url = request.url else {
+            throw AFError.parameterEncoderFailed(reason: .missingRequiredComponent(.url))
+        }
+        
+        if var components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+            let query: String = try Result<String, Error> { try encoder.encode(parameters) }
+                .mapError { AFError.parameterEncoderFailed(reason: .encoderFailed(error: $0)) }.get()
+            var newQueryString = [components.percentEncodedQuery, query].compactMap { $0 }.joinedWithAmpersands()
+            newQueryString = newQueryString.replacingOccurrences(of: "%5B%5D=", with: "=")
+            components.percentEncodedQuery = newQueryString.isEmpty ? nil : newQueryString
+            guard let newURL = components.url else {
+                throw AFError.parameterEncoderFailed(reason: .missingRequiredComponent(.url))
+            }
+
+            request.url = newURL
+        } else {
+            if request.headers["Content-Type"] == nil {
+                request.headers.update(.contentType("application/x-www-form-urlencoded; charset=utf-8"))
+            }
+
+            request.httpBody = try Result<Data, Error> { try encoder.encode(parameters) }
+                .mapError { AFError.parameterEncoderFailed(reason: .encoderFailed(error: $0)) }.get()
+        }
+
+        
+        return request
+    }
+}
+
+extension Array where Element == String {
+    func joinedWithAmpersands() -> String {
+        joined(separator: "&")
     }
 }

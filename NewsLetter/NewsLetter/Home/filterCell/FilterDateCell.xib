@@ -68,6 +68,12 @@
                                     <constraint firstAttribute="height" constant="18" id="qLw-MF-kRs"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMG-kF-Qik">
+                                <rect key="frame" x="19" y="52" width="18" height="18"/>
+                                <connections>
+                                    <action selector="oncheckBox:" destination="gTV-IL-0wX" eventType="touchUpInside" id="IBW-Ao-p4Q"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX0-c3-gAH">
                                 <rect key="frame" x="43" y="50.5" width="26" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="14"/>
@@ -178,12 +184,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gX0-c3-gAH" firstAttribute="centerY" secondItem="qGR-SH-B14" secondAttribute="centerY" id="4Bs-9Q-VTQ"/>
+                            <constraint firstItem="dMG-kF-Qik" firstAttribute="top" secondItem="qGR-SH-B14" secondAttribute="top" id="4PY-AN-8qS"/>
                             <constraint firstItem="j66-Ma-Diy" firstAttribute="leading" secondItem="40Q-6X-0vH" secondAttribute="leading" id="4yC-pN-5Rv"/>
                             <constraint firstItem="OiO-9X-SDt" firstAttribute="top" secondItem="qGR-SH-B14" secondAttribute="bottom" constant="11" id="6hS-tG-3Iy"/>
                             <constraint firstItem="qGR-SH-B14" firstAttribute="top" secondItem="j66-Ma-Diy" secondAttribute="bottom" constant="15" id="CiI-dt-k1A"/>
                             <constraint firstItem="OiO-9X-SDt" firstAttribute="width" secondItem="xnm-kl-voD" secondAttribute="width" id="ELd-vb-rmy"/>
+                            <constraint firstItem="dMG-kF-Qik" firstAttribute="trailing" secondItem="qGR-SH-B14" secondAttribute="trailing" id="Fbr-U9-J4D"/>
+                            <constraint firstItem="dMG-kF-Qik" firstAttribute="bottom" secondItem="qGR-SH-B14" secondAttribute="bottom" id="ITQ-43-GMe"/>
                             <constraint firstItem="gX0-c3-gAH" firstAttribute="leading" secondItem="qGR-SH-B14" secondAttribute="trailing" constant="6" id="JHR-kB-zMr"/>
                             <constraint firstAttribute="trailing" secondItem="OiO-9X-SDt" secondAttribute="trailing" constant="19" id="KMV-U6-gNl"/>
+                            <constraint firstItem="dMG-kF-Qik" firstAttribute="leading" secondItem="qGR-SH-B14" secondAttribute="leading" id="MAP-MP-eg4"/>
                             <constraint firstItem="OiO-9X-SDt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xnm-kl-voD" secondAttribute="trailing" id="NIa-1h-Qkx"/>
                             <constraint firstItem="qGR-SH-B14" firstAttribute="leading" secondItem="40Q-6X-0vH" secondAttribute="leading" constant="19" id="auM-3z-t03"/>
                             <constraint firstAttribute="trailing" secondItem="j66-Ma-Diy" secondAttribute="trailing" id="dOt-qB-nAP"/>
@@ -201,6 +211,7 @@
                 <constraint firstAttribute="trailing" secondItem="40Q-6X-0vH" secondAttribute="trailing" id="pSM-Ez-tnf"/>
             </constraints>
             <connections>
+                <outlet property="checkBoxButton" destination="dMG-kF-Qik" id="qhr-hu-oFG"/>
                 <outlet property="checkBoxImage" destination="qGR-SH-B14" id="5lf-2O-Mus"/>
                 <outlet property="endArrow" destination="tkl-jY-gIk" id="4ad-KF-yAT"/>
                 <outlet property="endDateLabel" destination="zQ9-bZ-CYz" id="kNt-P0-alX"/>

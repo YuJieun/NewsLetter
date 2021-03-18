@@ -126,12 +126,21 @@ class DataRequest {
             handleErrorType(errType, data, failure)
         })
     }
+    
+    static func getLetterHtml(id: Int, success: @escaping (String) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = "\(ConstGroup.MAIL_DETAIL_URL)/\(id)/html"
+        ApiManager.shared.requestHtml(url, .get, isContainToken: true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
 
     //MARK:- 북마크
     static func postAddBookMark(letterId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.BOOKMARK_URL
         let parameter = ["letterId" : letterId]
-        ApiManager.shared.requestApiParamInt(url, parameter, DI_None.self, .post, isContainToken: true, success: { _ in
+        ApiManager.shared.requestApiParamInt(url, parameter, DI_Common.self, .post, isContainToken: true, success: { _ in
             success()
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -140,7 +149,7 @@ class DataRequest {
 
     static func deleteBookMark(bookmarkId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {
         let url = "\(ConstGroup.BOOKMARK_URL)/\(bookmarkId)"
-        ApiManager.shared.requestApi(url, nil, DI_None.self, .delete, isContainToken: true, success: { _ in
+        ApiManager.shared.requestApi(url, nil, DI_Common.self, .delete, isContainToken: true, success: { _ in
             success()
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)
@@ -150,6 +159,17 @@ class DataRequest {
     static func getBookMarkList(success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = ConstGroup.BOOKMARK_URL
         ApiManager.shared.requestApi(url, nil, DI_MailList.self, .get, isContainToken: true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
+    //MARK:- 플랫폼
+    static func getSubscribingPlatforms(success: @escaping (DI_PlatformList) -> Void, failure: @escaping (Error?) -> Void ) {
+        let userId = MemberManager.shared.getuserId()
+        let url = "\(ConstGroup.USERINFO_URL)/\(userId)/subscribing-platforms"
+        ApiManager.shared.requestApi(url, nil, DI_PlatformList.self, .get, isContainToken: true, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)

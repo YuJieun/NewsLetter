@@ -23,8 +23,7 @@ class FilterTitleCell: CommonCollectionViewCell {
         return CGSize(width: UISCREEN_WIDTH, height: self.getXibSize(className: "FilterTitleCell").height)
     }
 
-
-    @IBAction func onStartDateButton(_ sender: UIButton) {
-        cellClosure?("", nil)
+    @IBAction func onButton(_ sender: UIButton) {
+        cellClosure?("",nil)
     }
 }

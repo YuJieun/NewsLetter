@@ -32,13 +32,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kH-r7-b7w">
-                                <rect key="frame" x="339" y="20" width="16" height="22"/>
+                                <rect key="frame" x="332" y="20" width="23" height="22"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="multiply" catalog="system">
+                                <state key="normal" image="14Check">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="onStartDateButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="8dt-Kf-y5O"/>
+                                    <action selector="onButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="eUT-oI-BHW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -62,7 +62,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="multiply" catalog="system" width="128" height="111"/>
+        <image name="14Check" width="23" height="16"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
