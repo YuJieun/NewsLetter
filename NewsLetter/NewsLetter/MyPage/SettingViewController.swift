@@ -15,6 +15,7 @@ enum SettingSection: Int, CaseIterable {
     case divideLine
     case systemTitle
     case contact
+    case logout
     case deleteAccount
 }
 
@@ -22,6 +23,7 @@ class SettingViewController: CommonNavigationController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var customClosure: CellClosure?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "설정"
@@ -55,6 +57,8 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
             return 1
         case SettingSection.contact.rawValue:
             return 1
+        case SettingSection.logout.rawValue:
+            return 1
         case SettingSection.deleteAccount.rawValue:
             return 1
         default:
@@ -74,7 +78,11 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
             cell.cellClosure = { [weak self] _,_ in
                 guard let `self` = self else { return }
                 let storyboard = UIStoryboard(name: "Mypage", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "ProfileEditViewController")
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "ProfileEditViewController") as? ProfileEditViewController else { return }
+                vc.customClosure = { [weak self] _, _ in
+                    guard let `self` = self else { return }
+                    self.customClosure?("profile",nil)
+                }
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
@@ -99,6 +107,40 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
         case SettingSection.contact.rawValue:
             let cell = collectionView.dequeueReusableCell(SettingMenuCell.self, "SettingMenuCell", for: indexPath)
             cell.configure(data: "고객센터")
+            cell.cellClosure = { _,_ in
+                let email = "makeus.pineapple@gmail.com"
+                let subject = "피키레터 - 문의메일"
+                let bodyText = ""
+                
+                let coded = "mailto:\(email)?subject=\(subject)&body=\(bodyText)"
+                                        .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                if let url = URL(string: coded!) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+            return cell
+        case SettingSection.logout.rawValue:
+            let cell = collectionView.dequeueReusableCell(SettingMenuCell.self, "SettingMenuCell", for: indexPath)
+            cell.configure(data: "로그아웃")
+            cell.cellClosure = {[weak self] _, _ in
+                guard let `self` = self else { return }
+                let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonAlertViewController") as? CommonAlertViewController else { return }
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: false){
+                    let data = DI_Alert()
+                    data.infoLabel = "정말 로그아웃하시겠습니까?"
+                    data.leftLabel = "로그아웃"
+                    data.rightLabel = "안할래요"
+                    data.leftAction = { _, _ in
+                        //탈퇴 기능 추가
+                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                        KeychainService.shared.deleteToken()
+                        appDelegate.switchLogin()
+                    }
+                    vc.configure(data)
+                }
+            }
             return cell
         case SettingSection.deleteAccount.rawValue:
             let cell = collectionView.dequeueReusableCell(SettingMenuCell.self, "SettingMenuCell", for: indexPath)
@@ -113,9 +155,13 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
                     data.infoLabel = "정말 탈퇴하실건가요?"
                     data.leftLabel = "탈퇴할래요"
                     data.rightLabel = "안할래요"
-                    data.leftAction = { [weak self] _, _ in
-                        //탈퇴 기능 추가
-                        print("탈퇴")
+                    data.leftAction = { _, _ in
+                        DataRequest.deleteAccount(){ _ in
+                            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                            KeychainService.shared.deleteToken()
+                            appDelegate.switchLogin()
+                        } failure: { _ in
+                        }
                     }
                     vc.configure(data)
                 }
@@ -145,6 +191,9 @@ extension SettingViewController: UICollectionViewDataSource, UICollectionViewDel
             let size = SettingTitleCell.getSize(nil)
             return size
         case SettingSection.contact.rawValue:
+            let size = SettingMenuCell.getSize(nil)
+            return size
+        case SettingSection.logout.rawValue:
             let size = SettingMenuCell.getSize(nil)
             return size
         case SettingSection.deleteAccount.rawValue:
