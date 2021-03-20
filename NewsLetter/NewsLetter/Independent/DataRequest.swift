@@ -136,15 +136,6 @@ class DataRequest {
             handleErrorType(errType, data, failure)
         })
     }
-    
-    static func getLetterHtml(id: Int, success: @escaping (String) -> Void, failure: @escaping (Error?) -> Void ) {
-        let url = "\(ConstGroup.MAIL_DETAIL_URL)/\(id)/html"
-        ApiManager.shared.requestHtml(url, .get, isContainToken: true, success: { (data) in
-            success(data)
-        }, failure: { (errType, data) in
-            handleErrorType(errType, data, failure)
-        })
-    }
 
     //MARK:- 북마크
     static func postAddBookMark(letterId: Int, success: @escaping () -> Void, failure: @escaping (Error?) -> Void ) {

@@ -48,26 +48,24 @@ class MailDetailViewController: UIViewController {
         setup()
     }
     
-    func show() {
-        request()
-    }
     
     func setup() {
         self.headerStickyView.backgroundColor = .clear
         self.stickyBorderView.backgroundColor = .clear
         self.stickyBackButton.setImage(UIImage(named:"14BackWhite"), for: .normal)
+        request()
+        self.webView.scrollView.isScrollEnabled = false
+        self.webView.navigationDelegate = self
+        
     }
     
     func request() {
         guard let letterId = letterId else { return }
-        DataRequest.getLetterHtml(id: letterId) {[weak self] data in
-            guard let `self` = self else { return }
-            self.webView.scrollView.isScrollEnabled = false
-            self.webView.navigationDelegate = self
-            self.webView.loadHTMLString(data, baseURL: nil)
-        } failure: { _ in
-            print("html 못가져옴")
-        }
+        guard let url = URL(string:"\(ConstGroup.MAIL_DETAIL_URL)/\(letterId)/html") else { return }
+        guard let token = KeychainService.shared.loadToken() else { return }
+        var request = URLRequest(url: url)
+        request.addValue(token, forHTTPHeaderField: "x-access-token")
+        self.webView.load(request) 
         DataRequest.getLetterDetail(id: letterId) { [weak self] data in
             guard let `self` = self else { return }
             self.data = data
@@ -83,7 +81,18 @@ class MailDetailViewController: UIViewController {
         self.titleLabel.text = data.title
         self.logoLabel.text = data.platformName
         self.logoImageView.load(urlStr: data.platformImageUrl)
-        self.dateLabel.text = data.createdAt
+        
+        let dateString:String = data.createdAt
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+
+        let date:Date = dateFormatter.date(from: dateString)!
+
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let createDate = dateFormatter.string(from: date)
+        self.dateLabel.text = createDate
     }
     
     @IBAction func onBackButton(_ sender: UIButton) {
