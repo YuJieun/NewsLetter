@@ -44,14 +44,15 @@ class HomeViewController: UIViewController {
         self.collectionView.registerNibCell("HomeFilterBarCell", Classs: HomeFilterBarCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
-
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
                 
+        CustomLoadingView.show()
         setup() // 설정에서 닉네임 셋팅땜에 setup() 위치 바꿔야할 것 같긴 하다...
     }
     
     func setup() {
+        CustomLoadingView.show()
         self.getNewLetters()
         
         let formatter = DateFormatter()
@@ -111,7 +112,7 @@ class HomeViewController: UIViewController {
             }
             self.totalData.name = "전체"
             self.totalData.isSelected = true
-            self.collectionView.reloadData()
+            CustomLoadingView.hide()
         } failure: { _ in
             print("플랫폼목록 못가져옴")
         }
@@ -232,8 +233,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                         guard let  vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
                         vc.letterId = data.letterId
                         self.navigationController?.pushViewController(vc, animated: true)
-                    case .bookmark:
-                        self.getNewLetters()
                     default:
                         break
                     }
@@ -275,8 +274,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                         guard let  vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
                         vc.letterId = data.letterId
                         self.navigationController?.pushViewController(vc, animated: true)
-                    case .bookmark:
-                        self.getOldLetters()
                     default:
                         break
                     }
