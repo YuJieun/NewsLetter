@@ -17,6 +17,8 @@ class HomeNewLettersCell: CommonCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.registerNibCell("BigLetterBannerCell", Classs: BigLetterBannerCell.self)
+        self.collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
+
         setCollectionView()
     }
     
@@ -24,13 +26,16 @@ class HomeNewLettersCell: CommonCollectionViewCell {
         //셀너비
         let cellWidth:CGFloat = 320
         
-        // 좌우 여백
-        let inset:CGFloat = 19
+        // 좌 여백
+        let leftinset:CGFloat = 19
+        
+        // 우 여백
+        let rightinset:CGFloat = UISCREEN_WIDTH - cellWidth - leftinset
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 10
         layout.scrollDirection = .horizontal
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: leftinset, bottom: 0, right: rightinset)
     }
     
     func configure(data: Any? = nil) {
@@ -71,35 +76,35 @@ extension HomeNewLettersCell: UICollectionViewDelegate, UICollectionViewDataSour
         return size
     }
     
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        
-//        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-//        
-//        var offset = targetContentOffset.pointee
-//        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-//        var roundedIndex = round(index)
-//
-//        if scrollView.contentOffset.x > targetContentOffset.pointee.x { roundedIndex = floor(index) }
-//        else if scrollView.contentOffset.x < targetContentOffset.pointee.x {
-//            roundedIndex = ceil(index)
-//        } else {
-//            roundedIndex = round(index)
-//        }
-//        
-//        if currentIndex > roundedIndex {
-//            currentIndex -= 1
-//            roundedIndex = currentIndex
-//        } else if currentIndex < roundedIndex {
-//            currentIndex += 1
-//            roundedIndex = currentIndex
-//            
-//        }
-//
-//        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
-//        targetContentOffset.pointee = offset
-//
-//    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        //320 : 셀사이즈
+        let cellWidthIncludingSpacing = 320 + layout.minimumLineSpacing
+
+        var offset = targetContentOffset.pointee
+        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+        var roundedIndex = round(index)
+
+        if scrollView.contentOffset.x > targetContentOffset.pointee.x { roundedIndex = floor(index) }
+        else if scrollView.contentOffset.x < targetContentOffset.pointee.x {
+            roundedIndex = ceil(index)
+        } else {
+            roundedIndex = round(index)
+        }
+
+        if currentIndex > roundedIndex {
+            currentIndex -= 1
+            roundedIndex = currentIndex
+        } else if currentIndex < roundedIndex {
+            currentIndex += 1
+            roundedIndex = currentIndex
+        }
+
+        offset = CGPoint(x: (roundedIndex * cellWidthIncludingSpacing) - scrollView.contentInset.left, y: -scrollView.contentInset.top)
+        targetContentOffset.pointee = offset
+
+    }
 
 }
 
