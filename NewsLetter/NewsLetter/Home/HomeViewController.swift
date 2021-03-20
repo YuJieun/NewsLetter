@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private var refreshControl = UIRefreshControl()
-    var hasMoreLetters: Bool = true
+    var hasMoreLetters: Bool = false
     
     //MARK:- 데이터
     var oldLetters: DI_MailList?
@@ -67,6 +67,7 @@ class HomeViewController: UIViewController {
         self.filterData = requestData
         self.getOldLetters()
         self.brandRequest()
+        self.hasMoreLetters = true
     }
 
     func getNewLetters() {
@@ -121,33 +122,62 @@ class HomeViewController: UIViewController {
         self.setup()
         self.refreshControl.endRefreshing()
     }
-
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y != 0 {
+            guard hasMoreLetters == true else { return }
+            guard let filterData = self.filterData else { return }
+            
+            hasMoreLetters = false
+            filterData.page += 1
+            DataRequest.getMailList(parameter: filterData) { [weak self] data in
+                guard let `self` = self else { return }
+                if data.resultList.count > 0 {
+                    self.hasMoreLetters = true
+                    self.oldLetters?.resultList.append(contentsOf: data.resultList)
+                    self.collectionView.reloadSections(IndexSet([HomeSection.oldLetters.rawValue]))
+                }
+            } failure: { _ in
+                print("메일 못가져옴")
+            }
+        }
+    }
 
     func checkMoreLetters(_ collectionView: UICollectionView) {
+        guard hasMoreLetters == true else { return }
+        guard let filterData = self.filterData else { return }
         
-        /* 첫번째 케이스
         let offsety = collectionView.contentOffset.y
         let contentHeight = collectionView.contentSize.height
 
         if offsety > contentHeight - collectionView.frame.height
         {
-            
+            hasMoreLetters = false
+            filterData.page += 1
+            DataRequest.getMailList(parameter: filterData) { [weak self] data in
+                guard let `self` = self else { return }
+                if data.resultList.count > 0 {
+                    self.hasMoreLetters = true
+                    self.oldLetters = data
+                    self.collectionView.reloadSections(IndexSet([HomeSection.oldLetters.rawValue]))
+                }
+            } failure: { _ in
+                print("메일 못가져옴")
+            }
         }
-         */
-        
-        guard hasMoreLetters == true else { return }
-        let contentSize: CGFloat
+      
+        /*let contentSize: CGFloat
         let offsetY: CGFloat
 
         contentSize = collectionView.contentSize.height - UISCREEN_HEIGHT * 3
         offsetY = collectionView.contentOffset.y + collectionView.h
         
         if offsetY >= contentSize || contentSize <= 0 {
-            hasMoreLetters = false
+//            hasMoreLetters = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001, execute: {
                 self.collectionView.reloadData()
             })
-        }
+        }*/
     }
 }
 
@@ -159,7 +189,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let isNewLetterValid: Bool = self.newLetters?.resultList.count ?? 0 > 0 ? true : false
-        let isOldLetterValid: Bool = self.oldLetters?.resultList.count ?? 0 > 0 ? true : false
         switch section {
         case HomeSection.mainTitle.rawValue:
             return isNewLetterValid ? 1 : 0
@@ -179,9 +208,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        defer {
-            checkMoreLetters(collectionView)
-        }
+//        defer {
+//            checkMoreLetters(collectionView)
+//        }
         switch indexPath.section {
         case HomeSection.mainTitle.rawValue:
             let cell = collectionView.dequeueReusableCell(HomeTitleCell.self, "HomeTitleCell", for: indexPath)
@@ -202,11 +231,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                         let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
                         guard let  vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
                         vc.letterId = data.letterId
-                        vc.show()
                         self.navigationController?.pushViewController(vc, animated: true)
                     case .bookmark:
                         self.getNewLetters()
-                        //이후에 newletter섹션만 reload하기
                     default:
                         break
                     }
@@ -247,11 +274,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                         let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
                         guard let  vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
                         vc.letterId = data.letterId
-                        vc.show()
                         self.navigationController?.pushViewController(vc, animated: true)
                     case .bookmark:
                         self.getOldLetters()
-                        //이후에 oleLetter섹션만 reload하기
                     default:
                         break
                     }
