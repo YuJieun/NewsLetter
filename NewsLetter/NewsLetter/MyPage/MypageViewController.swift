@@ -18,12 +18,18 @@ class MypageViewController: UIViewController {
     var bookmarkList: DI_MailList?
 
     @IBOutlet weak var collectionView: UICollectionView!
+    private var refreshControl = UIRefreshControl()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.registerNibCell("MypageProfileCell", Classs: MypageProfileCell.self)
         self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
+        
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
         setup()
     }
 
@@ -35,6 +41,11 @@ class MypageViewController: UIViewController {
         } failure: { _ in
             print("북마크 메일 못가져옴")
         }
+    }
+    
+    @objc private func refresh(){
+        self.setup()
+        self.refreshControl.endRefreshing()
     }
 }
 

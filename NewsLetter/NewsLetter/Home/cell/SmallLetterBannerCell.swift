@@ -40,21 +40,18 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         self.bannerLogoImageView.load(urlStr: data.platformImageUrl)
         self.bannerBrandLabel.text = data.platformName
         
-//        let dateString:String = data.createdAt
-//        let dateFormatter = DateFormatter()
-//
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-//        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-//
-//        let date:Date = dateFormatter.date(from: dateString)!
-//
-//        dateFormatter.dateFormat = "MM/dd/yyyy"
-//        let createDate = dateFormatter.string(from: date)
-//
-//        self.bannerDateLabel.text = createDate
-        
-        self.bannerDateLabel.text = data.createdAt
+        let dateString:String = data.createdAt
+        let dateFormatter = DateFormatter()
 
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+
+        let date:Date = dateFormatter.date(from: dateString)!
+
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let createDate = dateFormatter.string(from: date)
+
+        self.bannerDateLabel.text = createDate
 
         if data.bookmarkId >= 1 {
             self.bookmarkButton.isSelected = true
