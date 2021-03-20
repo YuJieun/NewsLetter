@@ -88,8 +88,6 @@ class BigLetterBannerCell: CommonCollectionViewCell {
             DataRequest.deleteBookMark(bookmarkId: data.bookmarkId) { [weak self] in
                 guard let `self` = self else { return }
                 self.bookMarkButton.isSelected = false
-                self.cellClosure?(MailCallbackType.bookmark.rawValue, nil)
-                #warning("북마크 하고 전체 reload때리는게 과연 맞는가?")
             } failure: { _ in
                 print("북마크 추가 오류")
             }
@@ -99,7 +97,6 @@ class BigLetterBannerCell: CommonCollectionViewCell {
             DataRequest.postAddBookMark(letterId: data.letterId) { [weak self] in
                 guard let `self` = self else { return }
                 self.bookMarkButton.isSelected = true
-                self.cellClosure?(MailCallbackType.bookmark.rawValue, nil)
             } failure: { _ in
                 print("북마크 추가 오류")
             }

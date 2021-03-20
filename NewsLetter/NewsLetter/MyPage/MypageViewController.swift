@@ -34,10 +34,12 @@ class MypageViewController: UIViewController {
     }
 
     func setup() {
+        CustomLoadingView.show()
         DataRequest.getBookMarkList(){ [weak self] data in
             guard let `self` = self else { return }
             self.bookmarkList = data
             self.collectionView.reloadData()
+            CustomLoadingView.hide()
         } failure: { _ in
             print("북마크 메일 못가져옴")
         }
@@ -94,6 +96,21 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             guard let bookmarkList = self.bookmarkList else { return collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath) }
             let cell = collectionView.dequeueReusableCell(SmallLetterBannerCell.self, "SmallLetterBannerCell", for: indexPath)
             cell.configure(data: bookmarkList.resultList[indexPath.row])
+            cell.cellClosure = { [weak self] (type,data) in
+                guard let `self` = self else { return }
+                guard let data = data as? DI_Mail else { return }
+                if let type = MailCallbackType(rawValue: type) {
+                    switch type {
+                    case .letterDetail:
+                        let storyboard = UIStoryboard(name: "MailDetail", bundle: nil)
+                        guard let  vc = storyboard.instantiateViewController(withIdentifier: "MailDetailViewController") as? MailDetailViewController else { return }
+                        vc.letterId = data.letterId
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    default:
+                        break
+                    }
+                }
+            }
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)

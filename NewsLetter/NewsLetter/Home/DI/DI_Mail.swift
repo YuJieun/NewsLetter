@@ -9,7 +9,6 @@ import Foundation
 
 enum MailCallbackType: String, CaseIterable {
     case letterDetail
-    case bookmark
     case lock
 }
 

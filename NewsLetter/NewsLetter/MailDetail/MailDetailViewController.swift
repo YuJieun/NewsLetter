@@ -50,13 +50,17 @@ class MailDetailViewController: UIViewController {
     
     
     func setup() {
+        // 북마크
+        self.stickyBookMarkButton.setImage(UIImage(named: "24BookmarkLine"), for: .normal)
+        self.stickyBookMarkButton.setImage(UIImage(named: "24BookmarkFill"), for: .selected)
+
         self.headerStickyView.backgroundColor = .clear
         self.stickyBorderView.backgroundColor = .clear
         self.stickyBackButton.setImage(UIImage(named:"14BackWhite"), for: .normal)
-        request()
         self.webView.scrollView.isScrollEnabled = false
         self.webView.navigationDelegate = self
-        
+        CustomLoadingView.show()
+        request()
     }
     
     func request() {
@@ -93,6 +97,13 @@ class MailDetailViewController: UIViewController {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         let createDate = dateFormatter.string(from: date)
         self.dateLabel.text = createDate
+        
+        if data.bookmarkId >= 1 {
+            self.stickyBookMarkButton.isSelected = true
+        }
+        else {
+            self.stickyBookMarkButton.isSelected = false
+        }
     }
     
     @IBAction func onBackButton(_ sender: UIButton) {
@@ -106,8 +117,10 @@ class MailDetailViewController: UIViewController {
 
 extension MailDetailViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-        let height = self.webView.scrollView.contentSize.height
-        self.webView.heightConstraint = height }
+            let height = self.webView.scrollView.contentSize.height
+            self.webView.heightConstraint = height
+            CustomLoadingView.hide()
+        }
     }
 }
 

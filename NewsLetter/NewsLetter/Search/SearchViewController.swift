@@ -32,15 +32,16 @@ class SearchViewController: CommonViewController {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-
         setup()
     }
 
     func setup() {
+        CustomLoadingView.show()
         DataRequest.getMailRankingList() { [weak self] data in
             guard let `self` = self else { return }
             self.rankingLetters = data
             self.collectionView.reloadData()
+            CustomLoadingView.hide()
         } failure: { _ in
             print("랭킹메일 못가져옴")
         }
@@ -73,8 +74,6 @@ class SearchViewController: CommonViewController {
                     guard let data = data as? DI_Mail else { return }
                     vc.letterId = data.letterId
                     self.navigationController?.pushViewController(vc, animated: true)
-                case .bookmark:
-                    self.setup()
                 case .lock:
                     guard let data = data as? DI_Mail else { return }
                     let storyboard = UIStoryboard(name: "Alert", bundle: nil)
