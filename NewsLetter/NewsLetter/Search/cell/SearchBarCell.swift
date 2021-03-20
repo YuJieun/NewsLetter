@@ -20,6 +20,7 @@ class SearchBarCell: CommonCollectionViewCell{
     //https://devmjun.github.io/archive/SearchController
     
     func configure(data: Any? = nil) {
+        setText()
     }
     
     func configureUI() {
@@ -27,7 +28,7 @@ class SearchBarCell: CommonCollectionViewCell{
         searchBar.layer.borderWidth = 1
         searchBar.layer.cornerRadius = 3
         searchBar.setImage(UIImage(named: "14SearchLine"), for: UISearchBar.Icon.search, state: .normal)
-        searchBar.setImage(UIImage(named: "14X"), for: .clear, state: .normal)
+        searchBar.setImage(UIImage(named: "8X"), for: .clear, state: .normal)
         
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.backgroundColor = UIColor.white
@@ -35,6 +36,12 @@ class SearchBarCell: CommonCollectionViewCell{
             textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor(rgb: 0xbdbdbd), NSAttributedString.Key.font : UIFont(name: "NotoSansKR-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)])
             textfield.textColor = UIColor(rgb: 0x333333)
             textfield.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+        }
+    }
+    
+    func setText() {
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.text = ""
         }
     }
 

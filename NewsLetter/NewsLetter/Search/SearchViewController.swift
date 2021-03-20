@@ -17,6 +17,7 @@ enum SearchSection: Int, CaseIterable {
 
 class SearchViewController: CommonViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    private var refreshControl = UIRefreshControl()
 
     var rankingLetters: DI_MailList?
     var searchLetters: DI_MailList?
@@ -29,6 +30,8 @@ class SearchViewController: CommonViewController {
         self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
         setup()
     }
@@ -41,6 +44,12 @@ class SearchViewController: CommonViewController {
         } failure: { _ in
             print("랭킹메일 못가져옴")
         }
+    }
+    
+    @objc private func refresh(){
+        self.keyword = ""
+        self.setup()
+        self.refreshControl.endRefreshing()
     }
 
     func searchKeyword(_ keyword: String) {
