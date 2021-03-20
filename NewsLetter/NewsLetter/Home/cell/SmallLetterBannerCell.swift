@@ -79,7 +79,7 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         self.bookmarkButton.setImage(UIImage(named: "24BookmarkFill"), for: .selected)
 
         //3: 잠금
-        if let isSubscribing = data.isSubscribing, isSubscribing == 0 {
+        if let subscribing = data.subscribing, subscribing == false {
             self.lockView.isHidden = false
         }
         else {
@@ -127,7 +127,7 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
     }
 
     @IBAction func onLockButton(_ sender: UIButton) {
-        if let isSubscribing = self.data?.isSubscribing, isSubscribing == 0 {
+        if let subscribing = self.data?.subscribing, subscribing == false {
             cellClosure?(MailCallbackType.lock.rawValue, data)
         }
     }
