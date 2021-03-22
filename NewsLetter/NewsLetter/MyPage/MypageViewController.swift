@@ -35,11 +35,38 @@ class MypageViewController: UIViewController {
 
     func setup() {
         CustomLoadingView.show()
-        DataRequest.getBookMarkList(){ [weak self] data in
+        DataRequest.getBookMarkList(id: 0){ [weak self] data in
             guard let `self` = self else { return }
             self.bookmarkList = data
+            if data.resultList.count > 0 {
+                self.moreRequest()
+            }
+            else {
+                self.collectionView.reloadData()
+                CustomLoadingView.hide()
+            }
+        } failure: { _ in
+            print("북마크 메일 못가져옴")
+        }
+    }
+    
+    func moreRequest() {
+        guard let bookmarkList = self.bookmarkList else {
             self.collectionView.reloadData()
-            CustomLoadingView.hide()
+            return
+        }
+        let lastid = bookmarkList.resultList[bookmarkList.resultList.count - 1].letterId
+        DataRequest.getBookMarkList(id: lastid){ [weak self] data in
+            guard let `self` = self else { return }
+            guard let bookmarkList = self.bookmarkList else { return }
+            if data.resultList.count > 0 {
+                bookmarkList.resultList.append(contentsOf: data.resultList)
+                self.moreRequest()
+            }
+            else {
+                self.collectionView.reloadData()
+                CustomLoadingView.hide()
+            }
         } failure: { _ in
             print("북마크 메일 못가져옴")
         }

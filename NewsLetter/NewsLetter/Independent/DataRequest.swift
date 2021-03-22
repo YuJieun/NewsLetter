@@ -157,8 +157,8 @@ class DataRequest {
         })
     }
 
-    static func getBookMarkList(success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
-        let url = ConstGroup.BOOKMARK_URL
+    static func getBookMarkList(id: Int, success: @escaping (DI_MailList) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = "\(ConstGroup.BOOKMARK_URL)?lastLetterId=\(id)"
         ApiManager.shared.requestApi(url, nil, DI_MailList.self, .get, isContainToken: true, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
