@@ -26,7 +26,6 @@
 		91064C0E25CAC6DC0086E2EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91064C0C25CAC6DC0086E2EF /* Main.storyboard */; };
 		91064C1025CAC6DD0086E2EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91064C0F25CAC6DD0086E2EF /* Assets.xcassets */; };
 		91064C1325CAC6DD0086E2EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91064C1125CAC6DD0086E2EF /* LaunchScreen.storyboard */; };
-		91064C2325CAD1090086E2EF /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91064C2225CAD1090086E2EF /* LoginManager.swift */; };
 		91064C2725CAD74E0086E2EF /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91064C2625CAD74E0086E2EF /* KeyChainService.swift */; };
 		91064C2B25CAD9D60086E2EF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91064C2A25CAD9D60086E2EF /* Extensions.swift */; };
 		91064C3025CADA380086E2EF /* ConstGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91064C2F25CADA380086E2EF /* ConstGroup.swift */; };
@@ -77,6 +76,7 @@
 		91AFAA1A25EFBD1700150098 /* DI_Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AFAA1925EFBD1700150098 /* DI_Alert.swift */; };
 		91B1606A25EE84B10072E4F9 /* MailDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91B1606925EE84B10072E4F9 /* MailDetail.storyboard */; };
 		91B1606C25EE84CF0072E4F9 /* MailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B1606B25EE84CF0072E4F9 /* MailDetailViewController.swift */; };
+		91B2F4EA2608DCD500641AC2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B2F4E92608DCD500641AC2 /* WebKit.framework */; };
 		91B9EC8525DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9EC8425DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		91B9ECA325DE46D1006B3E68 /* MypageProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B9ECA125DE46D1006B3E68 /* MypageProfileCell.swift */; };
 		91B9ECA425DE46D1006B3E68 /* MypageProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B9ECA225DE46D1006B3E68 /* MypageProfileCell.xib */; };
@@ -137,7 +137,6 @@
 		91064C0F25CAC6DD0086E2EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91064C1225CAC6DD0086E2EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91064C1425CAC6DD0086E2EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91064C2225CAD1090086E2EF /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		91064C2625CAD74E0086E2EF /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		91064C2A25CAD9D60086E2EF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		91064C2F25CADA380086E2EF /* ConstGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstGroup.swift; sourceTree = "<group>"; };
@@ -188,6 +187,7 @@
 		91AFAA1925EFBD1700150098 /* DI_Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI_Alert.swift; sourceTree = "<group>"; };
 		91B1606925EE84B10072E4F9 /* MailDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MailDetail.storyboard; sourceTree = "<group>"; };
 		91B1606B25EE84CF0072E4F9 /* MailDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailDetailViewController.swift; sourceTree = "<group>"; };
+		91B2F4E92608DCD500641AC2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		91B9EC8425DE04F6006B3E68 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		91B9ECA125DE46D1006B3E68 /* MypageProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageProfileCell.swift; sourceTree = "<group>"; };
 		91B9ECA225DE46D1006B3E68 /* MypageProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MypageProfileCell.xib; sourceTree = "<group>"; };
@@ -222,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91B2F4EA2608DCD500641AC2 /* WebKit.framework in Frameworks */,
 				5AF16DA934B04E151E75225F /* Pods_NewsLetter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +303,6 @@
 				91D3860F25D1035700235438 /* DIR */,
 				91D3860E25D1034300235438 /* DI */,
 				910A75EB25D375B500F16E3F /* Controller */,
-				91064C2225CAD1090086E2EF /* LoginManager.swift */,
 				91064C2625CAD74E0086E2EF /* KeyChainService.swift */,
 				917EDC3725CD126800AF600A /* Login.storyboard */,
 			);
@@ -403,6 +403,7 @@
 		91994EFE25CE7018005D611C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91B2F4E92608DCD500641AC2 /* WebKit.framework */,
 				BAC74B461B8C189D3F4631EB /* Pods_NewsLetter.framework */,
 			);
 			name = Frameworks;
@@ -754,7 +755,6 @@
 				91D7D30D25E670CA002FF440 /* DI_Mypage.swift in Sources */,
 				806EA80825DCD107005D8688 /* FilterDateCell.swift in Sources */,
 				917EDC5925CD330700AF600A /* MainCenterViewController.swift in Sources */,
-				91064C2325CAD1090086E2EF /* LoginManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,7 +831,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -886,7 +886,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

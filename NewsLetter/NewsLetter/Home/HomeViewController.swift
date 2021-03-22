@@ -36,7 +36,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("홈메뉴")
         self.collectionView.registerNibCell("HomeTitleCell", Classs: HomeTitleCell.self)
         self.collectionView.registerNibCell("HomeNoTitleCell", Classs: HomeNoTitleCell.self)
         self.collectionView.registerNibCell("HomeNewLettersCell", Classs: HomeNewLettersCell.self)
@@ -260,6 +259,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 vc.totalData = self.totalData
                 vc.customClosure = { [weak self] _, _ in
                     guard let self = self else { return }
+                    self.filterData?.page = 0
                     self.getOldLetters()
                 }
                 self.present(vc, animated: true)

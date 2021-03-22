@@ -20,7 +20,7 @@
                         <rect key="frame" x="19" y="48" width="337" height="40"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <offsetWrapper key="searchTextPositionAdjustment" horizontal="14" vertical="0.0"/>
+                        <offsetWrapper key="searchTextPositionAdjustment" horizontal="10" vertical="0.0"/>
                         <textInputTraits key="textInputTraits"/>
                     </searchBar>
                 </subviews>

@@ -175,7 +175,7 @@ class ApiManager {
         
         AF.request(url, method: method, headers: headerData).validate().responseString { response in
             switch response.result {
-            case .success(let res):
+            case .success:
                 if let data = response.data {
                     success(String(decoding: data, as: UTF8.self))
                 }

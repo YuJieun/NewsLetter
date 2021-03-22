@@ -22,18 +22,16 @@ class BigLetterBannerCell: CommonCollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.updateUI()
     }
 
     func configure(data: Any? = nil) {
         guard let data = data as? DI_Mail else { return }
         self.data = data
-        self.updateUI()
         self.bind()
     }
     
     func updateUI() {
-        guard let data = self.data else { return }
-
         //1. 레이아웃
         self.layer.borderColor = UIColor(rgb: 0x333333).cgColor
         self.layer.borderWidth = 1

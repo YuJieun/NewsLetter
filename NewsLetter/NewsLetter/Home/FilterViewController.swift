@@ -84,7 +84,7 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
         case FilterSection.title.rawValue:
             return 1
         case FilterSection.brand.rawValue:
-            if let filterData = self.filterData, let platform = self.platforms {
+            if let _ = self.filterData, let _ = self.platforms {
                 return 1
             }
             else {

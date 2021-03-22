@@ -160,7 +160,7 @@ class FilterDateCell: CommonCollectionViewCell {
     }
     
     @IBAction func onStartDateButton(_ sender: UIButton) {
-        guard let endDate = self.data?.endDate else { return }
+        guard let _ = self.data?.endDate else { return }
         let today = Date()
         DatePickerDialog(locale: Locale(identifier: "ko_KO")).show("Start Date", doneButtonTitle: "완료", cancelButtonTitle: "취소", minimumDate: nil, maximumDate: today, datePickerMode: .date) { date in
             if let dt = date {

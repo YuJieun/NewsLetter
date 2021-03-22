@@ -13,7 +13,7 @@ public typealias CellClosure = (_ type: String, _ data: Any?) -> Void
 extension UIAlertController {
     public func show() {
         DispatchQueue.main.async {
-            UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: nil)
+            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController?.present(self, animated: true, completion: nil)
         }
     }
 }
@@ -80,7 +80,7 @@ extension Encodable {
 
 
 extension UIApplication {
-    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func topViewController(base: UIViewController? = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)
         }

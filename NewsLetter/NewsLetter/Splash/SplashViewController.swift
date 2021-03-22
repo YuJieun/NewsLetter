@@ -41,24 +41,4 @@ class SplashViewController: UIViewController {
             appDelegate.switchLogin()
         }
     }
-    
-    //자동 로그인 체크. 자동 로그인 되면 true 아니면 false리턴
-//    func autoLoginProcess() -> Bool {
-//        let loginManager = LoginManager.shared
-//        if loginManager.memberInfo.isAutoLoginAction() {
-//            loginManager.ssgLoginAction(){ status in
-//                if status {
-//                    //appDelegate.switchHome()
-
-//                }
-//                else {
-    //                appDelegate.switchLogin()
-//                }
-//            }
-//        }
-//        else {
-//            //로그인.회원가입 화면으로 전환
-//        }
-//        return false
-    }
-//}
+}

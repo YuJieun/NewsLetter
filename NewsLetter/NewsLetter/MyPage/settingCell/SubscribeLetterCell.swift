@@ -34,11 +34,10 @@ class SubscribeLetterCell: CommonCollectionViewCell {
 
     @IBAction func onDelete(_ sender: UIButton) {
         guard let data = self.data else { return }
-//        DataRequest.deletePlatform(id: data.platformId) { [weak self] data in
-//            guard let `self` = self else { return }
-//            print("구독삭제성공")
-//        } failure: { _ in
-//            print("플랫폼목록 못가져옴")
-//        }
+        DataRequest.deletePlatform(id: data.platformId) { data in
+            print("구독삭제성공")
+        } failure: { _ in
+            print("플랫폼목록 못가져옴")
+        }
     }
 }

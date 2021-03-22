@@ -38,7 +38,7 @@ public class KeychainService {
     }
     
     public func isTokenValidate() -> Bool {
-        if let token = KeychainService.shared.load(ConstGroup.KEYCHAIN_TOKEN) {
+        if let _ = KeychainService.shared.load(ConstGroup.KEYCHAIN_TOKEN) {
             return true
         }
         else {
@@ -96,7 +96,7 @@ public class KeychainService {
     }
 
     public func getKeychainQuery(_ key: String) -> [String: Any] {
-        var keychainQuery: [String: Any] = [
+        let keychainQuery: [String: Any] = [
             kSecClassValue: kSecClassGenericPassword,
             kSecAttrServiceValue: key,
             kSecAttrAccountValue: key,

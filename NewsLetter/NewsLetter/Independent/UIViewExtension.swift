@@ -908,11 +908,6 @@ public func getLayoutConstraint(_ layoutAttribute: NSLayoutConstraint.Attribute,
     return result
 }
 
-public func copyView() -> AnyObject
-{
-    return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self))! as AnyObject
-}
-
 public func addSubViewAutoLayout(_ subview: UIView) {
     self.addSubViewAutoLayout(subview, edgeInsets: UIEdgeInsets.zero)
 }
