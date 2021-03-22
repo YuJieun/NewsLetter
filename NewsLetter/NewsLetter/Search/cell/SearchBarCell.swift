@@ -16,8 +16,6 @@ class SearchBarCell: CommonCollectionViewCell{
         self.searchBar.delegate = self
         configureUI()
     }
-
-    //https://devmjun.github.io/archive/SearchController
     
     func configure(data: Any? = nil) {
         setText()

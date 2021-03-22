@@ -36,9 +36,6 @@ class MailDetailViewController: UIViewController {
     
     var letterId: Int?
     var data: DI_Mail?
-    let str = ConstGroup.TMP_STR
-    
-//    var tmpflag: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +109,25 @@ class MailDetailViewController: UIViewController {
     }
     
     @IBAction func onBookMarkButton(_ sender: UIButton) {
-        
+        guard let data = self.data else { return }
+        if self.stickyBookMarkButton.isSelected {
+            //북마크 해제
+            DataRequest.deleteBookMark(bookmarkId: data.bookmarkId) { [weak self] in
+                guard let `self` = self else { return }
+                self.stickyBookMarkButton.isSelected = false
+            } failure: { _ in
+                print("북마크 추가 오류")
+            }
+        }
+        else {
+            //북마크 추가
+            DataRequest.postAddBookMark(letterId: data.letterId) { [weak self] in
+                guard let `self` = self else { return }
+                self.stickyBookMarkButton.isSelected = true
+            } failure: { _ in
+                print("북마크 추가 오류")
+            }
+        }
     }
 }
 

@@ -32,10 +32,16 @@ class SearchViewController: CommonViewController {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+//        setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setup()
     }
 
     func setup() {
+        self.keyword = ""
+        self.searchLetters = nil
         CustomLoadingView.show()
         DataRequest.getMailRankingList() { [weak self] data in
             guard let `self` = self else { return }
@@ -48,8 +54,6 @@ class SearchViewController: CommonViewController {
     }
     
     @objc private func refresh(){
-        self.keyword = ""
-        self.searchLetters = nil
         self.setup()
         self.refreshControl.endRefreshing()
     }

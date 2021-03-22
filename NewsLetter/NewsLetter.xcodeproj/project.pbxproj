@@ -53,7 +53,6 @@
 		917EDC6225CD381E00AF600A /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917EDC6125CD381E00AF600A /* MypageViewController.swift */; };
 		917EDC6525CD391900AF600A /* Mypage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917EDC6425CD391900AF600A /* Mypage.storyboard */; };
 		917EDC6825CD393500AF600A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917EDC6725CD393500AF600A /* SettingViewController.swift */; };
-		9183356625EBD0DC007721CD /* searchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9183356525EBD0DC007721CD /* searchView.swift */; };
 		9183356D25EBD531007721CD /* SearchBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9183356B25EBD531007721CD /* SearchBarCell.xib */; };
 		9183356E25EBD531007721CD /* SearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9183356C25EBD531007721CD /* SearchBarCell.swift */; };
 		9183357025EBE590007721CD /* CommonNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9183356F25EBE590007721CD /* CommonNavigationController.swift */; };
@@ -165,7 +164,6 @@
 		917EDC6125CD381E00AF600A /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		917EDC6425CD391900AF600A /* Mypage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mypage.storyboard; sourceTree = "<group>"; };
 		917EDC6725CD393500AF600A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		9183356525EBD0DC007721CD /* searchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchView.swift; sourceTree = "<group>"; };
 		9183356B25EBD531007721CD /* SearchBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchBarCell.xib; sourceTree = "<group>"; };
 		9183356C25EBD531007721CD /* SearchBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarCell.swift; sourceTree = "<group>"; };
 		9183356F25EBE590007721CD /* CommonNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonNavigationController.swift; sourceTree = "<group>"; };
@@ -247,7 +245,6 @@
 				9183356C25EBD531007721CD /* SearchBarCell.swift */,
 				9183356B25EBD531007721CD /* SearchBarCell.xib */,
 				806EA81425DCED64005D8688 /* SearchTitleCell.xib */,
-				9183356525EBD0DC007721CD /* searchView.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -712,7 +709,6 @@
 				806EA7FC25DCB0B3005D8688 /* FilterBrandCell.swift in Sources */,
 				910A75FD25D3A91300F16E3F /* SignupPasswordViewController.swift in Sources */,
 				91064C0B25CAC6DC0086E2EF /* SplashViewController.swift in Sources */,
-				9183356625EBD0DC007721CD /* searchView.swift in Sources */,
 				91B9ECAC25DE4BF5006B3E68 /* SettingTitleCell.swift in Sources */,
 				917EDC6825CD393500AF600A /* SettingViewController.swift in Sources */,
 				91B1606C25EE84CF0072E4F9 /* MailDetailViewController.swift in Sources */,

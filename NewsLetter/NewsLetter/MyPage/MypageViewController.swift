@@ -30,6 +30,10 @@ class MypageViewController: UIViewController {
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
+//        setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setup()
     }
 

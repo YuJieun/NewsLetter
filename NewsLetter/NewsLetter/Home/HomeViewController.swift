@@ -47,7 +47,11 @@ class HomeViewController: UIViewController {
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
                 
-        CustomLoadingView.show()
+//        CustomLoadingView.show()
+//        setup() // 설정에서 닉네임 셋팅땜에 setup() 위치 바꿔야할 것 같긴 하다...
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setup() // 설정에서 닉네임 셋팅땜에 setup() 위치 바꿔야할 것 같긴 하다...
     }
     
@@ -96,6 +100,7 @@ class HomeViewController: UIViewController {
         guard let filterData = self.filterData else { return }
         DataRequest.getMailList(parameter: filterData) { [weak self] data in
             guard let `self` = self else { return }
+//            self.newLetters = data
             self.oldLetters = data
             self.collectionView.reloadSections(IndexSet([HomeSection.oldLetters.rawValue]))
         } failure: { _ in
