@@ -74,6 +74,7 @@ class MailDetailViewController: UIViewController {
             guard let `self` = self else { return }
             self.data = data
             self.bind()
+            CustomLoadingView.hide()
         } failure: { _ in
             print("메일 못가져옴")
         }
@@ -119,7 +120,6 @@ extension MailDetailViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let height = self.webView.scrollView.contentSize.height
             self.webView.heightConstraint = height
-            CustomLoadingView.hide()
         }
     }
 }

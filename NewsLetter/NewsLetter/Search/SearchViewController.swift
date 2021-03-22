@@ -49,6 +49,7 @@ class SearchViewController: CommonViewController {
     
     @objc private func refresh(){
         self.keyword = ""
+        self.searchLetters = nil
         self.setup()
         self.refreshControl.endRefreshing()
     }
