@@ -32,6 +32,7 @@ class SearchViewController: CommonViewController {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.tintColor = .clear
 //        setup()
     }
     

@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.tintColor = .clear
                 
 //        CustomLoadingView.show()
 //        setup() // 설정에서 닉네임 셋팅땜에 setup() 위치 바꿔야할 것 같긴 하다...

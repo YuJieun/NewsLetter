@@ -29,8 +29,7 @@ class MypageViewController: UIViewController {
         
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        
-//        setup()
+        refreshControl.tintColor = .clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
