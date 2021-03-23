@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.4.1)
   - DatePickerDialog (4.0)
+  - Gifu (3.3)
   - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - DatePickerDialog
+  - Gifu
   - ReachabilitySwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - DatePickerDialog
+    - Gifu
     - ReachabilitySwift
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   DatePickerDialog: ccff2f91ff7a018057a4d72fa5ad6de49c8cb0cd
+  Gifu: 97c2a3c3865fbc834ab13f797e2e8e7729a1853c
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
-PODFILE CHECKSUM: 97d11f5b3be16ae77eac7d02da47e516bebd8d4d
+PODFILE CHECKSUM: 4dde8ff2f026808cba103f1847ab0c4dd708eaeb
 
 COCOAPODS: 1.10.0

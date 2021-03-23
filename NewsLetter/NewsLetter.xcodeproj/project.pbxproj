@@ -65,6 +65,7 @@
 		918C45D125F43AEF006871EA /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C45D025F43AEF006871EA /* CommonViewController.swift */; };
 		918E474126063D5F00CD44E1 /* CustomLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918E474026063D5F00CD44E1 /* CustomLoadingView.swift */; };
 		91994F2B25CE81DD005D611C /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91994F2A25CE81DD005D611C /* DataRequest.swift */; };
+		91AB1F2F260A016300348FFA /* spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = 91AB1F2E260A016300348FFA /* spinner.gif */; };
 		91ABDD6825DB526F00CD7C37 /* BigLetterBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ABDD6625DB526F00CD7C37 /* BigLetterBannerCell.swift */; };
 		91ABDD6925DB526F00CD7C37 /* BigLetterBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABDD6725DB526F00CD7C37 /* BigLetterBannerCell.xib */; };
 		91ABDD6D25DB580900CD7C37 /* HomeFilterBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ABDD6B25DB580900CD7C37 /* HomeFilterBarCell.swift */; };
@@ -176,6 +177,7 @@
 		918C45D025F43AEF006871EA /* CommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 		918E474026063D5F00CD44E1 /* CustomLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingView.swift; sourceTree = "<group>"; };
 		91994F2A25CE81DD005D611C /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		91AB1F2E260A016300348FFA /* spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = spinner.gif; sourceTree = "<group>"; };
 		91ABDD6625DB526F00CD7C37 /* BigLetterBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigLetterBannerCell.swift; sourceTree = "<group>"; };
 		91ABDD6725DB526F00CD7C37 /* BigLetterBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigLetterBannerCell.xib; sourceTree = "<group>"; };
 		91ABDD6B25DB580900CD7C37 /* HomeFilterBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFilterBarCell.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				917EDC5C25CD372A00AF600A /* MyPage */,
 				91B1606825EE7FC10072E4F9 /* MailDetail */,
 				91064C0F25CAC6DD0086E2EF /* Assets.xcassets */,
+				91AB1F2E260A016300348FFA /* spinner.gif */,
 				91064C1425CAC6DD0086E2EF /* Info.plist */,
 			);
 			path = NewsLetter;
@@ -641,6 +644,7 @@
 				91D3863025D2701D00235438 /* Home.storyboard in Resources */,
 				91AFAA1825EFBB9400150098 /* Alert.storyboard in Resources */,
 				91B9ECAD25DE4BF5006B3E68 /* SettingTitleCell.xib in Resources */,
+				91AB1F2F260A016300348FFA /* spinner.gif in Resources */,
 				91885B2C25ECF2F40000D8E6 /* SettingDivideCell.xib in Resources */,
 				91ABDD7625DB5AE000CD7C37 /* SmallLetterBannerCell.xib in Resources */,
 				9183356D25EBD531007721CD /* SearchBarCell.xib in Resources */,

@@ -7,20 +7,22 @@
 
 import Foundation
 import UIKit
+import Gifu
 
 class CustomLoadingView {
     private static let sharedInstance = CustomLoadingView()
         
     private var backgroundView: UIView?
-    private var popupView: UIImageView?
+    private var popupView: GIFImageView?
         
     class func show() {
         let backgroundView = UIView()
         
-        let popupView = UIImageView()
+        let popupView = GIFImageView()
         popupView.contentMode = .center
-        popupView.animationImages = CustomLoadingView.getAnimationImageArray()
-        popupView.animationRepeatCount = 0
+        popupView.prepareForAnimation(withGIFNamed: "spinner")
+//        popupView.animationImages = CustomLoadingView.getAnimationImageArray()
+//        popupView.animationRepeatCount = 0
         
         if #available(iOS 13.0, *) {
             if let window = UIApplication.shared.connectedScenes
@@ -36,7 +38,7 @@ class CustomLoadingView {
                 backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
             
                 popupView.frame = CGRect(x: 0, y: 0,width: window.frame.maxX, height: window.frame.maxY)
-                popupView.startAnimating()
+                popupView.startAnimatingGIF()
                 
                 sharedInstance.backgroundView?.removeFromSuperview()
                 sharedInstance.popupView?.removeFromSuperview()
@@ -52,8 +54,8 @@ class CustomLoadingView {
                 backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
                 
                 popupView.frame = CGRect(x: 0, y: 0,width: window.frame.maxX, height: window.frame.maxY)
-                popupView.startAnimating()
-                
+                popupView.startAnimatingGIF()
+
                 sharedInstance.backgroundView?.removeFromSuperview()
                 sharedInstance.popupView?.removeFromSuperview()
                 sharedInstance.backgroundView = backgroundView
@@ -65,16 +67,16 @@ class CustomLoadingView {
     class func hide() {
         if let popupView = sharedInstance.popupView,
         let backgroundView = sharedInstance.backgroundView {
-            popupView.stopAnimating()
+            popupView.stopAnimatingGIF()
             backgroundView.removeFromSuperview()
             popupView.removeFromSuperview()
         }
     }
     
-    public class func getAnimationImageArray() -> [UIImage] {
-        var animationArray: [UIImage] = []
-        animationArray.append(UIImage(named: "pickyLetterLogo")!)
-        return animationArray
-    }
+//    public class func getAnimationImageArray() -> [UIImage] {
+//        var animationArray: [UIImage] = []
+//        animationArray.append(UIImage(named: "pickyLetterLogo")!)
+//        return animationArray
+//    }
 
 }
