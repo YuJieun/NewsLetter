@@ -57,6 +57,7 @@ class HomeViewController: UIViewController {
     
     func setup() {
         CustomLoadingView.show()
+        self.collectionView.reloadSections(IndexSet([HomeSection.mainTitle.rawValue]))
         self.getNewLetters()
         
         let formatter = DateFormatter()
