@@ -177,6 +177,15 @@ class DataRequest {
         })
     }
     
+    static func getTotalPlatforms(success: @escaping (DI_PlatformList) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = ConstGroup.TOTAL_PLATFORM_URL
+        ApiManager.shared.requestApi(url, nil, DI_PlatformList.self, .get, isContainToken: true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
     //MARK:- 마이페이지
     //프로필
     static func patchChangeNickname(nickname: String, success: @escaping (DI_UserInfo) -> Void, failure: @escaping (Error?) -> Void ) {
@@ -193,6 +202,16 @@ class DataRequest {
     static func deletePlatform(id: Int, success: @escaping (DI_Platform) -> Void, failure: @escaping (Error?) -> Void ) {
         let url = "\(ConstGroup.PLATFORM_URL)/\(id)"
         ApiManager.shared.requestApi(url, nil, DI_Platform.self, .delete, isContainToken: true, success: { (data) in
+            success(data)
+        }, failure: { (errType, data) in
+            handleErrorType(errType, data, failure)
+        })
+    }
+    
+    //프로필 구독추가
+    static func addPlatform(id: Int, success: @escaping (DI_Platform) -> Void, failure: @escaping (Error?) -> Void ) {
+        let url = "\(ConstGroup.PLATFORM_URL)/\(id)"
+        ApiManager.shared.requestApi(url, nil, DI_Platform.self, .post, isContainToken: true, success: { (data) in
             success(data)
         }, failure: { (errType, data) in
             handleErrorType(errType, data, failure)

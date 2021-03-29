@@ -15,6 +15,8 @@ class DI_Platform: Codable {
     var imageUrl: String = ""
     var name: String = ""
     var platformId: Int = 0
+    var subscribing: Bool? = false
+
     
     //custom
     var isSelected: Bool? = false

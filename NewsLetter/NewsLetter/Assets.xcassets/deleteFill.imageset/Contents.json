@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "scale" : "1x",
+      "filename" : "deleteFill.png",
       "idiom" : "universal",
-      "filename" : "deleteFill.png"
+      "scale" : "1x"
     },
     {
+      "filename" : "deleteFill@2x.png",
       "scale" : "2x",
-      "idiom" : "universal",
-      "filename" : "deleteFill@2x.png"
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
+      "scale" : "3x",
       "filename" : "deleteFill@3x.png",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

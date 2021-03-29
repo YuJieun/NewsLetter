@@ -30,7 +30,7 @@ class LettersEditViewController: CommonNavigationController {
     }
     
     func request() {
-        DataRequest.getSubscribingPlatforms() { [weak self] data in
+        DataRequest.getTotalPlatforms() { [weak self] data in
             guard let `self` = self else { return }
             self.data = data
             self.collectionView.reloadData()
@@ -64,7 +64,14 @@ extension LettersEditViewController: UICollectionViewDataSource, UICollectionVie
             if indexPath.row == data.resultList.count - 1 {
                 cell.isBottomViewVisible = false
             }
+            else {
+                cell.isBottomViewVisible = true
+            }
             cell.configure(data: data.resultList[indexPath.row])
+            cell.cellClosure = { [weak self] _, _ in
+                guard let self = self else { return }
+                self.request()
+            }
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
