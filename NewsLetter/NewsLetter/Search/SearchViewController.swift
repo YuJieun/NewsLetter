@@ -13,6 +13,7 @@ enum SearchSection: Int, CaseIterable {
     case searchResultLetters
     case bookmarkTitle
     case bookmarkLetters
+    case padding
 }
 
 class SearchViewController: CommonViewController {
@@ -30,6 +31,7 @@ class SearchViewController: CommonViewController {
         self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        self.collectionView.registerNibCell("Padding48Px", Classs: Padding48Px.self)
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl.tintColor = .clear
@@ -90,8 +92,33 @@ class SearchViewController: CommonViewController {
                         alertData.infoLabel = "\(data.platformName)을\n아직 구독하지 않고 계시네요!\n구독하여 더 다양한 뉴스레터를\n받아보시겠어요?"
                         alertData.leftLabel = "다음에"
                         alertData.rightLabel = "구독할래요"
-                        alertData.leftAction = {  _, _ in
-                            print("구독구독")
+                        alertData.rightAction = {  _, _ in
+                            DataRequest.addPlatform(id: data.platformId) { [weak self] data in
+                                guard let self = self else { return }
+                                let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+                                guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonErrorViewController") as? CommonErrorViewController else { return }
+                                vc.modalPresentationStyle = .overFullScreen
+                                self.present(vc, animated: false){
+                                    let alertData = DI_Alert()
+                                    alertData.infoLabel = "구독완료되었습니다."
+                                    alertData.leftLabel = "확인"
+                                    alertData.leftAction = { _, _ in
+                                        self.refresh()
+                                    }
+                                    vc.configure(alertData)
+                                }
+                                
+                            } failure: { _ in
+                                let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+                                guard let vc = storyboard.instantiateViewController(withIdentifier: "CommonErrorViewController") as? CommonErrorViewController else { return }
+                                vc.modalPresentationStyle = .overFullScreen
+                                self.present(vc, animated: false){
+                                    let alertData = DI_Alert()
+                                    alertData.infoLabel = "구독실패했습니다. 다시 시도해주세요"
+                                    alertData.leftLabel = "확인"
+                                    vc.configure(alertData)
+                                }
+                            }
                         }
                         vc.configure(alertData)
                     }
@@ -119,6 +146,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             return self.rankingLetters?.resultList.count ?? 0 > 0 ? 1 : 0
         case SearchSection.bookmarkLetters.rawValue:
             return self.rankingLetters?.resultList.count ?? 0
+        case SearchSection.padding.rawValue:
+            return 1
         default:
             return 0
         }
@@ -165,6 +194,10 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             cell.configure(data: item)
             cell.cellClosure = self.makeCellClosure()
             return cell
+        case SearchSection.padding.rawValue:
+            let cell = collectionView.dequeueReusableCell(Padding48Px.self, "Padding48Px", for: indexPath)
+            cell.configure()
+            return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
             return cell
@@ -187,6 +220,9 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             return size
         case SearchSection.bookmarkLetters.rawValue:
             let size = SmallLetterBannerCell.getSize(nil)
+            return size
+        case SearchSection.padding.rawValue:
+            let size = Padding48Px.getSize(nil)
             return size
         default:
             return .zero

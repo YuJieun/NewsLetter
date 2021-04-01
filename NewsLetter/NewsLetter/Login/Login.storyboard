@@ -26,7 +26,7 @@
         <!--Account View Controller-->
         <scene sceneID="Bau-Nm-2U4">
             <objects>
-                <viewController storyboardIdentifier="AccountViewController" id="YfD-QQ-hn3" customClass="AccountViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountViewController" id="YfD-QQ-hn3" customClass="AccountViewController" customModule="피키레터" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="buh-k0-T5l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,10 +179,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="wgA-65-Kaw"/>
                     <connections>
+                        <outlet property="emailLabel" destination="Jmm-9r-ufP" id="q53-Qj-8z8"/>
                         <outlet property="emailTextField" destination="Rqk-Gy-2hS" id="tLL-qb-V0M"/>
                         <outlet property="emailView" destination="mi4-7h-t6V" id="lZF-8p-Lm9"/>
                         <outlet property="loginButton" destination="zrV-C7-fcj" id="ZZI-ab-hNq"/>
                         <outlet property="passwordTextField" destination="1nv-jS-2vV" id="WJd-VM-pi6"/>
+                        <outlet property="pwdLabel" destination="42N-Y4-N5P" id="77T-uI-Q1E"/>
                         <outlet property="pwdSecureButton" destination="Dxr-jp-oU3" id="eAs-ah-65w"/>
                         <outlet property="pwdView" destination="X9B-mf-vEh" id="mEb-I9-bn3"/>
                     </connections>
@@ -194,7 +196,7 @@
         <!--Signup Name View Controller-->
         <scene sceneID="kb6-6Y-LdT">
             <objects>
-                <viewController storyboardIdentifier="SignupViewController" id="bVB-hK-d5o" customClass="SignupNameViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" id="bVB-hK-d5o" customClass="SignupNameViewController" customModule="피키레터" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HUY-mP-hl5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,7 +303,7 @@
         <!--Login View Controller-->
         <scene sceneID="qsk-f8-bqc">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="beI-yU-FzA" customClass="LoginViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="beI-yU-FzA" customClass="LoginViewController" customModule="피키레터" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L8d-eo-dUz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -352,7 +354,7 @@
         <!--Signup Email View Controller-->
         <scene sceneID="Zyp-1t-dPo">
             <objects>
-                <viewController storyboardIdentifier="SignupEmailViewController" id="o1C-KX-Dxh" customClass="SignupEmailViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupEmailViewController" id="o1C-KX-Dxh" customClass="SignupEmailViewController" customModule="피키레터" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9EX-vp-DO3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -488,7 +490,7 @@
         <!--Signup Password View Controller-->
         <scene sceneID="sb2-cQ-zdh">
             <objects>
-                <viewController storyboardIdentifier="SignupPasswordViewController" id="YIB-j3-QMH" customClass="SignupPasswordViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupPasswordViewController" id="YIB-j3-QMH" customClass="SignupPasswordViewController" customModule="피키레터" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8gG-vD-BsU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -654,7 +656,7 @@
         <image name="337ButtonInitial" width="337" height="48"/>
         <image name="337ButtonInitial_2" width="337" height="48"/>
         <image name="337ButtonInitial_login" width="337" height="48"/>
-        <image name="8X" width="9" height="9"/>
+        <image name="8X" width="10" height="9"/>
         <image name="pickyLetterLogo" width="150" height="114"/>
         <image name="signUpButton" width="337" height="48"/>
         <image name="warning" width="13" height="11.5"/>

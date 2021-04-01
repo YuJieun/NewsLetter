@@ -17,6 +17,9 @@ class AccountViewController: CommonViewController {
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var pwdView: UIView!
         
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var pwdLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -30,6 +33,9 @@ class AccountViewController: CommonViewController {
         pwdView.layer.borderWidth = 1
         pwdView.layer.borderColor = UIColor(rgb: 0xdfdfdf).cgColor
         pwdView.layer.cornerRadius = 3
+        
+        emailLabel.textColor = UIColor(rgb: 0xdfdfdf)
+        pwdLabel.textColor = UIColor(rgb: 0xdfdfdf)
         
         pwdSecureButton.setImage(UIImage(named: "16ClosedEyes"), for: .normal)
         pwdSecureButton.setImage(UIImage(named: "16OpenedEyes"), for: .selected)
@@ -73,6 +79,10 @@ class AccountViewController: CommonViewController {
             guard let `self` = self else { return }
             self.passwordTextField.text = ""
             self.emailTextField.text = ""
+            self.emailView.layer.borderColor = UIColor(rgb: 0xdfdfdf).cgColor
+            self.pwdView.layer.borderColor = UIColor(rgb: 0xdfdfdf).cgColor
+            self.emailLabel.textColor = UIColor(rgb: 0xdfdfdf)
+            self.pwdLabel.textColor = UIColor(rgb: 0xdfdfdf)
             print("로그인 에러")
         }
     }
@@ -89,6 +99,19 @@ class AccountViewController: CommonViewController {
 
 extension AccountViewController: UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
+        if checkEmailValidate() || checkPasswordValidate() {
+            emailView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
+            pwdView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
+            emailLabel.textColor = UIColor(rgb: 0x333333)
+            pwdLabel.textColor = UIColor(rgb: 0x333333)
+        }
+        else {
+            emailView.layer.borderColor = UIColor(rgb: 0xdfdfdf).cgColor
+            pwdView.layer.borderColor = UIColor(rgb: 0xdfdfdf).cgColor
+            emailLabel.textColor = UIColor(rgb: 0xdfdfdf)
+            pwdLabel.textColor = UIColor(rgb: 0xdfdfdf)
+        }
+
         if checkEmailValidate() && checkPasswordValidate() {
             self.loginButton.isHighlighted = true
         }

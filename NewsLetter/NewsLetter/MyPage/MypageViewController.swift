@@ -11,6 +11,7 @@ enum MypageSection: Int, CaseIterable {
     case profile
     case title
     case letters
+    case padding
 }
 
 class MypageViewController: UIViewController {
@@ -26,7 +27,8 @@ class MypageViewController: UIViewController {
         self.collectionView.registerNibCell("MypageProfileCell", Classs: MypageProfileCell.self)
         self.collectionView.registerNibCell("SearchTitleCell", Classs: SearchTitleCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
-        
+        self.collectionView.registerNibCell("Padding48Px", Classs: Padding48Px.self)
+
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl.tintColor = .clear
@@ -95,6 +97,8 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             return 1
         case MypageSection.letters.rawValue:
             return self.bookmarkList?.resultList.count ?? 0
+        case MypageSection.padding.rawValue:
+            return self.bookmarkList?.resultList.count ?? 0 > 0 ? 1 : 0
         default:
             return 0
         }
@@ -142,6 +146,10 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
                 }
             }
             return cell
+        case MypageSection.padding.rawValue:
+            let cell = collectionView.dequeueReusableCell(Padding48Px.self, "Padding48Px", for: indexPath)
+            cell.configure()
+            return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
             return cell
@@ -159,6 +167,9 @@ extension MypageViewController: UICollectionViewDataSource, UICollectionViewDele
             return size
         case MypageSection.letters.rawValue:
             let size = SmallLetterBannerCell.getSize(nil)
+            return size
+        case MypageSection.padding.rawValue:
+            let size = Padding48Px.getSize(nil)
             return size
         default:
             return .zero

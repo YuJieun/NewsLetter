@@ -72,6 +72,8 @@
 		91ABDD6E25DB580900CD7C37 /* HomeFilterBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABDD6C25DB580900CD7C37 /* HomeFilterBarCell.xib */; };
 		91ABDD7525DB5AE000CD7C37 /* SmallLetterBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ABDD7325DB5AE000CD7C37 /* SmallLetterBannerCell.swift */; };
 		91ABDD7625DB5AE000CD7C37 /* SmallLetterBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ABDD7425DB5AE000CD7C37 /* SmallLetterBannerCell.xib */; };
+		91AC4B3B2615EDF60000747C /* Padding48Px.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC4B392615EDF60000747C /* Padding48Px.swift */; };
+		91AC4B3C2615EDF60000747C /* Padding48Px.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AC4B3A2615EDF60000747C /* Padding48Px.xib */; };
 		91AD442325FBADD600C1027A /* DI_Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD442225FBADD600C1027A /* DI_Mail.swift */; };
 		91AFAA1825EFBB9400150098 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91AFAA1725EFBB9400150098 /* Alert.storyboard */; };
 		91AFAA1A25EFBD1700150098 /* DI_Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AFAA1925EFBD1700150098 /* DI_Alert.swift */; };
@@ -184,6 +186,8 @@
 		91ABDD6C25DB580900CD7C37 /* HomeFilterBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFilterBarCell.xib; sourceTree = "<group>"; };
 		91ABDD7325DB5AE000CD7C37 /* SmallLetterBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLetterBannerCell.swift; sourceTree = "<group>"; };
 		91ABDD7425DB5AE000CD7C37 /* SmallLetterBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallLetterBannerCell.xib; sourceTree = "<group>"; };
+		91AC4B392615EDF60000747C /* Padding48Px.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding48Px.swift; sourceTree = "<group>"; };
+		91AC4B3A2615EDF60000747C /* Padding48Px.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Padding48Px.xib; sourceTree = "<group>"; };
 		91AD442225FBADD600C1027A /* DI_Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI_Mail.swift; sourceTree = "<group>"; };
 		91AFAA1725EFBB9400150098 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		91AFAA1925EFBD1700150098 /* DI_Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI_Alert.swift; sourceTree = "<group>"; };
@@ -512,6 +516,8 @@
 				91885B3025ED18DB0000D8E6 /* HomeNoTitleCell.xib */,
 				91885B3325ED19F90000D8E6 /* HomeNoLetterCell.swift */,
 				91885B3425ED19F90000D8E6 /* HomeNoLetterCell.xib */,
+				91AC4B392615EDF60000747C /* Padding48Px.swift */,
+				91AC4B3A2615EDF60000747C /* Padding48Px.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				910A760525D3B64D00F16E3F /* HomeNewLettersCell.xib in Resources */,
 				91B1606A25EE84B10072E4F9 /* MailDetail.storyboard in Resources */,
 				917EDC6525CD391900AF600A /* Mypage.storyboard in Resources */,
+				91AC4B3C2615EDF60000747C /* Padding48Px.xib in Resources */,
 				91885B3625ED19F90000D8E6 /* HomeNoLetterCell.xib in Resources */,
 				91B9ECBD25DE56AD006B3E68 /* SubscribeLetterCell.xib in Resources */,
 				91885B3225ED18DB0000D8E6 /* HomeNoTitleCell.xib in Resources */,
@@ -731,6 +738,7 @@
 				910A75F325D39A3300F16E3F /* SignupEmailViewController.swift in Sources */,
 				9143BBD825FA4776004185EF /* CommonErrorViewController.swift in Sources */,
 				91064C2725CAD74E0086E2EF /* KeyChainService.swift in Sources */,
+				91AC4B3B2615EDF60000747C /* Padding48Px.swift in Sources */,
 				91B9ECB725DE5157006B3E68 /* ProfileEditViewController.swift in Sources */,
 				91D3862E25D2531B00235438 /* CommonCollectionViewCell.swift in Sources */,
 				91ABDD7525DB5AE000CD7C37 /* SmallLetterBannerCell.swift in Sources */,

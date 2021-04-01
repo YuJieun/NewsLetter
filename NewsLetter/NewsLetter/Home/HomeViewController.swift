@@ -15,6 +15,7 @@ enum HomeSection: Int, CaseIterable {
     case noLetters
     case filterBar
     case oldLetters
+    case padding
 }
 
 class HomeViewController: UIViewController {
@@ -42,13 +43,11 @@ class HomeViewController: UIViewController {
         self.collectionView.registerNibCell("HomeNoLetterCell", Classs: HomeNoLetterCell.self)
         self.collectionView.registerNibCell("HomeFilterBarCell", Classs: HomeFilterBarCell.self)
         self.collectionView.registerNibCell("SmallLetterBannerCell", Classs: SmallLetterBannerCell.self)
+        self.collectionView.registerNibCell("Padding48Px", Classs: Padding48Px.self)
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl.tintColor = .clear
-                
-//        CustomLoadingView.show()
-//        setup() // 설정에서 닉네임 셋팅땜에 setup() 위치 바꿔야할 것 같긴 하다...
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -172,19 +171,6 @@ class HomeViewController: UIViewController {
                 print("메일 못가져옴")
             }
         }
-      
-        /*let contentSize: CGFloat
-        let offsetY: CGFloat
-
-        contentSize = collectionView.contentSize.height - UISCREEN_HEIGHT * 3
-        offsetY = collectionView.contentOffset.y + collectionView.h
-        
-        if offsetY >= contentSize || contentSize <= 0 {
-//            hasMoreLetters = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001, execute: {
-                self.collectionView.reloadData()
-            })
-        }*/
     }
 }
 
@@ -196,6 +182,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let isNewLetterValid: Bool = self.newLetters?.resultList.count ?? 0 > 0 ? true : false
+        let isOleLetterValid: Bool = self.oldLetters?.resultList.count ?? 0 > 0 ? true : false
         switch section {
         case HomeSection.mainTitle.rawValue:
             return isNewLetterValid ? 1 : 0
@@ -209,6 +196,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return 1
         case HomeSection.oldLetters.rawValue:
             return self.oldLetters?.resultList.count ?? 0
+        case HomeSection.padding.rawValue:
+            return isOleLetterValid ? 1 : 0
         default:
             return 0
         }
@@ -287,6 +276,10 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 }
             }
             return cell
+        case HomeSection.padding.rawValue:
+            let cell = collectionView.dequeueReusableCell(Padding48Px.self, "Padding48Px", for: indexPath)
+            cell.configure()
+            return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
             
@@ -313,6 +306,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return size
         case HomeSection.oldLetters.rawValue:
             let size = SmallLetterBannerCell.getSize(nil)
+            return size
+        case HomeSection.padding.rawValue:
+            let size = Padding48Px.getSize(nil)
             return size
         default:
             return .zero

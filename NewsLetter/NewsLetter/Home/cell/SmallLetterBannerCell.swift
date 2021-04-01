@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SmallLetterBannerCell: CommonCollectionViewCell {
 
@@ -35,9 +36,17 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         
         updateUI()
 
-        self.bannerImageView.image = UIImage(named: ConstGroup.BANNERIMG[0])
+        if let thumbnailImageUrl = data.thumbnailImageUrl, thumbnailImageUrl.isValid {
+            let url = URL(string: thumbnailImageUrl)
+            self.bannerImageView.kf.setImage(with: url)
+        }
+        else {
+            self.bannerImageView.image = UIImage(named: "")
+        }
         self.bannerTitleLabel.text = data.title
-        self.bannerLogoImageView.load(urlStr: data.platformImageUrl)
+        
+        let logoUrl = URL(string: data.platformImageUrl)
+        self.bannerLogoImageView.kf.setImage(with: logoUrl)
         self.bannerBrandLabel.text = data.platformName
         
         let dateString:String = data.createdAt
@@ -73,6 +82,7 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         self.bannerBorderView.layer.borderColor = UIColor(rgb: 0x333333).cgColor
         self.bannerBorderView.layer.borderWidth = 1
         self.bannerBorderView.layer.cornerRadius = 5
+        
 
         //2: 북마크
         self.bookmarkButton.setImage(UIImage(named: "24BookmarkLine"), for: .normal)
@@ -95,6 +105,9 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
         else {
             self.rankingView.isHidden = true
         }
+        
+        //5: 이미지
+        self.bannerImageView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 5.0)
     }
     
     class func getSize(_ data: Any? = nil) -> CGSize {
@@ -118,7 +131,6 @@ class SmallLetterBannerCell: CommonCollectionViewCell {
             DataRequest.postAddBookMark(letterId: data.letterId) { [weak self] in
                 guard let `self` = self else { return }
                 self.bookmarkButton.isSelected = true
-//                self.cellClosure?(MailCallbackType.bookmark.rawValue, nil)
             } failure: { _ in
                 print("북마크 추가 오류")
             }

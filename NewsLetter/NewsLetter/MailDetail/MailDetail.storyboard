@@ -23,7 +23,7 @@
         <!--Mail Detail View Controller-->
         <scene sceneID="aOG-Mi-41k">
             <objects>
-                <viewController storyboardIdentifier="MailDetailViewController" id="o3s-ji-Ub4" customClass="MailDetailViewController" customModule="NewsLetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MailDetailViewController" id="o3s-ji-Ub4" customClass="MailDetailViewController" customModule="피키레터" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vVm-yX-cXV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,10 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wZ9-UL-SKv">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="301"/>
                                                     </imageView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVs-3W-ILC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="301"/>
+                                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9G-xU-mzS" userLabel="팬톤, 올해의 컬러에 담긴 메시지 if 2 sentence">
                                                         <rect key="frame" x="21" y="170" width="7.5" height="32"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="22"/>
@@ -72,11 +76,15 @@
                                                     <constraint firstItem="ss8-pM-e4u" firstAttribute="leading" secondItem="zjD-T2-knU" secondAttribute="trailing" constant="8" id="5zN-46-x0G"/>
                                                     <constraint firstItem="l9G-xU-mzS" firstAttribute="leading" secondItem="Deq-Ia-0z0" secondAttribute="leading" constant="21" id="7hD-wT-Cqb"/>
                                                     <constraint firstAttribute="trailing" secondItem="wZ9-UL-SKv" secondAttribute="trailing" id="FuS-fb-OH7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XVs-3W-ILC" secondAttribute="trailing" id="YLl-yw-qDM"/>
                                                     <constraint firstItem="l9G-xU-mzS" firstAttribute="top" secondItem="Deq-Ia-0z0" secondAttribute="top" constant="170" id="bk1-RL-u31"/>
                                                     <constraint firstItem="zjD-T2-knU" firstAttribute="leading" secondItem="Deq-Ia-0z0" secondAttribute="leading" constant="19" id="frb-Fi-7ZX"/>
                                                     <constraint firstAttribute="bottom" secondItem="wZ9-UL-SKv" secondAttribute="bottom" id="hLJ-iN-B2s"/>
+                                                    <constraint firstItem="XVs-3W-ILC" firstAttribute="leading" secondItem="Deq-Ia-0z0" secondAttribute="leading" id="hrN-ev-g8A"/>
                                                     <constraint firstAttribute="trailing" secondItem="LAo-da-kOw" secondAttribute="trailing" constant="19" id="je4-hA-Isg"/>
+                                                    <constraint firstItem="XVs-3W-ILC" firstAttribute="top" secondItem="Deq-Ia-0z0" secondAttribute="top" id="mf4-gf-Rf4"/>
                                                     <constraint firstItem="ss8-pM-e4u" firstAttribute="centerY" secondItem="zjD-T2-knU" secondAttribute="centerY" id="opp-SK-wFT"/>
+                                                    <constraint firstAttribute="bottom" secondItem="XVs-3W-ILC" secondAttribute="bottom" id="pkr-dU-M5i"/>
                                                     <constraint firstItem="LAo-da-kOw" firstAttribute="centerY" secondItem="zjD-T2-knU" secondAttribute="centerY" id="rLb-xH-Uz8"/>
                                                     <constraint firstItem="zjD-T2-knU" firstAttribute="top" secondItem="l9G-xU-mzS" secondAttribute="bottom" constant="19" id="vLl-fO-Pfz"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l9G-xU-mzS" secondAttribute="trailing" constant="19" id="wLX-01-Vuq"/>

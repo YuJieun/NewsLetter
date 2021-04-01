@@ -13,13 +13,18 @@ class HomeNewLettersCell: CommonCollectionViewCell {
 
     var currentIndex: CGFloat = 0 // 현재 보여지고 있는 페이지의 인덱스
     var data: DI_MailList?
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.registerNibCell("BigLetterBannerCell", Classs: BigLetterBannerCell.self)
         self.collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
-
+        
         setCollectionView()
+    }
+    
+    override func prepareForReuse() {
+        let point: CGPoint = CGPoint(x: 0 - 19, y: 0)
+        self.collectionView.setContentOffset(point, animated: false)
     }
     
     func setCollectionView() {

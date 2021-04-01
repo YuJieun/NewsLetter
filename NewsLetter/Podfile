@@ -8,6 +8,7 @@ pod 'ReachabilitySwift'
 pod 'Alamofire', '~> 5.2'
 pod 'DatePickerDialog'
 pod 'Gifu'
+pod 'Kingfisher', '~> 6.0'
   # Pods for NewsLetter
 
 end

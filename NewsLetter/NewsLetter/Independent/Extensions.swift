@@ -96,17 +96,3 @@ extension UIApplication {
     }
 }
 
-extension UIImageView {
-    func load(urlStr: String) {
-        let url = URL(string: urlStr)!
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}

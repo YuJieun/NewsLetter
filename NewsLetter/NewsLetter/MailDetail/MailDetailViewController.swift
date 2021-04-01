@@ -79,10 +79,18 @@ class MailDetailViewController: UIViewController {
     
     func bind() {
         guard let data = self.data else { return }
-        self.headerImageView.image = UIImage(named: "dee1")
+        if let thumbnailImageUrl = data.thumbnailImageUrl, thumbnailImageUrl.isValid {
+            let url = URL(string: thumbnailImageUrl)
+            self.headerImageView.kf.setImage(with: url)
+        }
+        else {
+            self.headerImageView.image = UIImage(named: "")
+        }
         self.titleLabel.text = data.title
         self.logoLabel.text = data.platformName
-        self.logoImageView.load(urlStr: data.platformImageUrl)
+        
+        let logoUrl = URL(string: data.platformImageUrl)
+        self.logoImageView.kf.setImage(with: logoUrl)
         
         let dateString:String = data.createdAt
         let dateFormatter = DateFormatter()

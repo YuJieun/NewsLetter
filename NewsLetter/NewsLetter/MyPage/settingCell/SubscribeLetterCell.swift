@@ -25,7 +25,10 @@ class SubscribeLetterCell: CommonCollectionViewCell {
         guard let data = data as? DI_Platform else { return }
         self.data = data
         self.brandTitleLabel.text = data.name
-        self.logoImage.load(urlStr: data.imageUrl)
+        
+        let logoUrl = URL(string: data.imageUrl)
+        self.logoImage.kf.setImage(with: logoUrl)
+        
         self.bottomView.isHidden = !isBottomViewVisible
         
         if let subscribing = data.subscribing {

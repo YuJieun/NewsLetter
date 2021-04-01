@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BigLetterBannerCell: CommonCollectionViewCell {
 
@@ -44,9 +45,18 @@ class BigLetterBannerCell: CommonCollectionViewCell {
 
     func bind() {
         guard let data = self.data else { return }
-        self.bannerImageView.image = UIImage(named: ConstGroup.BANNERIMG[0])
+        if let thumbnailImageUrl = data.thumbnailImageUrl, thumbnailImageUrl.isValid {
+            let url = URL(string: thumbnailImageUrl)
+            self.bannerImageView.kf.setImage(with: url)
+        }
+        else {
+            self.bannerImageView.image = UIImage(named: "")
+        }
         self.bannerTitleLabel.text = data.title
-        self.bannerLogoImageView.load(urlStr: data.platformImageUrl)
+        
+        let logoUrl = URL(string: data.platformImageUrl)
+        self.bannerLogoImageView.kf.setImage(with: logoUrl)
+        
         self.bannerBrandLabel.text = data.platformName
         
         let dateString:String = data.createdAt
